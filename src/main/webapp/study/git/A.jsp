@@ -12,6 +12,7 @@
 	
 <body>
 <h1>A.jsp</h1>
+<<<<<<< HEAD
 
 <ul>
 	<li>Spring</li>
