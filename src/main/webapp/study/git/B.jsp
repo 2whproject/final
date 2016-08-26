@@ -21,5 +21,8 @@
 <body>
 
 <h1>B.jsp</h1>   
+<ol>
+<li>hahaha</li>
+</ol>
 </body>
 </html>
