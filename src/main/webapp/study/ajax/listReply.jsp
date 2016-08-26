@@ -5,21 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>listReply.jsp</title>
-
 <!-- Bootstrap 3.3.4 -->
-<link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
-   type="text/css" />
-
-
+<link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- jQuery 2.1.4 -->
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-
 <!-- Font Awesome Icons -->
-<link
-   href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-   rel="stylesheet" type="text/css" />
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<!-- Bootstrap 3.3.2 JS -->
+<script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -32,58 +26,59 @@
             <label for="replytext">replytext : </label> <input
                class="form-control" type="text" id="replytext"><br>
          </div>
-
          <div class="form-group">
             <label for="replyer">replyer :</label> <input class="form-control"
                type="text" id="replyer" value="USER01" />
          </div>
-
          <button id="addReply" class="btn btn-primary">add Reply</button>
-
-
       </div>
    </div>
-   
    <div id="reply" class="panel panel-info">
       <div class="panel-heading">
          <button id="replylist" class="btn btn-primary">댓글 조회</button>      
       </div>
-      
-      
       <div class="panel-body">
-      
       </div>   
-      
-      
       <div class="panel-footer text-center">
          <ul class="pagination">
-         
          </ul>
-      
       </div>
-   
    </div>
-   
-   
+   <div id="myModal" class="modal fade">
+         <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h2 class="modal-title">댓글 수정 & 삭제</h2>
+                  </div>
+                  <div class="modal-body">
+                     <h2></h2>
+                  </div>
+                  <div class="modal-footer">
+                     <h2></h2>
+                  </div>
+               </div>
+         </div>
+   </div>
    <script id="mytemplate" type="text/x-handlebars-template">
       <ul class="list-group">
          {{#each .}}
-         <li class="list-group-item">
-            [{{rno}}] {{replyer}}<i class="fa fa-backward fa-spin"></i>{{replytext}}
-			<button class="btn btn-info modify" data-rno="{{rno}}" 
-										 data-bno="{{bno}}" 
-										 data-replytext="{{replytext}}">Modify
-			</butoon>
-         </li>
+           <li class="list-group-item">
+              [{{rno}}] {{replyer}}<i class="fa fa-backward fa-spin"></i> {{replytext}}
+           <button class="btn btn-info modify" data-rno="{{rno}}" 
+                                      data-bno="{{bno}}" 
+                                     data-replytext="{{replytext}}"
+                                    data-toggle="modal"
+                                    data-target="#myModal"
+                                    >
+                 Modify
+           </button>
+           </li>
          {{/each}}
       <ul>
    </script>
-
-
    <script type="text/javascript">
       var page = 1;   
    
-      
       function printBody(list) {
          console.log("printBody()......");
          console.dir(list);
@@ -92,16 +87,28 @@
          var template = Handlebars.compile($('#mytemplate').html());
          var str = template(list);
          
-         
          $('#reply .panel-body').html(str);
          
-         $('.modify').on('click',function(){
-        	var str = "rno="+$(this).attr("data-rno");
-        		str += "bno="+$(this).attr("data-bno");
-        		str += "replytext="+$(this).attr("data-replytext");
-        		
-        		alert(str);
-         });
+         $('.modify').on('click', function() {
+         //attr 어튜리뷰트 가져오는것 객체를 가져온다 ↓
+            var str = "rno = " +$(this).attr("data-rno");
+                str += "bno = " +$(this).attr("data-bno"); 
+                str += "replytext = " +$(this).attr("data-replytext"); 
+              
+//                alert(str);
+
+//              if(confirm(str)) 
+             
+//                 alert("확인클릭");
+//                  else 
+//                 alert("취소클릭");      
+             
+//             var text = prompt("댓글 수정 & 삭제", str);
+            
+//             if(text!=null) 
+//                 alert(text);
+
+      });
          
       }
       
@@ -128,7 +135,6 @@
          $('#reply .panel-footer .pagination').html(str);
       }
       
-      
       function getPage(page) {
          $.getJSON("/replies/1/" + page + "?xxx=" + new Date().getTime(), function(result) {
             console.dir(result);
@@ -139,9 +145,6 @@
          });
          
       }
-   
-   
-   
    
       $('#addReply').on('click', function() {
 
@@ -165,8 +168,7 @@
                         replyer : replyer
                         
                      }),
-                     
-                     
+                    
                      success : function(result) {
                         console.log(result);
                         if(result == "SUCCESS"){
@@ -176,20 +178,17 @@
                         
 //                         alert("result = " + result);
                         
-                     }
-                     
-                     
+                     }  
                };
                
                $.ajax(options);
+               
             });
-      
       
       $('#replylist').on('click', function() {
          alert("replylist clicked...");
          getPage(page);
       });
-      
       
    </script>
 
