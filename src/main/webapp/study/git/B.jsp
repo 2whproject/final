@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>template.jsp</title>
+<title>B.jsp</title>
    
    <!-- Bootstrap 3.3.4 -->
    <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -19,6 +19,7 @@
    
 </head>
 <body>
-   
+
+<h1>B.jsp</h1>   
 </body>
 </html>
