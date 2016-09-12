@@ -25,10 +25,10 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="/resources/index2.html"><b>Zerock</b>Project</a>
+        <a href="/resources/index2.html"><b>2nd </b>Project</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Login</p>
 
 <form action="/user/loginPost" method="post">
   <div class="form-group has-feedback">
@@ -55,7 +55,7 @@
 
 
         <a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <a href="/member/register" class="text-center">Register a new membership</a>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

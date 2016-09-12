@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+xmlns="http://www.springframework.org/schema/beans" 
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+">
+ 
+<!-- 실수잦은곳_ 여기도 AutoWired 쓰니까 태그_쓰기 -->
+ <context:annotation-config/>
+ 
+<!-- 회원가입화면, 처리 Controller 등록 
+ injection :    @Autowired 
+                private MemberDAO memberdao;
+-->
+<bean id="joinController" class="org.zerock.controller.JoinController"/>
+</beans>

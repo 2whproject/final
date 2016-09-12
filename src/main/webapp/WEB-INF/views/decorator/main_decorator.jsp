@@ -42,7 +42,7 @@
 			<!-- Logo -->
 			<a href="/resources/index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-mini"><b>A</b>LT</span> <!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>Zerock</b> PROJECT</span>
+				<span class="logo-lg"><b>2nd</b> PROJECT</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top" role="navigation">
@@ -244,7 +244,7 @@
 									src="/resources/dist/img/user2-160x160.jpg" class="img-circle"
 									alt="User Image" />
 									<p>
-										Alexander Pierce - Web Developer <small>Member since
+										사람이름<small>Member since
 											Nov. 2012</small>
 									</p></li>
 								<!-- Menu Body -->
@@ -309,14 +309,14 @@
 				<ul class="sidebar-menu">
 					<li class="header">MAIN NAVIGATION</li>
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>Dashboard</span> <i
+							class="fa fa-dashboard"></i> <span>영화게시판</span> <i
 							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
 							<li><a href="/resources/index.html"><i
-									class="fa fa-circle-o"></i> Dashboard v1</a></li>
-							<li><a href="/resources/index2.html"><i
-									class="fa fa-circle-o"></i> Dashboard v2</a></li>
+									class="fa fa-circle-o"></i> 공지사항</a></li>
+							<li><a href="/sboard/list"><i
+									class="fa fa-circle-o"></i> 영화게시판</a></li>
 						</ul></li>
 					<li class="treeview"><a href="#"> <i class="fa fa-files-o"></i>
 							<span>Layout Options</span> <span

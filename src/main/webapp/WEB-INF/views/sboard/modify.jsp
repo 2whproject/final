@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<title>list.jsp</title>
+<title>modify.jsp</title>
 </head>
 <body>
 	<!-- Main content -->
@@ -19,7 +19,7 @@
 				<!-- general form elements -->
 				<div class='box'>
 					<div class="box-header with-border">
-						<h3 class="box-title">영화 게시판</h3>
+						<h3 class="box-title">공지사항</h3>
 					</div>
 
 

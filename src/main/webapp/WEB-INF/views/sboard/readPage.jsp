@@ -107,7 +107,7 @@
       </div>
       <!--/.col (left) -->
       <div class="col-md-6">
-         <img class="img-responsive img-circle" style="width:100%" alt="xxx" src="http://www.loremflickr.com/200/200/flower"/>
+         <img class="img-responsive" style="width:100%" alt="xxx" src="http://www.loremflickr.com/200/200/dog"/>
       </div>
    </div>
    <!-- /.row -->

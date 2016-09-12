@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -15,7 +17,7 @@ public class SampleAdvice {
 
   private static final Logger logger = LoggerFactory.getLogger(SampleAdvice.class);
 
-  //@Before("execution(* org.zerock.service.MessageService*.*(..))")
+  @Before("execution(* org.zerock.service.MessageService*.*(..))")
   public void startLog(JoinPoint jp) {
 
     logger.info("----------------------------");
@@ -25,7 +27,7 @@ public class SampleAdvice {
   }
   
   
- // @Around("execution(* org.zerock.service.MessageService*.*(..))")
+  @Around("execution(* org.zerock.service.MessageService*.*(..))")
   public Object timeLog(ProceedingJoinPoint pjp)throws Throwable{
     
     long startTime = System.currentTimeMillis();
