@@ -1,12 +1,28 @@
 --
 -- DROP table
 --
+drop table emp;
 DROP TABLE tbl_member;
 DROP TABLE tbl_user;
 DROP TABLE tbl_attach;
 DROP TABLE tbl_reply;
 DROP TABLE tbl_board;
 drop table tbl_log;
+drop table tbl_leave;
+
+create table emp
+(
+	bno int not null auto_increment,
+	empno int not null,
+	ename	varchar(20) not null,
+	job	varchar(20) not null,
+	mgr	int(10),
+	hiredate date not null,
+	sal	double not null,
+	comm double ,
+	deptno int(10) not null,
+	primary key(bno)
+);
 
 --
 -- tbl_member
@@ -52,7 +68,22 @@ INSERT INTO tbl_user(UID, upw, uname)
      VALUES ('user03', 'user03', 'Thor');
 insert into tbl_user(UID, upw, uname, email)
 	 values ('zerock', '1234', 'ADMINISTRATOR','zerock@project.com');
+	 
+create table tbl_leave
+(	uid varchar(50),
+	primary key(uid)
+);
 
+insert into tbl_leave(uid)
+	 values ('user00');
+insert into tbl_leave(uid)
+	 values ('user01');
+insert into tbl_leave(uid)
+	 values ('user02');
+insert into tbl_leave(uid)
+	 values ('user03');
+insert into tbl_leave(uid)
+	 values ('zerock');
 
 
 --
@@ -82,8 +113,6 @@ create table tbl_log
 	primary key(no)
 );
 
-insert into tbl_log(result)
-	values ('0');
 
 
 
