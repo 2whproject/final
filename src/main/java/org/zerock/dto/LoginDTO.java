@@ -4,8 +4,15 @@ public class LoginDTO {
 	
 	private String uid;
 	private String upw;
+	private String uname;
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+
 	private boolean useCookie;
-	
 	public String getUid() {
 		return uid;
 	}

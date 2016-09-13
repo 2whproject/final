@@ -9,6 +9,21 @@ public class BoardVO {
 	private String title;
 	private String content;
 	private String writer;
+	private String secret;
+	private String pass;
+	
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public String getSecret() {
+		return secret;
+	}
+	public void setSecret(String secret) {
+		this.secret = secret;
+	}
 	private Date regdate;
 	private int viewcnt;
 	private int replycnt;
@@ -68,7 +83,7 @@ public class BoardVO {
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", title=" + title + ", content="
 				+ content + ", writer=" + writer + ", regdate=" + regdate
-				+ ", viewcnt=" + viewcnt + ", replycnt=" + replycnt
+				+ ", viewcnt=" + viewcnt + ", replycnt=" + replycnt + ", pass=" + pass
 				+ ", files=" + Arrays.toString(files) + "]";
 	}
 

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.EmpMapper">
+
+	<insert id="create">
+		insert into emp(empno, ename, job, mgr, hiredate, sal, comm, deptno) 
+		values	(#{empno}, #{ename}, #{job}, #{mgr}, str_to_date(#{hiredate},'%Y-%m-%d'), #{sal}, #{comm}, #{deptno});
+	</insert>
+
+	<select id="read" resultType="org.zerock.domain.EmpVO">
+		SELECT bno, empno, ename, job, mgr, hiredate, sal, comm, deptno
+		FROM emp
+		WHERE bno = #{bno}
+	</select>
+
+	<update id="update">
+		UPDATE emp
+		SET empno = #{empno},
+		ename = #{ename},
+		job = #{job},
+		mgr = #{mgr},
+		hiredate = #{hiredate},
+		sal = #{sal},
+		comm = #{comm},
+		deptno = #{deptno}
+		WHERE bno = #{bno}
+	</update>
+
+	<delete id="delete">
+		delete from emp where bno = #{bno}
+	</delete>
+
+	<select id="listAll" resultType="org.zerock.domain.EmpVO">
+		SELECT bno, empno, ename, job, mgr, hiredate, sal, comm, deptno
+		FROM emp
+		WHERE bno > 0
+		ORDER BY bno DESC, empno DESC
+	</select>
+
+	<select id="listPage" resultType="EmpVO">
+ <![CDATA[
+ select 
+  bno, empno, ename, job, mgr, hiredate, sal, comm, deptno
+ from 
+   emp 
+ where bno > 0 
+ order by bno desc, empno desc
+ limit #{page}, 10
+ ]]>
+	</select>
+
+	<select id="listCriteria" resultType="EmpVO">
+ <![CDATA[
+ select 
+   bno, empno, ename, job, mgr, hiredate, sal, comm, deptno
+ from 
+   emp 
+ where bno > 0 
+ order by bno desc, empno desc
+ limit #{pageStart}, #{perPageNum}
+ ]]>
+	</select>
+
+
+
+	<select id="countPaging" resultType="int">
+ <![CDATA[
+ select 
+   count(bno) 
+ from 
+   emp 
+ where 
+   bno > 0 
+ ]]>
+	</select>
+
+
+
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and ename like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and empno like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and job like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and mgr like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				and sal like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tcw'.toString()">
+				and deptno like CONCAT('%', #{keyword}, '%')
+			</if>
+		</if>
+	</sql>
+
+	<select id="listSearch" resultType="EmpVO">
+  select * 
+  from emp 
+  where bno > 0 
+		<include refid="search"></include>
+  order by bno desc
+  limit #{pageStart}, #{perPageNum}
+	</select>
+
+	<select id="listSearchCount" resultType="int">
+  select count(bno) 
+  from emp 
+  where bno > 0 
+		<include refid="search"></include>
+
+	</select>
+
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.LogMapper">
+	<insert id="result">
+		insert into tbl_log (result, uid, locale)
+		values(#{result}, #{uid}, #{locale})
+	</insert>
+	<select id="read" resultType="org.zerock.domain.LogVO">
+		select no, time, locale ,result from tbl_log
+		where no > 0 and uid = #{uid}
+		order by no desc
+	</select>
+</mapper>

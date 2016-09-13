@@ -133,4 +133,9 @@ public class BoardDAOImpl implements BoardDAO {
     
   }
 
+@Override
+public BoardVO pass(BoardVO pass) throws Exception {
+	return session.selectOne(namespace + ".pass", pass);
+}
+
 }

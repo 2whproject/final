@@ -125,6 +125,11 @@ public class BoardServiceImpl implements BoardService {
   public List<String> getAttach(Integer bno) throws Exception {
     
     return dao.getAttach(bno);
-  }   
+  }
 
+@Transactional
+@Override
+public BoardVO pass(BoardVO pass) throws Exception {
+	return dao.pass(pass);
+}   
 }

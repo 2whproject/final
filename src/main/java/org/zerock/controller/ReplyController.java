@@ -6,8 +6,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,105 +21,100 @@ import org.zerock.service.ReplyService;
 @RestController
 @RequestMapping("/replies")
 public class ReplyController {
-	
-	static Logger logger = LoggerFactory.getLogger(ReplyController.class);
-	
-	
-	@Inject
-	private ReplyService service;
-	
-	@RequestMapping(value = "", method = RequestMethod.POST)
-	public ResponseEntity<String> register(@RequestBody ReplyVO vo) {  //UnMarshall
-		logger.info("############");
-		logger.info(vo.toString());
-		logger.info("############");
-		
-		ResponseEntity<String> entity = null;
-		try {
-			service.addReply(vo);
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-		return entity;
-	}
 
-	@RequestMapping(value = "/all/{bno}", method = RequestMethod.GET)
-	public ResponseEntity<List<ReplyVO>> list(@PathVariable("bno") Integer bno) {
+  @Inject
+  private ReplyService service;
 
-		ResponseEntity<List<ReplyVO>> entity = null;
-		try {
-			entity = new ResponseEntity<>(service.listReply(bno), HttpStatus.OK);
+  @RequestMapping(value = "", method = RequestMethod.POST)
+  public ResponseEntity<String> register(@RequestBody ReplyVO vo) {
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
+    ResponseEntity<String> entity = null;
+    try {
+      service.addReply(vo);
+      entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+    } catch (Exception e) {
+      e.printStackTrace();
+      entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    return entity;
+  }
 
-		return entity;
-	}
+  @RequestMapping(value = "/all/{bno}", method = RequestMethod.GET)
+  public ResponseEntity<List<ReplyVO>> list(@PathVariable("bno") Integer bno) {
 
-	@RequestMapping(value = "/{rno}", method = { RequestMethod.PUT, RequestMethod.PATCH })
-	public ResponseEntity<String> update(@PathVariable("rno") Integer rno, @RequestBody ReplyVO vo) {
+    ResponseEntity<List<ReplyVO>> entity = null;
+    try {
+      entity = new ResponseEntity<>(service.listReply(bno), HttpStatus.OK);
 
-		ResponseEntity<String> entity = null;
-		try {
-			vo.setRno(rno);
-			service.modifyReply(vo);
+    } catch (Exception e) {
+      e.printStackTrace();
+      entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-		return entity;
-	}
+    return entity;
+  }
 
-	@RequestMapping(value = "/{rno}", method = RequestMethod.DELETE)
-	public ResponseEntity<String> remove(@PathVariable("rno") Integer rno) {
+  @RequestMapping(value = "/{rno}", method = { RequestMethod.PUT, RequestMethod.PATCH })
+  public ResponseEntity<String> update(@PathVariable("rno") Integer rno, @RequestBody ReplyVO vo) {
 
-		ResponseEntity<String> entity = null;
-		try {
-			service.removeReply(rno);
-			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-		return entity;
-	}
+    ResponseEntity<String> entity = null;
+    try {
+      vo.setRno(rno);
+      service.modifyReply(vo);
 
-	@RequestMapping(value = "/{bno}/{page}", method = RequestMethod.GET)
-	public ResponseEntity<Map<String, Object>> listPage(@PathVariable("bno") Integer bno,
-			@PathVariable("page") Integer page) {
+      entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+    } catch (Exception e) {
+      e.printStackTrace();
+      entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    return entity;
+  }
 
-		ResponseEntity<Map<String, Object>> entity = null;
+  @RequestMapping(value = "/{rno}", method = RequestMethod.DELETE)
+  public ResponseEntity<String> remove(@PathVariable("rno") Integer rno) {
 
-		try {
-			Criteria cri = new Criteria();
-			cri.setPage(page);
+    ResponseEntity<String> entity = null;
+    try {
+      service.removeReply(rno);
+      entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+    } catch (Exception e) {
+      e.printStackTrace();
+      entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    return entity;
+  }
 
-			PageMaker pageMaker = new PageMaker();
-			pageMaker.setCri(cri);
+  @RequestMapping(value = "/{bno}/{page}", method = RequestMethod.GET)
+  public ResponseEntity<Map<String, Object>> listPage(
+      @PathVariable("bno") Integer bno,
+      @PathVariable("page") Integer page) {
 
-			Map<String, Object> map = new HashMap<String, Object>();
-			List<ReplyVO> list = service.listReplyPage(bno, cri);
+    ResponseEntity<Map<String, Object>> entity = null;
+    
+    try {
+      Criteria cri = new Criteria();
+      cri.setPage(page);
 
-			map.put("list", list);
+      PageMaker pageMaker = new PageMaker();
+      pageMaker.setCri(cri);
 
-			int replyCount = service.count(bno);
-			pageMaker.setTotalCount(replyCount);
+      Map<String, Object> map = new HashMap<String, Object>();
+      List<ReplyVO> list = service.listReplyPage(bno, cri);
 
-			map.put("pageMaker", pageMaker);
+      map.put("list", list);
 
-			entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+      int replyCount = service.count(bno);
+      pageMaker.setTotalCount(replyCount);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			entity = new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
-		}
-		return entity;
-	}
+      map.put("pageMaker", pageMaker);
+
+      entity = new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      entity = new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
+    }
+    return entity;
+  }
 
 }

@@ -5,7 +5,7 @@
 <html>
 <!-- 헤드안에들어가면 sitemesh 영향이 생기므로 헤드 밖에다 위치시켜야함 -->
 <head>
-<title>readPage.jsp</title>
+<title></title>
    <script type="text/javascript" src="/resources/js/upload.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />   
@@ -42,6 +42,10 @@
    </style>
 </head>
 <body>
+	<script>
+		var pass = "${pass}";
+	</script>
+	<c:if test="${pass == boardVO.pass||boardVO.pass == ''||login.uname == 'ADMINISTRATOR'}">
     <div class='popup back' style="display:none;"></div>
     <div id="popup_front" class='popup front' style="display:none;">
      <img id="popup_img">
@@ -94,7 +98,11 @@
 
                <ul class="mailbox-attachments clearfix uploadedList">
                </ul>
-               <c:if test="${login.uid == boardVO.writer}">
+               <c:if test="${login.uid == boardVO.secret}">
+                  <button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
+                  <button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
+               </c:if>
+               <c:if test='${login.uid == "zerock"}'>
                   <button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
                   <button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
                </c:if>
@@ -107,12 +115,11 @@
       </div>
       <!--/.col (left) -->
       <div class="col-md-6">
-         <img class="img-responsive" style="width:100%" alt="xxx" src="http://www.loremflickr.com/200/200/dog"/>
       </div>
    </div>
    <!-- /.row -->
 
-	<!-- 댓글추가 부분 -->
+   <!-- 댓글추가 부분 -->
    <div class="row">
       <div class="col-md-12">
 
@@ -122,12 +129,12 @@
             </div>
 
 
-			<!-- 로그인 상태 -->
+         <!-- 로그인 상태 -->
             <c:if test="${not empty login}">
                <div class="box-body">
                   <label for="exampleInputEmail1">Writer</label> 
                   <input class="form-control" type="text" placeholder="USER ID"
-                         id="newReplyWriter" value="${login.uid }" readonly="readonly">
+                         id="newReplyWriter" value="${login.uname }" readonly="readonly">
                   <label for="exampleInputEmail1">Reply Text</label> 
                   <input class="form-control" type="text" placeholder="REPLY TEXT" id="newReplyText">
                </div>
@@ -138,12 +145,12 @@
                   </button>
                </div>
             </c:if>
-			
-			<!--  로그아웃 상태 -->
+         
+         <!--  로그아웃 상태 -->
             <c:if test="${empty login}">
                <div class="box-body">
                   <div>
-                     <a href="javascript:goLogin();">Login Please</a>
+                     <a href="/user/login">Login Please</a>
                   </div>
                </div>
             </c:if>
@@ -194,14 +201,13 @@
          </div>
       </div>
    </div>
-
-
+</c:if>
 
    <script id="templateAttach" type="text/x-handlebars-template">
       <li data-src='{{fullName}}'>
            <span class="mailbox-attachment-icon has-img">
-				<img src="{{imgsrc}}" alt="Attachment">
-		   </span>
+            <img src="{{imgsrc}}" alt="Attachment">
+         </span>
            <div class="mailbox-attachment-info">
             <a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
            </div>   
@@ -225,18 +231,19 @@
                         {{#eqReplyer replyer }}
                                  <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
                         {{/eqReplyer}} 
+                        {{#eqReplyer "ADMINISTRATOR" }}
+                                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
+                        {{/eqReplyer}} 
                       </div>
                         </div>         
                        </li>
                  {{/each}}
    </script>  
-
 <script>
-
    
    Handlebars.registerHelper("eqReplyer", function(replyer, block) {
       var accum = '';
-      if (replyer == '${login.uid}') {
+      if (replyer == '${login.uname}') {
          accum += block.fn();
       }
       return accum;
@@ -300,7 +307,6 @@
 
    
    $("#repliesDiv").on("click", function() {
-      alert("repliesDiv clicked........");
       
       if ($(".timeline li").size() > 1) {
          return;
@@ -310,7 +316,6 @@
    });
 
    $(".pagination").on("click", "li a", function(event) {
-      alert("pagination clicked........" + replyPage);
       
       event.preventDefault();
 
@@ -366,7 +371,6 @@
    // 댓글 수정 클릭시 뜨는 메세지창
    $("#replyModBtn").on("click", function() {
       
-      alert("replyModBtn clicked...")
       
       var rno = $(".modal-title").html();
       var replytext = $("#replytext").val();
@@ -438,7 +442,7 @@ $(document).ready(function(){
    
    $("#removeBtn").on("click", function(){
       
-      var replyCnt =  $("#replycntSmall").html();
+      var replyCnt =  ${boardVO.replycnt};
       
       if(replyCnt > 0 ){
          alert("댓글이 달린 게시물을 삭제할 수 없습니다.");
@@ -506,11 +510,28 @@ $(document).ready(function(){
       $(".popup").hide('slow');
       
    });   
-   
-      
-   
 });
 </script>
-
+<c:if test="${pass != boardVO.pass}">
+   <div class="login-box">
+      <div class="login-logo">
+      </div><!-- /.login-logo -->
+      <div class="login-box-body">
+        <p class="login-box-msg">해당 글은 비밀글 입니다</p>
+<form action="/sboard/readPage" method="post">
+  <div class="form-group has-feedback">
+  	<input type='hidden' id ="bno" name='bno' value="${boardVO.bno}">
+    <input type="password" id="pass" name ="pass" class="form-control" placeholder="비밀번호" required="required"/>
+    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <button type="submit" class="btn btn-primary btn-block btn-flat">확인</button>
+    </div><!-- /.col -->
+  </div>
+</form>
+      </div><!-- /.login-box-body -->
+    </div><!-- /.login-box -->
+    </c:if>
 </body>
 </html>

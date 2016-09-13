@@ -3,10 +3,10 @@
 --
 DROP TABLE tbl_member;
 DROP TABLE tbl_user;
-DROP TABLE tbl_message;
 DROP TABLE tbl_attach;
 DROP TABLE tbl_reply;
 DROP TABLE tbl_board;
+drop table tbl_log;
 
 --
 -- tbl_member
@@ -31,11 +31,13 @@ CREATE TABLE tbl_user
    upw            VARCHAR(50) NOT NULL,
    uname          VARCHAR(100) NOT NULL,
    upoint         int NOT NULL DEFAULT 0,
+   email		  varchar(50),
+   regdate      TIMESTAMP DEFAULT now(),
    sessionkey     varchar(50) NOT NULL DEFAULT 'none',
    sessionlimit   timestamp NOT NULL DEFAULT now(),
    PRIMARY KEY(uid)
 );
-select * from tbl_user;
+
 
 INSERT INTO tbl_user(UID, upw, uname)
      VALUES ('user00', 'user00', 'IRON MAN');
@@ -48,25 +50,9 @@ INSERT INTO tbl_user(UID, upw, uname)
 
 INSERT INTO tbl_user(UID, upw, uname)
      VALUES ('user03', 'user03', 'Thor');
+insert into tbl_user(UID, upw, uname, email)
+	 values ('zerock', '1234', 'ADMINISTRATOR','zerock@project.com');
 
---
--- tbl_message
---
-create table tbl_message (
-mid int not null auto_increment,
-targetid varchar(50) not null,
-sender varchar(50) not null,
-message text not null,
-opendate timestamp,
-senddate timestamp not null default now(),
-primary key(mid)
-);
-
-alter table tbl_message add constraint fk_usertarget
-foreign key (targetid) references tbl_user (uid);
-
-alter table tbl_message add constraint fk_usersender
-foreign key (sender) references tbl_user (uid);
 
 
 --
@@ -74,15 +60,32 @@ foreign key (sender) references tbl_user (uid);
 --
 CREATE TABLE tbl_board
 (
-   BNO        int NOT NULL AUTO_INCREMENT,
-   TITLE      varchar(200) NOT NULL,
-   CONTENT    text NULL,
-   WRITER     varchar(50) NOT NULL,
-   REGDATE    timestamp NOT NULL DEFAULT now(),
-   VIEWCNT    int DEFAULT 0,
-   REPLYCNT   int DEFAULT 0,
+   bno        int NOT NULL AUTO_INCREMENT,
+   title      varchar(200) NOT NULL,
+   content    text NULL,
+   writer     varchar(50) NOT NULL,
+   regdate    timestamp NOT NULL DEFAULT now(),
+   viewcnt    int DEFAULT 0,
+   replycnt   int DEFAULT 0,
+   secret	  varchar(50) NOT NULL,
+   pass		  varchar(50),
    PRIMARY KEY(bno)
 );
+
+create table tbl_log
+(
+	no		int not null auto_increment,
+	time	datetime default now(),
+	uid		varchar(50),
+	result	boolean,
+	locale	varchar(16),
+	primary key(no)
+);
+
+insert into tbl_log(result)
+	values ('0');
+
+
 
 --
 -- tbl_reply
@@ -100,7 +103,6 @@ CREATE TABLE tbl_reply
 
 ALTER TABLE tbl_reply
   ADD CONSTRAINT fk_board_reply FOREIGN KEY(bno) REFERENCES tbl_board(bno);
-
 --
 -- tbl_attach
 --
@@ -114,5 +116,3 @@ CREATE TABLE tbl_attach
 
 ALTER TABLE tbl_attach
   ADD CONSTRAINT fk_borad_attach FOREIGN KEY(bno) REFERENCES tbl_board(bno);
-  
-  

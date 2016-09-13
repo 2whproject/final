@@ -37,7 +37,7 @@ public class SampleController {
     List<SampleVO> list = new ArrayList<>();
     for (int i = 0; i < 10; i++) {
       SampleVO vo = new SampleVO();
-      vo.setFirstName("길당");
+      vo.setFirstName("길동");
       vo.setLastName("홍");
       vo.setMno(i);
       list.add(vo);

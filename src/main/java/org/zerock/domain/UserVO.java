@@ -5,9 +5,18 @@ public class UserVO {
   private String uid;
   private String upw;
   private String uname;
+  private String email;
   private int upoint;
 
-  public String getUid() {
+  public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
+}
+
+public String getUid() {
     return uid;
   }
 
@@ -41,6 +50,6 @@ public class UserVO {
 
   @Override
   public String toString() {
-    return "UserVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", upoint=" + upoint + "]";
+    return "UserVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", email=" + email + ", upoint=" + upoint + "]";
   }
 }

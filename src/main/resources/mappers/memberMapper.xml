@@ -4,11 +4,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.zerock.mapper.MemberMapper">
-
 	<insert id="regist">
-		insert into tbl_user (uid, upw, uname)
-		values(#{uid},#{upw}, #{uname})
+		insert into tbl_user (uid, email, upw, uname) values(#{uid}, #{email}, #{upw}, #{uname})
 	</insert>
-  
- 
+	<insert id="registleave">
+		insert into tbl_leave(uid) values(#{uid})
+	</insert>
+	<select id="find" resultType="MemberVO">
+  select uid, upw from tbl_user where email = #{email}
+    </select>
+    <delete id="delete">
+		delete from tbl_user where upw = #{upw} and uid = #{uid}
+	</delete>
+	<select id="select" resultType="MemberVO">
+  select uid, upw from tbl_user where uid = #{uid}
+    </select>
+    <select id="leave" resultType="MemberVO">
+  select uid from tbl_leave where uid = #{uid}
+    </select>
 </mapper>

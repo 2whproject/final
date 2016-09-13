@@ -5,29 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>pagination.jsp</title>
-   
-   <!-- Bootstrap 3.3.4 -->
-   <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-   
-   <!-- jQuery 2.1.4 -->
-   <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-   
-   <!-- Font Awesome Icons -->
-   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-   
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-
-<div class="text-center">
-		<ul class="pagination">
-			<li><a href="/sboard/list?page=1">&lt;&lt;</a></li>
-			<li><a href="/sboard/list?page=1">1</a></li>
-			<li><a href="/sboard/list?page=2">2</a></li>
-			<li><a href="/sboard/list?page=3">3</a></li>
-			<li><a href="/sboard/list?page=4">4</a></li>
-			<li><a href="/sboard/list?page=5">5</a></li>
-			<li><a href="/sboard/list?page=1">&gt;&gt;</a></li>
-		</ul>
-	</div>
+<div class="container">
+  <h2>Pagination - Sizing</h2>
+  <p>Add class .pagination-lg for larger blocks or .pagination-sm for smaller blocks:</p>
+  <ul class="pagination pagination-sm">
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+  </ul>
+</div>
 </body>
 </html>

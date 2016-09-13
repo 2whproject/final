@@ -32,7 +32,7 @@ public class ReplyServiceImpl implements ReplyService {
   @Override
   public void removeReply(Integer rno) throws Exception {
 
-    int bno = replyDAO.getBno(rno); 
+    int bno = replyDAO.getBno(rno);
     replyDAO.delete(rno);
     boardDAO.updateReplyCnt(bno, -1);
   }   

@@ -4,6 +4,15 @@ public class Criteria {
 
 	private int page;	
 	private int perPageNum;
+	private String uid;
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+
 	
 	public Criteria(){
 		this.page = 1;

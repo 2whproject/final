@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.MemberVO;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.SearchCriteria;
 import org.zerock.service.BoardService;
@@ -51,6 +52,19 @@ public class SearchBoardController {
       throws Exception {
 
     model.addAttribute(service.read(bno));
+  }
+  @RequestMapping(value = "/readPage", method = RequestMethod.POST)
+  public String read(BoardVO pass, RedirectAttributes rttr, Model model) throws Exception {
+	BoardVO vo = service.pass(pass);
+	if (vo == null) {
+		rttr.addFlashAttribute("msg", "FAIL");
+		return "redirect:/sboard/list";
+	}
+	logger.info("CORRECT");
+	rttr.addFlashAttribute("msg", "CORRECT");
+	rttr.addFlashAttribute("pass", pass.getPass());
+	rttr.addAttribute("bno", pass.getBno());
+	return "redirect:/sboard/readPage";
   }
 
   @RequestMapping(value = "/removePage", method = RequestMethod.POST)
