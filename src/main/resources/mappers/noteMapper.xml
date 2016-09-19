@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.NoteMapper">
+
+	<select id="receiver" resultType="org.zerock.domain.NoteVO">
+		select no, receiver from tbl_note where receiver = #{receiver} and no = #{no}
+	</select>
+	<select id="read" resultType="org.zerock.domain.NoteVO">
+		select
+		no, title, content, sender, date, viewing, receiver
+		from
+		tbl_note
+		where no = #{no}
+	</select>
+
+	<select id="listAll" resultType="org.zerock.domain.NoteVO">
+ <![CDATA[
+ select 
+   no, title, content, sender, date, viewing, receiver
+ from 
+   tbl_note 
+ where no > 0 
+ order by no desc, date desc
+ ]]>
+	</select>
+
+	<select id="listPage" resultType="NoteVO">
+ <![CDATA[
+ select 
+   no, title, content, sender, date, viewing , receiver
+ from 
+   tbl_note 
+ where no > 0 
+ order by no desc, date desc
+ limit #{page}, 10
+ ]]>
+	</select>
+
+	<select id="listCriteria" resultType="NoteVO">
+ <![CDATA[
+ select 
+   no, title, content, sender, date, viewing , receiver
+ from 
+   tbl_note 
+ where no > 0 
+ order by no desc, date desc
+ limit #{pageStart}, #{perPageNum}
+ ]]>
+	</select>
+	<delete id="delete">
+		delete from tbl_note where no = #{no}
+	</delete>
+	<select id="countPaging" resultType="int">
+ <![CDATA[
+ select 
+   count(no) 
+ from 
+   tbl_note 
+ where 
+   no > 0 
+ ]]>
+	</select>
+
+
+
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and title like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and content like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and sender like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and ( title like CONCAT('%', #{keyword}, '%') OR content like
+				CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				and ( content like CONCAT('%', #{keyword}, '%') OR sender like
+				CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'tcw'.toString()">
+				and ( title like CONCAT('%', #{keyword}, '%')
+				OR
+				content like CONCAT('%', #{keyword}, '%')
+				OR
+				sender like CONCAT('%', #{keyword}, '%'))
+			</if>
+		</if>
+	</sql>
+
+	<select id="listSearch" resultType="NoteVO">
+<![CDATA[  
+  select * 
+  from tbl_note
+  where no > 0 
+]]>
+
+		<include refid="search"></include>
+  
+<![CDATA[    
+  order by no desc
+  limit #{pageStart}, #{perPageNum}
+]]>
+	</select>
+
+	<select id="listSearchCount" resultType="int">
+<![CDATA[  
+  select count(no) 
+  from tbl_note
+  where no > 0 
+]]>
+		<include refid="search"></include>
+
+	</select>
+
+<update id="viewing">
+  update tbl_note set viewing = true where no = #{no}
+</update>
+
+</mapper>

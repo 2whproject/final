@@ -45,11 +45,13 @@
 <sitemesh:write property="head" />
 </head>
 <script type="text/javascript">
-	function pro() {
-		alert("아직 작업중입니다.");
+	function message() {
+	var message = "2";
+	document.getElementById("message").innerHTML= "새로운 쪽지가 " + message + " 개 있습니다.";
+	document.getElementById("minimessage").innerHTML= message;
 	}
 </script>
-<body class="skin-blue sidebar-mini">
+<body onload="message()" class="skin-blue sidebar-mini">
 	<div class="wrapper">
 
 		<header class="main-header">
@@ -70,6 +72,18 @@
 					<ul class="nav navbar-nav">
 							<ul class="dropdown-menu">
 							</ul></li>
+				<c:if test="${login != null}">
+							<li class="dropdown messages-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-envelope-o"></i>
+                  <span id ="minimessage" class="label label-success">0</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li id ="message" class="header"></li>
+                  <li class="footer"><a href="/notice/list">모든 쪽지 보기</a></li>
+                </ul>
+              </li>
+              </c:if>
 						<c:if test="${login == null}">	
 						<li>
 							<a href="/user/login" class="btn btn-primary btn-block btn-flat">로그인</a>

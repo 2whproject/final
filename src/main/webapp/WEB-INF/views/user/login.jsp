@@ -84,7 +84,6 @@
 		var log = '${log}';
 		var name = '${name}';
 		var id = '${id}';
-		var pw = '${pass}';
 		if (result == 'SUCCESS') {
 			alert("계정 등록 성공." + "\n" + "환영합니다, " + name + "!");
 		}

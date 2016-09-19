@@ -2,6 +2,7 @@
 -- DROP table
 --
 drop table emp;
+drop table tbl_message;
 DROP TABLE tbl_member;
 DROP TABLE tbl_user;
 DROP TABLE tbl_attach;
@@ -9,6 +10,36 @@ DROP TABLE tbl_reply;
 DROP TABLE tbl_board;
 drop table tbl_log;
 drop table tbl_leave;
+drop table tbl_note;
+
+update tbl_note set viewing = true where no = 1
+
+
+
+create table tbl_note (
+	no			int not null auto_increment,
+	title		varchar(24) not null,
+	content		varchar(255) not null,
+	sender		varchar(30) not null,
+	receiver	varchar(30) not null,
+	date		TIMESTAMP DEFAULT now(),
+	viewing		boolean,
+	primary key(no)
+)
+
+create table tbl_message
+(
+	no int not null auto_increment,
+	sender varchar(50) not null,
+	title varchar(50) not null,
+	content	varchar(255) not null,
+	receiver varchar(50) not null,
+	sendtime timestamp default now(),
+	reading boolean not null,
+	primary key(no)
+);
+
+select * from tbl_message where receiver = 'ADMINISTRATOR';
 
 create table emp
 (
