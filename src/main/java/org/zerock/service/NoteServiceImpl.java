@@ -19,7 +19,7 @@ public class NoteServiceImpl implements NoteService {
   @Transactional(isolation=Isolation.READ_COMMITTED)
   @Override
   public NoteVO read(Integer no) throws Exception {
-    dao.updateViewCnt(true);
+    dao.updateViewCnt(no);
     return dao.read(no);
   }
 @Transactional
@@ -51,5 +51,14 @@ public List<NoteVO> listSearchCriteria(NoteSearchCriteria cri) throws Exception 
 @Override
 public int listSearchCount(NoteSearchCriteria cri) throws Exception {
 	return dao.listSearchCount(cri);
+}
+@Transactional
+@Override
+public void send(NoteVO send) throws Exception {
+	dao.send(send);
+}
+@Override
+public NoteVO find(String find) throws Exception {
+	return dao.find(find);
 }
 }

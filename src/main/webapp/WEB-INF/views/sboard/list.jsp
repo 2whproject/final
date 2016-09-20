@@ -5,9 +5,14 @@
 <%@ page session="false"%>
 <html>
 <head>
+<style type="text/css">
+	.drop:HOVER{
+		color: lime;
+	}
+</style>
 <script type="text/javascript">
 	function ang() {
-		alert("아직 작업중입니다.");
+		location.href = "/notice/send";
 	}
 </script>
 <title>list.jsp</title>
@@ -66,7 +71,7 @@
 					<table class="table table-bordered">
 						<tr>
 							<th style="width: 10px">NO</th>
-							<th>제목</th>
+							<th style="width: 600px">제목</th>
 							<th style="width: 100px">작성자</th>
 							<th style="width: 160px">글 등록일</th>
 							<th style="width: 40px">VIEWCNT</th>
@@ -79,7 +84,7 @@
 									href='/sboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVO.bno}'>
 										${boardVO.title} <strong>[ ${boardVO.replycnt} ]</strong>
 								</a></td>
-								<td style="cursor: pointer;" onclick="ang()">${boardVO.writer}</td>
+								<td class="drop" style="cursor: pointer;" onclick="ang()">${boardVO.writer}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${boardVO.regdate}" /></td>
 								<td><span class="badge bg-red">${boardVO.viewcnt }</span></td>

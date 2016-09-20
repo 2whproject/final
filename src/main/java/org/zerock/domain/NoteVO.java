@@ -6,7 +6,14 @@ public class NoteVO {
 	private String title;
 	private String content;
 	private String sender;
+	private String senderid;
 	private Boolean viewing;
+	public String getSenderid() {
+		return senderid;
+	}
+	public void setSenderid(String senderid) {
+		this.senderid = senderid;
+	}
 	public Boolean getViewing() {
 		return viewing;
 	}
@@ -54,7 +61,7 @@ public class NoteVO {
 	@Override
 	public String toString() {
 		return "NoteVO [no=" + no + ", title=" + title + ", content="
-				+ content + ", sender=" + sender + ", date=" + date
+				+ content + ", sender=" + sender + ", senderid=" + senderid + ", date=" + date
 				+ ", receiver=" + receiver + "]";
 	}
 }

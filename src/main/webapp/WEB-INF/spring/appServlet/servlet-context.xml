@@ -54,6 +54,9 @@
  	  	<mapping path="/user/logininfo"/>
  	    <mapping path="/member/delete"/>
  	    <mapping path="/semp/list"/>
+ 	    <mapping path="/notice/list"/>
+ 	    <mapping path="/notice/send"/>
+ 	    <mapping path="/notice/readNote"/>
  	    <mapping path="/sboard/readPage"/>
 	    <mapping path="/sboard/register"/>
 	    <mapping path="/sboard/modifyPage"/>

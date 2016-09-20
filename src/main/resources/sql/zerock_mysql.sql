@@ -12,7 +12,6 @@ drop table tbl_log;
 drop table tbl_leave;
 drop table tbl_note;
 
-update tbl_note set viewing = true where no = 1
 
 
 
@@ -25,7 +24,7 @@ create table tbl_note (
 	date		TIMESTAMP DEFAULT now(),
 	viewing		boolean,
 	primary key(no)
-)
+);
 
 create table tbl_message
 (

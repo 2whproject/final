@@ -9,7 +9,7 @@ import org.zerock.domain.NoteSearchCriteria;
 import org.zerock.domain.NoteVO;
 
 @Repository
-public class NoteDaoImpl implements NoteDAO {
+public class NoteDAOImpl implements NoteDAO {
 
   @Inject
   private SqlSession session;
@@ -67,7 +67,17 @@ public int listSearchCount(NoteSearchCriteria cri) throws Exception {
 }
 
 @Override
-public void updateViewCnt(Boolean viewing) throws Exception {
-	session.update(namespace+ ".viewing", viewing);
+public void updateViewCnt(int no) throws Exception {
+	session.update(namespace+ ".viewing", no);
+}
+
+@Override
+public void send(NoteVO send) throws Exception {
+	session.insert(namespace + ".send", send);
+}
+
+@Override
+public NoteVO find(String find) throws Exception {
+	return session.selectOne(namespace + ".find", find);
 }
 }

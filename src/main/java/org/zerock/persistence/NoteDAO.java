@@ -8,6 +8,8 @@ import org.zerock.domain.NoteVO;
 public interface NoteDAO {
 
   public NoteVO read(Integer no) throws Exception;
+  public void send(NoteVO send) throws Exception;
+  public NoteVO find(String find) throws Exception;
   public NoteVO receiver(NoteVO receiver) throws Exception;
   public void delete(Integer no) throws Exception;
   public List<NoteVO> listAll() throws Exception;
@@ -19,7 +21,7 @@ public interface NoteDAO {
   public int countPaging(NoteCriteria cri) throws Exception;
   
   //use for dynamic sql
-  public void updateViewCnt(Boolean viewing)throws Exception;
+  public void updateViewCnt(int no)throws Exception;
   public List<NoteVO> listSearch(NoteSearchCriteria cri)throws Exception;
   public int listSearchCount(NoteSearchCriteria cri)throws Exception;
   

@@ -5,6 +5,8 @@ import org.zerock.domain.NoteSearchCriteria;
 import org.zerock.domain.NoteVO;
 public interface NoteService {
   public NoteVO read(Integer no) throws Exception;
+  public NoteVO find(String find) throws Exception;
+  public void send(NoteVO send) throws Exception;
   public void remove(Integer no) throws Exception;
   public NoteVO receiver(NoteVO receiver) throws Exception;
   public List<NoteVO> listAll() throws Exception;

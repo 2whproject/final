@@ -3,6 +3,13 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.NoteMapper">
+	<insert id="send">
+		insert into tbl_note (title, content, sender, receiver, viewing)
+		values (#{title}, #{content}, #{sender}, #{receiver}, #{viewing})
+	</insert>
+	<select id="find" resultType="org.zerock.domain.NoteVO">
+		select uname from tbl_user where uname = #{receiver}
+	</select>
 	<select id="receiver" resultType="org.zerock.domain.NoteVO">
 		select no, receiver from tbl_note where receiver = #{receiver} and no = #{no}
 	</select>

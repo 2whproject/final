@@ -4,11 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.domain.BoardVO;
 import org.zerock.domain.NotePageMaker;
 import org.zerock.domain.NoteSearchCriteria;
 import org.zerock.domain.NoteVO;
@@ -71,6 +73,26 @@ public class NoteController {
 
     rttr.addFlashAttribute("msg", "SUCCESS");
 
+    return "redirect:/notice/list";
+  }
+  @RequestMapping(value = "/send", method = RequestMethod.GET)
+  public void sendGET() throws Exception {
+	  
+  }
+
+  @RequestMapping(value = "/send", method = RequestMethod.POST)
+  public String sendPOST(@RequestParam("receiver") String find, NoteVO send, RedirectAttributes rttr, Model model) throws Exception {
+		try {
+			model.addAttribute(service.find(find));
+		} catch (Exception e) {
+			logger.info("FAIL");
+			rttr.addFlashAttribute("msg", "FAIL");
+			return "redirect:/notice/send";
+		}
+    logger.info("send post ...........");
+    logger.info(send.toString());
+    service.send(send);
+    rttr.addFlashAttribute("msg", "SUCCESS");
     return "redirect:/notice/list";
   }
 }
