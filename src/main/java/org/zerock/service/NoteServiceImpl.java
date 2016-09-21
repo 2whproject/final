@@ -4,7 +4,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
-import org.zerock.domain.BoardVO;
+import org.zerock.domain.QnaVO;
 import org.zerock.domain.NoteCriteria;
 import org.zerock.domain.NoteSearchCriteria;
 import org.zerock.domain.NoteVO;
@@ -29,8 +29,8 @@ public void remove(Integer no) throws Exception {
 }
 @Transactional
 @Override
-public NoteVO receiver(NoteVO receiver) throws Exception {
-	return dao.receiver(receiver);
+public NoteVO uname(NoteVO uname) throws Exception {
+	return dao.uname(uname);
 }
 @Override
 public List<NoteVO> listAll() throws Exception {

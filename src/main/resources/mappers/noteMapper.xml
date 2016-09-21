@@ -4,18 +4,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.NoteMapper">
 	<insert id="send">
-		insert into tbl_note (title, content, sender, receiver, viewing)
-		values (#{title}, #{content}, #{sender}, #{receiver}, #{viewing})
+		insert into tbl_note (title, content, sender, uname, viewing)
+		values (#{title}, #{content}, #{sender}, #{uname}, #{viewing})
 	</insert>
 	<select id="find" resultType="org.zerock.domain.NoteVO">
-		select uname from tbl_user where uname = #{receiver}
+		select uname from tbl_user where uname = #{uname}
 	</select>
-	<select id="receiver" resultType="org.zerock.domain.NoteVO">
-		select no, receiver from tbl_note where receiver = #{receiver} and no = #{no}
+	<select id="uname" resultType="org.zerock.domain.NoteVO">
+		select no, uname from tbl_note where uname = #{uname} and no = #{no}
 	</select>
 	<select id="read" resultType="org.zerock.domain.NoteVO">
 		select
-		no, title, content, sender, date, viewing, receiver
+		no, title, content, sender, date, viewing, uname
 		from
 		tbl_note
 		where no = #{no}
@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listAll" resultType="org.zerock.domain.NoteVO">
  <![CDATA[
  select 
-   no, title, content, sender, date, viewing, receiver
+   no, title, content, sender, date, viewing, uname
  from 
    tbl_note 
  where no > 0 
@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listPage" resultType="NoteVO">
  <![CDATA[
  select 
-   no, title, content, sender, date, viewing , receiver
+   no, title, content, sender, date, viewing , uname
  from 
    tbl_note 
  where no > 0 
@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listCriteria" resultType="NoteVO">
  <![CDATA[
  select 
-   no, title, content, sender, date, viewing , receiver
+   no, title, content, sender, date, viewing , uname
  from 
    tbl_note 
  where no > 0 

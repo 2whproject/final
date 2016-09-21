@@ -19,13 +19,13 @@
 				<div class="box-body">
 					<table class="table table-bordered">
 						<tr>
-							<th style="width: 10px">보낸 사람</th>
-							<th style="width: 10px">제목</th>
-							<th style="width: 10px">보낸 시간</th>
-							<th style="width: 10px">읽음</th>
+							<th style="width: 120px">보낸 사람</th>
+							<th style>제목</th>
+							<th style="width: 150px">보낸 시간</th>
+							<th style="width: 45px">읽음</th>
 						</tr>
 						<c:forEach items="${list}" var="noteVO">
-						<c:if test="${login.uname == noteVO.receiver}">
+						<c:if test="${login.uname == noteVO.uname}">
 							<tr>
 								<td>${noteVO.sender}</td>
 								<td><a

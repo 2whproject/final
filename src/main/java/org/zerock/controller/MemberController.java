@@ -26,7 +26,7 @@ public class MemberController {
 		logger.info("Member get...");
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registPOST (MemberVO member, RedirectAttributes rttr) throws Exception {
+	public String registPOST (String uname, MemberVO member, RedirectAttributes rttr) throws Exception {
 		logger.info("Member register...");
 		logger.info(member.toString());
 		MemberVO vo = service.leave(member);
@@ -37,11 +37,33 @@ public class MemberController {
 			rttr.addFlashAttribute("name", member.getUname());
 			rttr.addFlashAttribute("msg", "FAILANOTHER");
 			return "redirect:/member/register";
-		} 
+		} else {
+			MemberVO vo1 = service.nickleave(member);
+			if (vo1 != null) {
+				logger.info("NICKFAILANOTHER");
+				rttr.addFlashAttribute("id", member.getUid());
+				rttr.addFlashAttribute("email", member.getEmail());
+				rttr.addFlashAttribute("name", member.getUname());
+				rttr.addFlashAttribute("msg", "NICKFAILANOTHER");
+				return "redirect:/member/register";
+			}
+		}
 			try {
-				service.regist(member);
-				service.registleave(member);
-			} catch (Exception e) {
+				String str = service.findnick(uname).toString();
+				logger.info(str);
+				if (str != null) {
+					logger.info("NICKFAIL");
+					rttr.addFlashAttribute("id", member.getUid());
+					rttr.addFlashAttribute("email", member.getEmail());
+					rttr.addFlashAttribute("name", member.getUname());
+					rttr.addFlashAttribute("msg", "NICKFAIL");
+					return "redirect:/member/register";
+				}
+			} catch (NullPointerException e) {
+				try {
+					service.regist(member);
+					service.registleave(member);
+				} catch (Exception e1) {
 				logger.info("FAIL");
 				rttr.addFlashAttribute("id", member.getUid());
 				rttr.addFlashAttribute("email", member.getEmail());
@@ -49,6 +71,7 @@ public class MemberController {
 				rttr.addFlashAttribute("msg", "FAIL");
 				return "redirect:/member/register";
 			}
+		}
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		rttr.addFlashAttribute("name", member.getUname());
 		logger.info(rttr.toString());

@@ -3,39 +3,39 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.zerock.mapper.ReplyMapper">
+<mapper namespace="org.zerock.mapper.QnrMapper">
 
-	<select id="list" resultType="ReplyVO">
+	<select id="list" resultType="QnrVO">
 		select
 		*
 		from
-		tbl_reply
+		tbl_qreply
 		where bno =
 		#{bno}
 		order by rno desc
 	</select>
 
 	<insert id="create">
-		insert into tbl_reply (bno, replytext, replyer)
+		insert into tbl_qreply (bno, replytext, replyer)
 		values (#{bno},#{replytext},#{replyer})
 	</insert>
 
 	<update id="update">
-		update tbl_reply set replytext = #{replytext},
+		update tbl_qreply set replytext = #{replytext},
 		updatedate = now()
 		where rno = #{rno}
 	</update>
 
 	<delete id="delete">
-		delete from tbl_reply where rno =#{rno}
+		delete from tbl_qreply where rno =#{rno}
 	</delete>
 
 
-	<select id="listPage" resultType="ReplyVO">
+	<select id="listPage" resultType="QnrVO">
 		select
 		*
 		from
-		tbl_reply
+		tbl_qreply
 		where
 		bno =
 		#{bno}
@@ -44,13 +44,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="count" resultType="int">
-		select count(bno) from tbl_reply
+		select count(bno) from tbl_qreply
 		where bno =#{bno}
 	</select>
 
 
 	<select id="getBno" resultType="int">
-		select bno from tbl_reply where rno = #{rno}
+		select bno from tbl_qreply where rno = #{rno}
 	</select>
 
 </mapper>

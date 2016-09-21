@@ -2,7 +2,7 @@ package org.zerock.persistence;
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-import org.zerock.domain.BoardVO;
+import org.zerock.domain.QnaVO;
 import org.zerock.domain.MemberVO;
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -33,7 +33,15 @@ public class MemberDAOImpl implements MemberDAO {
 	return session.selectOne(namespace + ".leave", mem);
 }
  @Override
- public void leaveregist(MemberVO member) throws Exception {
+ public void registleave(MemberVO member) throws Exception {
 	 session.insert(namespace+ ".registleave", member);
+}
+@Override
+public MemberVO findnick(String uname) throws Exception {
+	return session.selectOne(namespace + ".findnick", uname);
+}
+@Override
+public MemberVO nickleave(MemberVO mem) throws Exception {
+	return session.selectOne(namespace + ".nickleave", mem);
 }
 }

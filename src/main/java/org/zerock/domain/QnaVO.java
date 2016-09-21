@@ -3,7 +3,7 @@ package org.zerock.domain;
 import java.util.Arrays;
 import java.util.Date;
 
-public class BoardVO {
+public class QnaVO {
 	
 	private Integer bno;
 	private String title;

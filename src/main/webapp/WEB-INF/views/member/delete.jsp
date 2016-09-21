@@ -51,7 +51,7 @@
 			</script>
 					<script type="text/javascript">
 						function check() {
-							var con = confirm("정말 탈퇴하시겠습니까?" + "\n" + "탈퇴한 계정의 ID로는 재가입이 불가능합니다.");
+							var con = confirm("정말 탈퇴하시겠습니까?" + "\n" + "탈퇴한 계정의 ID와 닉네임으로는 재가입이 불가능합니다.");
 							if (con) {
 								return true;
 							} else {

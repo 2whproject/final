@@ -8,15 +8,6 @@
 		history.back();
 	}
 </script>
-<style>
-.fileDrop {
-	width: 80%;
-	height: 100px;
-	border: 1px dotted gray;
-	background-color: lightslategrey;
-	margin: auto;
-}
-</style>
 </head>
 <body>
 	<div class="row">
@@ -25,7 +16,7 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">REGISTER BOARD</h3>
+					<h3 class="box-title">글쓰기</h3>
 				</div>
 				<!-- /.box-header -->
 
@@ -33,54 +24,37 @@
 					<div class="box-body">
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label>
-							<input id="secpass" type="password" name="pass">
+							<input id="secpass" class="form-control" type="password" name="pass" style="position:relative; width: 100px;">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Title</label> <input type="text"
-								name='title' class="form-control" placeholder="Enter Title">
+							<label for="exampleInputEmail1">제목</label> <input type="text"
+								name='title' class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputP`assword1">Content</label>
-							<textarea class="form-control" name="content" rows="3"
-								placeholder="Enter ..."></textarea>
+							<textarea class="form-control" name="content" rows="15"></textarea>
 						</div>
 
 						<div class="form-group">
-							<label for="exampleInputEmail1">Writer</label> <input type="text"
+							<label for="exampleInputEmail1">작성자</label> <input type="text"
 								name="writer" class="form-control" value='${login.uname}'
 								readonly>
 						</div>
 						<div class="form-group">
 						<input type="hidden"
 								name="secret" class="form-control" value='${login.uid}'>
-						<div class="form-group">
-							<label for="exampleInputEmail1">File DROP Here</label>
-							<div class="fileDrop"></div>
-						</div>
 					</div>
-
-					<!-- /.box-body -->
-
 					<div class="box-footer">
 						<div>
 							<hr>
 						</div>
-
-						<ul class="mailbox-attachments clearfix uploadedList">
-						</ul>
-
 						<button type="submit" class="btn btn-primary">Submit</button>
 						<button onclick="back()" type="button" class="btn btn-danger">Cancel</button>
-
 					</div>
 				</form>
-
-
 			</div>
 			<!-- /.box -->
 		</div>
 		<!--/.col (left) -->
-
 	</div>
 	<!-- /.row -->
 

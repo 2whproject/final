@@ -78,6 +78,18 @@
 			$("#email").val(email);
 			$("#uname").val(name);
 		}
+		if (result == 'NICKFAIL') {
+			document.getElementById("namenull").innerHTML= name +" = " + "이미 존재하는 닉네임입니다.";
+			$("#uid").val(id);
+			$("#email").val(email);
+			$("#uname").val(name);
+		} 
+		if (result == 'NICKFAILANOTHER') {
+			document.getElementById("namenull").innerHTML= name +" = " + "이미 존재하거나 이전에 탈퇴한 닉네임입니다.";
+			$("#uid").val(id);
+			$("#email").val(email);
+			$("#uname").val(name);
+		}
 			</script>
 					<script type="text/javascript">
 						function check() {
@@ -87,20 +99,25 @@
 							var cpw = $("#cpw").val();
 							var id = $("#uid").val();
 							var nick = $("#uname").val();
+							document.getElementById("idnull").innerHTML= "";
+							document.getElementById("namenull").innerHTML= "";
 							if (idcheck.test(id) == false) {
 								document.getElementById("idnull").innerHTML="ID는 4글자 이상 12글자 미만의 영문과 숫자만이 가능합니다.";
 							return false;
 							} else {
+								document.getElementById("idnull").innerHTML="";
 							}
 							if (pw != cpw) {
 								document.getElementById("pwin").innerHTML="비밀번호 입력이 다릅니다. 다시 확인해주세요";
 							return false;
 							} else {
+								document.getElementById("pwin").innerHTML="";
 							}
 							if (namecheck.test(nick) == false) {
 								document.getElementById("namenull").innerHTML="NICKNAME은 2글자 이상 8글자 미만이며, 특수문자 삽입은 불가능합니다.";
 							return false;
 							} else {
+								document.getElementById("namenull").innerHTML="";
 							}
 						}
 					</script>

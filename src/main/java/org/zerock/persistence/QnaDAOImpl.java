@@ -8,30 +8,30 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-import org.zerock.domain.BoardVO;
+import org.zerock.domain.QnaVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.SearchCriteria;
 
 @Repository
-public class BoardDAOImpl implements BoardDAO {
+public class QnaDAOImpl implements QnaDAO {
 
   @Inject
   private SqlSession session;
 
-  private static String namespace = "org.zerock.mapper.BoardMapper";
+  private static String namespace = "org.zerock.mapper.QnaMapper";
 
   @Override
-  public void create(BoardVO vo) throws Exception {
+  public void create(QnaVO vo) throws Exception {
     session.insert(namespace + ".create", vo);
   }
 
   @Override
-  public BoardVO read(Integer bno) throws Exception {
+  public QnaVO read(Integer bno) throws Exception {
     return session.selectOne(namespace + ".read", bno);
   }
 
   @Override
-  public void update(BoardVO vo) throws Exception {
+  public void update(QnaVO vo) throws Exception {
     session.update(namespace + ".update", vo);
   }
 
@@ -41,12 +41,12 @@ public class BoardDAOImpl implements BoardDAO {
   }
 
   @Override
-  public List<BoardVO> listAll() throws Exception {
+  public List<QnaVO> listAll() throws Exception {
     return session.selectList(namespace + ".listAll");
   }
 
   @Override
-  public List<BoardVO> listPage(int page) throws Exception {
+  public List<QnaVO> listPage(int page) throws Exception {
 
     if (page <= 0) {
       page = 1;
@@ -58,7 +58,7 @@ public class BoardDAOImpl implements BoardDAO {
   }
 
   @Override
-  public List<BoardVO> listCriteria(Criteria cri) throws Exception {
+  public List<QnaVO> listCriteria(Criteria cri) throws Exception {
 
     return session.selectList(namespace + ".listCriteria", cri);
   }
@@ -70,7 +70,7 @@ public class BoardDAOImpl implements BoardDAO {
   }
 
   @Override
-  public List<BoardVO> listSearch(SearchCriteria cri) throws Exception {
+  public List<QnaVO> listSearch(SearchCriteria cri) throws Exception {
 
     return session.selectList(namespace + ".listSearch", cri);
   }
@@ -98,43 +98,8 @@ public class BoardDAOImpl implements BoardDAO {
     session.update(namespace+".updateViewCnt", bno);
     
   }
-
-
-  @Override
-  public void addAttach(String fullName) throws Exception {
-    
-    session.insert(namespace+".addAttach", fullName);
-    
-  }
-  
-  @Override
-  public List<String> getAttach(Integer bno) throws Exception {
-    
-    return session.selectList(namespace +".getAttach", bno);
-  }
- 
-
-  @Override
-  public void deleteAttach(Integer bno) throws Exception {
-
-    session.delete(namespace+".deleteAttach", bno);
-    
-  }
-
-  @Override
-  public void replaceAttach(String fullName, Integer bno) throws Exception {
-    
-    Map<String, Object> paramMap = new HashMap<String, Object>();
-    
-    paramMap.put("bno", bno);
-    paramMap.put("fullName", fullName);
-    
-    session.insert(namespace+".replaceAttach", paramMap);
-    
-  }
-
 @Override
-public BoardVO pass(BoardVO pass) throws Exception {
+public QnaVO pass(QnaVO pass) throws Exception {
 	return session.selectOne(namespace + ".pass", pass);
 }
 

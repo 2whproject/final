@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zerock.domain.BoardVO;
+import org.zerock.domain.QnaVO;
 import org.zerock.domain.NotePageMaker;
 import org.zerock.domain.NoteSearchCriteria;
 import org.zerock.domain.NoteVO;
+import org.zerock.domain.UserVO;
 import org.zerock.service.NoteService;
 
 @Controller
@@ -49,16 +50,16 @@ public class NoteController {
     model.addAttribute(service.read(no));
   }
   @RequestMapping(value = "/readNote", method = RequestMethod.POST)
-  public String read(NoteVO receiver, RedirectAttributes rttr, Model model) throws Exception {
-	NoteVO vo = service.receiver(receiver);
+  public String read(NoteVO uname, RedirectAttributes rttr, Model model) throws Exception {
+	NoteVO vo = service.uname(uname);
 	if (vo == null) {
 		rttr.addFlashAttribute("msg", "FAIL");
 		return "redirect:/notice/list";
 	}
 	logger.info("CORRECT");
 	rttr.addFlashAttribute("msg", "CORRECT");
-	rttr.addFlashAttribute("receiver", receiver.getReceiver());
-	rttr.addAttribute("no", receiver.getNo());
+	rttr.addFlashAttribute("uname", uname.getUname());
+	rttr.addAttribute("no", uname.getNo());
 	return "redirect:/notice/readNote";
   }
 
@@ -81,14 +82,15 @@ public class NoteController {
   }
 
   @RequestMapping(value = "/send", method = RequestMethod.POST)
-  public String sendPOST(@RequestParam("receiver") String find, NoteVO send, RedirectAttributes rttr, Model model) throws Exception {
-		try {
-			model.addAttribute(service.find(find));
-		} catch (Exception e) {
-			logger.info("FAIL");
-			rttr.addFlashAttribute("msg", "FAIL");
-			return "redirect:/notice/send";
-		}
+  public String sendPOST(@RequestParam("uname") String find, NoteVO send, RedirectAttributes rttr, Model model) throws Exception {
+	try {
+		String str = service.find(find).getUname();
+		logger.info(str);
+	} catch (NullPointerException e) {
+		logger.info("FAIL");
+		rttr.addFlashAttribute("msg", "FAIL");
+		return "redirect:/notice/send";
+	}
     logger.info("send post ...........");
     logger.info(send.toString());
     service.send(send);

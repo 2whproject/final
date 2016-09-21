@@ -2,7 +2,7 @@ package org.zerock.domain;
 
 import java.util.Date;
 
-public class ReplyVO {
+public class QnrVO {
 
   private Integer rno;
   private Integer bno;
@@ -62,7 +62,7 @@ public class ReplyVO {
 
   @Override
   public String toString() {
-    return "ReplyVO [rno=" + rno + ", bno=" + bno + ", replytext=" + replytext + ", replyer=" + replyer + ", regdate="
+    return "QnrVO [rno=" + rno + ", bno=" + bno + ", replytext=" + replytext + ", replyer=" + replyer + ", regdate="
         + regdate + ", updatedate=" + updatedate + "]";
   }
 }

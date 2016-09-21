@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageMaker;
-import org.zerock.domain.ReplyVO;
-import org.zerock.service.ReplyService;
+import org.zerock.domain.QnrVO;
+import org.zerock.service.QnrService;
 
 @RestController
-@RequestMapping("/replies")
-public class ReplyController {
+@RequestMapping("/qreplies")
+public class QnAReplyController {
 
   @Inject
-  private ReplyService service;
+  private QnrService service;
 
   @RequestMapping(value = "", method = RequestMethod.POST)
-  public ResponseEntity<String> register(@RequestBody ReplyVO vo) {
+  public ResponseEntity<String> register(@RequestBody QnrVO vo) {
 
     ResponseEntity<String> entity = null;
     try {
@@ -40,9 +40,9 @@ public class ReplyController {
   }
 
   @RequestMapping(value = "/all/{bno}", method = RequestMethod.GET)
-  public ResponseEntity<List<ReplyVO>> list(@PathVariable("bno") Integer bno) {
+  public ResponseEntity<List<QnrVO>> list(@PathVariable("bno") Integer bno) {
 
-    ResponseEntity<List<ReplyVO>> entity = null;
+    ResponseEntity<List<QnrVO>> entity = null;
     try {
       entity = new ResponseEntity<>(service.listReply(bno), HttpStatus.OK);
 
@@ -55,7 +55,7 @@ public class ReplyController {
   }
 
   @RequestMapping(value = "/{rno}", method = { RequestMethod.PUT, RequestMethod.PATCH })
-  public ResponseEntity<String> update(@PathVariable("rno") Integer rno, @RequestBody ReplyVO vo) {
+  public ResponseEntity<String> update(@PathVariable("rno") Integer rno, @RequestBody QnrVO vo) {
 
     ResponseEntity<String> entity = null;
     try {
@@ -99,7 +99,7 @@ public class ReplyController {
       pageMaker.setCri(cri);
 
       Map<String, Object> map = new HashMap<String, Object>();
-      List<ReplyVO> list = service.listReplyPage(bno, cri);
+      List<QnrVO> list = service.listReplyPage(bno, cri);
 
       map.put("list", list);
 

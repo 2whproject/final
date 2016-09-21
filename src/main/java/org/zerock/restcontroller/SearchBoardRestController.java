@@ -10,19 +10,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.zerock.domain.BoardVO;
+import org.zerock.domain.QnaVO;
 import org.zerock.domain.Criteria;
-import org.zerock.service.BoardService;
+import org.zerock.service.QnaService;
 @RestController
 @RequestMapping("/rboard")
 public class SearchBoardRestController {
 	static Logger logger = LoggerFactory.getLogger(SearchBoardRestController.class);
 	@Inject
-	BoardService service;
+	QnaService service;
 	@RequestMapping(value = "/list")
-	public List<BoardVO> listPage(Criteria cri) throws Exception {
+	public List<QnaVO> listPage(Criteria cri) throws Exception {
 		logger.info(cri.toString());
-		List<BoardVO> boards = service.listCriteria(cri);
+		List<QnaVO> boards = service.listCriteria(cri);
 		return boards;
 	}
 	@RequestMapping(value = "/listAll")

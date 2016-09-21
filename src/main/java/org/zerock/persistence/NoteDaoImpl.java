@@ -22,8 +22,8 @@ public NoteVO read(Integer no) throws Exception {
 }
 
 @Override
-public NoteVO receiver(NoteVO receiver) throws Exception {
-	return session.selectOne(namespace + ".receiver", receiver);
+public NoteVO uname(NoteVO uname) throws Exception {
+	return session.selectOne(namespace + ".uname", uname);
 }
 
 @Override

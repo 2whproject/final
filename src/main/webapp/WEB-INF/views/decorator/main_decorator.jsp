@@ -194,8 +194,8 @@
 							class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="/sboard/list"><i
-									class="fa fa-circle-o"></i>자유 게시판</a></li>
+							<li><a href="/qboard/list"><i
+									class="fa fa-circle-o"></i>문의 게시판</a></li>
 							<li><a href="/semp/list"><i
 									class="fa fa-circle-o"></i>직원 목록 (운영진 전용)</a></li>
 						</ul></li>

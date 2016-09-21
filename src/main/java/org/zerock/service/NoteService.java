@@ -8,7 +8,7 @@ public interface NoteService {
   public NoteVO find(String find) throws Exception;
   public void send(NoteVO send) throws Exception;
   public void remove(Integer no) throws Exception;
-  public NoteVO receiver(NoteVO receiver) throws Exception;
+  public NoteVO uname(NoteVO uname) throws Exception;
   public List<NoteVO> listAll() throws Exception;
   public List<NoteVO> listCriteria(NoteCriteria cri) throws Exception;
   public int listCountCriteria(NoteCriteria cri) throws Exception;

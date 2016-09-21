@@ -42,10 +42,7 @@
    </style>
 </head>
 <body>
-	<script>
-		var pass = "${pass}";
-	</script>
-	<c:if test="${pass == boardVO.pass||boardVO.pass == ''||login.uname == 'ADMINISTRATOR'}">
+	<c:if test="${pass == qnaVO.pass||qnaVO.pass == ''||login.uname == 'ADMINISTRATOR'}">
     <div class='popup back' style="display:none;"></div>
     <div id="popup_front" class='popup front' style="display:none;">
      <img id="popup_img">
@@ -63,7 +60,7 @@
 
             <form role="form" action="modifyPage" method="post">
 
-               <input type='hidden' name='bno' value="${boardVO.bno}"> <input
+               <input type='hidden' name='bno' value="${qnaVO.bno}"> <input
                   type='hidden' name='page' value="${cri.page}"> <input
                   type='hidden' name='perPageNum' value="${cri.perPageNum}">
                <input type='hidden' name='searchType' value="${cri.searchType}">
@@ -74,17 +71,17 @@
             <div class="box-body">
                <div class="form-group">
                   <label for="exampleInputEmail1">Title</label> <input type="text"
-                     name='title' class="form-control" value="${boardVO.title}"
+                     name='title' class="form-control" value="${qnaVO.title}"
                      readonly="readonly">
                </div>
                <div class="form-group">
                   <label for="exampleInputPassword1">Content</label>
-                  <textarea class="form-control" name="content" rows="3"
-                     readonly="readonly">${boardVO.content}</textarea>
+                  <textarea class="form-control" name="content" rows="15"
+                     readonly="readonly">${qnaVO.content}</textarea>
                </div>
                <div class="form-group">
                   <label for="exampleInputEmail1">Writer</label> <input type="text"
-                     name="writer" class="form-control" value="${boardVO.writer}"
+                     name="writer" class="form-control" value="${qnaVO.writer}"
                      readonly="readonly">
                </div>
             </div>
@@ -98,11 +95,7 @@
 
                <ul class="mailbox-attachments clearfix uploadedList">
                </ul>
-               <c:if test="${login.uid == boardVO.secret}">
-                  <button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
-                  <button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
-               </c:if>
-               <c:if test='${login.uid == "zerock"}'>
+               <c:if test="${login.uid == qnaVO.secret||login.uid == 'zerock' }">
                   <button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
                   <button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
                </c:if>
@@ -163,7 +156,7 @@
             <!-- timeline time label -->
             <li class="time-label" id="repliesDiv"><span class="bg-green">
                   Replies List <small id='replycntSmall'> [
-                     ${boardVO.replycnt} ] </small>
+                     ${qnaVO.replycnt} ] </small>
             </span></li>
          </ul>
 
@@ -267,7 +260,7 @@
 
    }
 
-   var bno = ${boardVO.bno};//Board Number
+   var bno = ${qnaVO.bno};//Board Number
 
    var replyPage = 1;
 
@@ -311,7 +304,7 @@
       if ($(".timeline li").size() > 1) {
          return;
       }
-      getPage("/replies/" + bno + "/1");
+      getPage("/qreplies/" + bno + "/1");
 
    });
 
@@ -321,7 +314,7 @@
 
       replyPage = $(this).attr("href");
 
-      getPage("/replies/" + bno + "/" + replyPage);
+      getPage("/qreplies/" + bno + "/" + replyPage);
 
    });
 
@@ -335,7 +328,7 @@
 
       $.ajax({
          type : 'post',
-         url : '/replies/',
+         url : '/qreplies/',
          headers : {
             "Content-Type" : "application/json",
             "X-HTTP-Method-Override" : "POST"
@@ -351,7 +344,7 @@
             if (result == 'SUCCESS') {
                alert("등록 되었습니다.");
                replyPage = 1;
-               getPage("/replies/" + bno + "/" + replyPage);
+               getPage("/qreplies/" + bno + "/" + replyPage);
                replyerObj.val("");
                replytextObj.val("");
             }
@@ -377,7 +370,7 @@
 
       $.ajax({
          type : 'put',
-         url : '/replies/' + rno,
+         url : '/qreplies/' + rno,
          headers : {
             "Content-Type" : "application/json",
             "X-HTTP-Method-Override" : "PUT"
@@ -390,7 +383,7 @@
             console.log("result: " + result);
             if (result == 'SUCCESS') {
                alert("수정 되었습니다.");
-               getPage("/replies/" + bno + "/" + replyPage);
+               getPage("/qreplies/" + bno + "/" + replyPage);
             }
          }
       });
@@ -403,7 +396,7 @@
 
       $.ajax({
          type : 'delete',
-         url : '/replies/' + rno,
+         url : '/qreplies/' + rno,
          headers : {
             "Content-Type" : "application/json",
             "X-HTTP-Method-Override" : "DELETE"
@@ -413,7 +406,7 @@
             console.log("result: " + result);
             if (result == 'SUCCESS') {
                alert("삭제 되었습니다.");
-               getPage("/replies/" + bno + "/" + replyPage);
+               getPage("/qreplies/" + bno + "/" + replyPage);
             }
          }
       });
@@ -429,20 +422,20 @@ $(document).ready(function(){
    console.log(formObj);
    
    $("#modifyBtn").on("click", function(){
-      formObj.attr("action", "/sboard/modifyPage");
+      formObj.attr("action", "/qboard/modifyPage");
       formObj.attr("method", "get");      
       formObj.submit();
    });
    
 /*    $("#removeBtn").on("click", function(){
-      formObj.attr("action", "/sboard/removePage");
+      formObj.attr("action", "/qboard/removePage");
       formObj.submit();
    }); */
 
    
    $("#removeBtn").on("click", function(){
       
-      var replyCnt =  ${boardVO.replycnt};
+      var replyCnt =  ${qnaVO.replycnt};
       
       if(replyCnt > 0 ){
          alert("댓글이 달린 게시물을 삭제할 수 없습니다.");
@@ -460,20 +453,20 @@ $(document).ready(function(){
          });
       }
       
-      formObj.attr("action", "/sboard/removePage");
+      formObj.attr("action", "/qboard/removePage");
       formObj.submit();
    });   
    
    $("#goListBtn ").on("click", function(){
       formObj.attr("method", "get");
-      formObj.attr("action", "/sboard/list");
+      formObj.attr("action", "/qboard/list");
       formObj.submit();
    });
    
-   var bno = ${boardVO.bno};
+   var bno = ${qnaVO.bno};
    var template = Handlebars.compile($("#templateAttach").html());
    
-   $.getJSON("/sboard/getAttach/"+bno,function(list){
+   $.getJSON("/qboard/getAttach/"+bno,function(list){
       $(list).each(function(){
          
          var fileInfo = getFileInfo(this);
@@ -512,26 +505,40 @@ $(document).ready(function(){
    });   
 });
 </script>
-<c:if test="${pass != boardVO.pass}">
+	<script type="text/javascript">
+	function back() {
+		history.back();
+	}
+	</script>
+	<c:choose>
+		<c:when test="${not empty qnaVO.pass}">
+		<c:if test="${empty pass}">
+		<c:if test="${login.uname!='ADMINISTRATOR'}">
    <div class="login-box">
       <div class="login-logo">
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">해당 글은 비밀글 입니다</p>
-<form action="/sboard/readPage" method="post">
+<form action="/qboard/readPage" method="post">
   <div class="form-group has-feedback">
-  	<input type='hidden' id ="bno" name='bno' value="${boardVO.bno}">
+  	<input type='hidden' id ="bno" name='bno' value="${qnaVO.bno}">
     <input type="password" id="pass" name ="pass" class="form-control" placeholder="비밀번호" required="required"/>
     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
   </div>
   <div class="row">
-    <div class="col-xs-4">
-      <button type="submit" class="btn btn-primary btn-block btn-flat">확인</button>
-    </div><!-- /.col -->
+    <div class="pull-left">
+      <button style="margin-left: 15px;" type="submit" class="btn btn-primary btn-block btn-flat">확인</button>
+    </div>
+    <div class="pull-right">
+      <button style="margin-right: 15px;" type="button" onclick="back()" class="btn btn-primary btn-block btn-flat">취소</button>
+    </div>
   </div>
 </form>
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
     </c:if>
+    </c:if>
+    </c:when>
+</c:choose>
 </body>
 </html>

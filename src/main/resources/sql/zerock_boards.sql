@@ -5,13 +5,11 @@ drop table emp;
 drop table tbl_message;
 DROP TABLE tbl_member;
 DROP TABLE tbl_user;
-DROP TABLE tbl_attach;
-DROP TABLE tbl_reply;
-DROP TABLE tbl_board;
+DROP TABLE tbl_qreply;
+DROP TABLE tbl_qnaboard;
 drop table tbl_log;
 drop table tbl_leave;
 drop table tbl_note;
-
 
 
 
@@ -20,7 +18,7 @@ create table tbl_note (
 	title		varchar(24) not null,
 	content		varchar(255) not null,
 	sender		varchar(30) not null,
-	receiver	varchar(30) not null,
+	uname		varchar(30) not null,
 	date		TIMESTAMP DEFAULT now(),
 	viewing		boolean,
 	primary key(no)
@@ -95,31 +93,32 @@ INSERT INTO tbl_user(UID, upw, uname)
      VALUES ('user02', 'user02', 'HULK');
 
 INSERT INTO tbl_user(UID, upw, uname)
-     VALUES ('user03', 'user03', 'Thor');
+     VALUES ('user03', 'user03', 'THOR');
 insert into tbl_user(UID, upw, uname, email)
 	 values ('zerock', '1234', 'ADMINISTRATOR','zerock@project.com');
 	 
 create table tbl_leave
-(	uid varchar(50),
+(	uid 	varchar(50),
+	uname	varchar(50),
 	primary key(uid)
 );
 
-insert into tbl_leave(uid)
-	 values ('user00');
-insert into tbl_leave(uid)
-	 values ('user01');
-insert into tbl_leave(uid)
-	 values ('user02');
-insert into tbl_leave(uid)
-	 values ('user03');
-insert into tbl_leave(uid)
-	 values ('zerock');
+insert into tbl_leave(uid, uname)
+	 values ('user00', 'IRON MAN');
+insert into tbl_leave(uid, uname)
+	 values ('user01','CAPTAIN');
+insert into tbl_leave(uid, uname)
+	 values ('user02', 'HULK');
+insert into tbl_leave(uid, uname)
+	 values ('user03', 'THOR');
+insert into tbl_leave(uid, uname)
+	 values ('zerock', 'ADMINISTRATOR');
 
 
 --
 -- tbl_board
 --
-CREATE TABLE tbl_board
+CREATE TABLE tbl_qnaboard
 (
    bno        int NOT NULL AUTO_INCREMENT,
    title      varchar(200) NOT NULL,
@@ -149,7 +148,7 @@ create table tbl_log
 --
 -- tbl_reply
 --
-CREATE TABLE tbl_reply
+CREATE TABLE tbl_qreply
 (
    rno          int NOT NULL AUTO_INCREMENT,
    bno          int NOT NULL DEFAULT 0,
@@ -160,18 +159,8 @@ CREATE TABLE tbl_reply
    PRIMARY KEY(rno)
 );
 
-ALTER TABLE tbl_reply
-  ADD CONSTRAINT fk_board_reply FOREIGN KEY(bno) REFERENCES tbl_board(bno);
+ALTER TABLE tbl_qreply
+  ADD CONSTRAINT fk_qnaboard_reply FOREIGN KEY(bno) REFERENCES tbl_qnaboard(bno);
 --
 -- tbl_attach
 --
-CREATE TABLE tbl_attach
-(
-   fullName   VARCHAR(150) NOT NULL,
-   bno        INT NOT NULL,
-   regdate    TIMESTAMP DEFAULT now(),
-   PRIMARY KEY(fullName)
-);
-
-ALTER TABLE tbl_attach
-  ADD CONSTRAINT fk_borad_attach FOREIGN KEY(bno) REFERENCES tbl_board(bno);

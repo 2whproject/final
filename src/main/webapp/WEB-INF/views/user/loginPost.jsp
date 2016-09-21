@@ -9,7 +9,7 @@
 </head>
 <body>
   <script type="text/javascript">
-    self.location = "/sboard/list";
+    self.location = "/qboard/list";
   </script>
 </body>
 </html>

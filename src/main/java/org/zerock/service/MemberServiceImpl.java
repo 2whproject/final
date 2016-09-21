@@ -34,8 +34,16 @@ public class MemberServiceImpl implements MemberService {
 }
   @Override
   public void registleave(MemberVO member) throws Exception {
-	dao.leaveregist(member);
+	dao.registleave(member);
 	
+}
+@Override
+public MemberVO findnick(String uname) throws Exception {
+	return dao.findnick(uname);
+}
+@Override
+public MemberVO nickleave(MemberVO mem) throws Exception {
+	return dao.nickleave(mem);
 }
   
 }

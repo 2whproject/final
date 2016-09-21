@@ -4,15 +4,6 @@
 <html>
 <head>
 <title>modifyPage.jsp</title>
-<style>
-.fileDrop {
-	width: 80%;
-	height: 100px;
-	border: 1px dotted gray;
-	background-color: lightslategrey;
-	margin: auto;
-}
-</style>
 </head>
 <body>
 
@@ -22,7 +13,7 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">MODIFY BOARD</h3>
+					<h3 class="box-title">글 수정</h3>
 				</div>
 				<!-- /.box-header -->
 
@@ -35,45 +26,31 @@
 
 					<div class="box-body">
 
-						<div class="form-group">
-							<label for="exampleInputEmail1">BNO</label> <input type="text"
-								name='bno' class="form-control" value="${boardVO.bno}"
+						<div class="form-group"><input type="hidden"
+								name='bno' class="form-control" value="${qnaVO.bno}"
 								readonly="readonly">
 						</div>
 
 						<div class="form-group">
-							<label for="exampleInputEmail1">Title</label> <input type="text"
-								name='title' class="form-control" value="${boardVO.title}">
+							<label for="exampleInputEmail1">제목</label> <input type="text"
+								name='title' class="form-control" value="${qnaVO.title}">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputPassword1">Content</label>
-							<textarea class="form-control" name="content" rows="3">${boardVO.content}</textarea>
+							<textarea class="form-control" name="content" rows="15">${qnaVO.content}</textarea>
 						</div>
 
 						<div class="form-group">
-							<label for="exampleInputEmail1">Writer</label> <input type="text"
-								name="writer" class="form-control" value="${boardVO.writer}" readonly="readonly">
+							<label for="exampleInputEmail1">작성자</label> <input type="text"
+								name="writer" class="form-control" value="${qnaVO.writer}" readonly="readonly">
 						</div>
-
-						<div class="form-group">
-							<label for="exampleInputEmail1">File DROP Here</label>
-							<div class="fileDrop"></div>
-						</div>
-
 					</div>
 					<!-- /.box-body -->
-
 					<div class="box-footer">
 						<div>
 							<hr>
 						</div>
-
-						<ul class="mailbox-attachments clearfix uploadedList">
-						</ul>
-
 						<button type="submit" class="btn btn-primary">SAVE</button>
 						<button type="submit" class="btn btn-warning">CANCEL</button>
-
 					</div>
 				</form>
 
@@ -132,7 +109,7 @@
 												.on(
 														"click",
 														function() {
-															self.location = "/sboard/list?page=${cri.page}&perPageNum=${cri.perPageNum}"
+															self.location = "/qboard/list?page=${cri.page}&perPageNum=${cri.perPageNum}"
 																	+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
 														});
 
@@ -198,11 +175,11 @@
 
 					var bno = $
 					{
-						boardVO.bno
+						qnaVO.bno
 					};
 					var template = Handlebars.compile($("#template").html());
 
-					$.getJSON("/sboard/getAttach/" + bno, function(list) {
+					$.getJSON("/qboard/getAttach/" + bno, function(list) {
 						$(list).each(function() {
 
 							var fileInfo = getFileInfo(this);

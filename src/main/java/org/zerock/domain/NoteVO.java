@@ -50,18 +50,18 @@ public class NoteVO {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getReceiver() {
-		return receiver;
+	public String getUname() {
+		return uname;
 	}
-	public void setReceiver(String receiver) {
-		this.receiver = receiver;
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 	private Date date;
-	private String receiver;
+	private String uname;
 	@Override
 	public String toString() {
 		return "NoteVO [no=" + no + ", title=" + title + ", content="
 				+ content + ", sender=" + sender + ", senderid=" + senderid + ", date=" + date
-				+ ", receiver=" + receiver + "]";
+				+ ", uname=" + uname + "]";
 	}
 }

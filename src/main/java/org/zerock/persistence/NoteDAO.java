@@ -10,7 +10,7 @@ public interface NoteDAO {
   public NoteVO read(Integer no) throws Exception;
   public void send(NoteVO send) throws Exception;
   public NoteVO find(String find) throws Exception;
-  public NoteVO receiver(NoteVO receiver) throws Exception;
+  public NoteVO uname(NoteVO uname) throws Exception;
   public void delete(Integer no) throws Exception;
   public List<NoteVO> listAll() throws Exception;
 

@@ -27,8 +27,8 @@
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">받는 사람 닉네임</label>
-							<input id="receiver" type="text" name="receiver">
-							<p id="receivernull" style="color: red;"> </p>
+							<input id="uname" type="text" name="uname">
+							<p id="unamenull" style="color: red;"> </p>
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">제목</label> <input type="text"
@@ -58,7 +58,7 @@
 		<script>
 		var result = '${msg}';
 		if (result == 'FAIL') {
-			document.getElementById("receivernull").innerHTML= "해당 닉네임은 존재하지 않습니다!";
+			document.getElementById("unamenull").innerHTML= "해당 닉네임은 존재하지 않습니다!";
 		} 
 		</script>
 			<!-- /.box -->
