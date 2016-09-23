@@ -1,85 +1,119 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
-<!-- 헤드안에들어가면 sitemesh 영향이 생기므로 헤드 밖에다 위치시켜야함 -->
+<!-- Bootstrap 3.3.4 -->
+<!-- Font Awesome Icons -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<!-- Ionicons -->
+<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+<!-- Theme style -->
+<link href="/resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+<!-- AdminLTE Skins. Choose a skin from the css/skins 
+     folder instead of downloading all of them to reduce the load. -->
+<link href="/resources/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+<!-- jQuery 2.1.4 -->
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <head>
-<title>home.jsp</title>
-   <script type="text/javascript" src="/resources/js/upload.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />   
-   <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />   
-      
-   <!-- Main content -->
-   <style type="text/css">
-   .popup {
-      position: absolute;
-   }
-   
-   .back {
-      background-color: gray;
-      opacity: 0.5;
-      width: 100%;
-      height: 300%;
-      overflow: hidden;
-      z-index: 1101;
-   }
-   
-   .front {
-      z-index: 1110;
-      opacity: 1;
-      boarder: 1px;
-      margin: auto;
-   }
-   
-   .show {
-      position: relative;
-      max-width: 1200px;
-      max-height: 800px;
-      overflow: auto;
-   }
-   </style>
+<link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<title>Home</title>
+<style type="text/css">
+body {
+	background-color: #f2f2f2;
+}
+#recent li{
+	list-style: none;
+	font-size: 13px;
+	margin-bottom: 3px;
+}
+.panel-default {
+	padding: 20px;
+	margin: 10px;
+}
+.panel-body {
+	padding-left: 0px;
+	font-size: 15px;
+}
+.label-danger{
+	background-color: black;
+}
+#recent {
+	text-align: left;
+}
+.pannel-body, li {
+	text-align: left;
+}
+.panel{
+	float: left;
+}
+*{
+/* 	border: 1px solid red; */
+}
+</style>
 </head>
 <body>
-<!--  			<div class="box"> -->
-<!-- 				<div class="box-header with-border"> -->
-<!-- 					<h3 class="box-title">빠른 글 내용 보기</h3> -->
-<!-- 				</div> -->
-<!-- 				<div class="box-body"> -->
-<!-- 							<select class="op" id="value"> -->
-<!-- 								<option value="">선택하세요</option> -->
-<!-- 								<optgroup label="자유 게시판"> -->
-<%-- 									<c:forEach items="${list}" var="quickVO"> --%>
-<%-- 								<option value="${quickVO.content}">글 제목 : ${quickVO.title}&nbsp; / 글쓴이 : &nbsp;${quickVO.writer}</option> --%>
-<%-- 									</c:forEach> --%>
-<!-- 								</optgroup> -->
-<!-- 							</select> -->
-<!-- 							<hr> -->
-<!-- 							<p onclick="move()" id="select" style="cursor: pointer;"></p> -->
-<!-- 				</div> -->
-<!-- 				/.box-body -->
-<!-- 			</div> -->
+<!-- 인트로 -->
+<!-- 이미지 슬라이드 -->
+<!-- 게시판별 최신글 -->
+	<div id="recent" class="row">
+		<div class="panel panel-default col-lg-5" >
+			<div class="panel-body">공지사항</div>
+			<c:forEach items="${title}" var="bookVO">
+							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
+			</c:forEach>		
 		</div>
+		<div class="panel panel-default col-lg-5" >
+			<div class="panel-body">영화</div>
+			<c:forEach items="${title}" var="bookVO">
+							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
+			</c:forEach>
+		</div>
+		<div class="panel panel-default col-lg-5" >
+			<div class="panel-body">영화리뷰</div>
+			<c:forEach items="${title}" var="bookVO">
+							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
+			</c:forEach>
+		</div>
+		<div class="panel panel-default col-lg-5">
+			<div class="panel-body">만화</div>
+			<c:forEach items="${title}" var="bookVO">
+							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
+			</c:forEach>
+		</div>
+		<div class="panel panel-default col-lg-5" >
+			<div class="panel-body">게임</div>
+			<c:forEach items="${title}" var="bookVO">
+							<li><a href="#">${bookVO.title}</a> <span class="label label-danger bg-red-gradient">n</span></li>
+			</c:forEach>
+		</div>
+		<div class="panel panel-default  col-lg-5" >
+			<div class="panel-body">도서</div>
+			<c:forEach items="${title}" var="bookVO">
+							<li><a href="book/readPage?bno=${bookVO.bno}">${bookVO.title}</a> 
+							<span class="label label-danger bg-red-gradient">n</span></li>
+			</c:forEach>						
+		</div>
+		<div class="panel panel-default col-lg-5" >
+			<div class="panel-body">랭킹</div>
+			<c:forEach items="${title}" var="bookVO">
+							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
+			</c:forEach>
+		</div>
+		<div class="panel panel-default col-lg-5" >
+			<div class="panel-body">문의게시판</div>
+			<c:forEach items="${title1}" var="qnaVO">
+							<li><a href="qboard/readPage?bno=${qnaVO.bno}">${qnaVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
+			</c:forEach>
+		</div>
+	</div>
+</section>
 	<script>
 	var result = '${msg}';
 	if (result == 'LOGOFF') {
 		alert ("정상적으로 로그아웃 되었습니다");
 	}
-	</script>
-	<script type="text/javascript">
-		var op = document.querySelector('.op');
-			op.addEventListener('change', function(e) {
-				if (e.currentTarget.value == "") {
-					document.getElementById("select").innerHTML="";
-				} else {
-					var brand = e.currentTarget.value;
-					document.getElementById("select").innerHTML="글 내용 : " + brand;
-				}
-			});
-		function move() {
-			alert("테스트");
-			}
 	</script>
 </body>
 </html>

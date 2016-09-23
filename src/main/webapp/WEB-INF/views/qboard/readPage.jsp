@@ -211,32 +211,28 @@
 
 
           
-   <script id="template" type="text/x-handlebars-template">
-            {{#each .}}
-                  <li class="replyLi" data-rno={{rno}}>
-                            <i class="fa fa-diamond bg-blue"></i>
-                        <div class="timeline-item" >
-                           <span class="time">
-                                <i class="fa fa-clock-o"></i>{{prettifyDate regdate}}
-                            </span>
-                           <h3 class="timeline-header"><strong>{{rno}}</strong> -{{replyer}}</h3>
-                            <div class="timeline-body">{{replytext}} </div>
-                      <div class="timeline-footer">
+<script id="template" type="text/x-handlebars-template">
+		{{#each .}}
+	         <li class="replyLi" data-rno={{rno}}>
+           	 	<i class="fa fa-comment bg-blue"></i>
+             	<div class="timeline-item">
+                	<span class="time">
+                  		<i class="fa fa-clock-o"></i>{{prettifyDate regdate}}
+                	</span>
+                <h3 class="timeline-header"><strong>{{rno}}</strong> -{{replyer}}</h3>
+                <div class="timeline-body">{{replytext}} </div>
+				<div class="timeline-footer">
                         {{#eqReplyer replyer }}
                                  <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
                         {{/eqReplyer}} 
                         {{#eqReplyer "ADMINISTRATOR" }}
                                  <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
-                        {{/eqReplyer}} 
-                      </div>
-                        </div>         
-                       </li>
-                 {{/each}}
-   </script>
-      <script id="templateEmpty" type="text/x-handlebars-template">
-            {{#each .}}
-            {{/each}}
-   </script> 
+                        {{/eqReplyer}}
+				</div>
+	            </div>			
+           </li>
+        {{/each}}
+	</script>  
 <script>
    
    Handlebars.registerHelper("eqReplyer", function(replyer, block) {
@@ -269,22 +265,14 @@
 
    var replyPage = 1;
    var close = false;
-   function getPage(pageInfo) {
-	  if (close == false) {
-      $.getJSON(pageInfo, function(data) {
-         printData(data.list, $("#repliesDiv"), $('#template'));
-         printPaging(data.pageMaker, $(".pagination"));
-         $("#modifyModal").modal('hide');
-         $("#replycntSmall").html("[ " + data.pageMaker.totalCount + " ]");
-         close = true;
-      });
-	  } else if (close == true) {
-	      $.getJSON(pageInfo, function(data) {
-	          printData(data.list, $("#repliesDiv"), $('#templateEmpty'));
-	          close = false
-	       });
-	  }
-   }
+	function getPage(pageInfo) {
+		$.getJSON(pageInfo, function(data) {
+			printData(data.list, $("#repliesDiv"), $('#template'));
+			printPaging(data.pageMaker, $(".pagination"));
+			$("#modifyModal").modal('hide');
+			$("#replycntSmall").html("[ " + data.pageMaker.totalCount + " ]");
+		});
+	}
 
    var printPaging = function(pageMaker, target) {
 
@@ -308,13 +296,18 @@
       target.html(str);
    }; // 서버상에서 만들어지는것이 아니라 javaScript 로 만드는것
 
-   $("#repliesDiv").on("click", function() {
-      if ($(".timeline li").size() > 1) {
-    	  getPage();
-      }
-      	getPage("/qreplies/" + bno + "/1");
-   });
-
+	var clicked = true;
+	$("#repliesDiv").on("click", function() {
+		if (clicked==true) {
+			getPage("/qreplies/" + bno + "/1");
+			clicked = false;
+			return;
+		}if(clicked==false){
+			$(".replyLi").remove();
+			clicked = true;
+			return;
+		}
+	});
    $(".pagination").on("click", "li a", function(event) {
       
       event.preventDefault();
@@ -352,7 +345,6 @@
                alert("등록 되었습니다.");
                replyPage = 1;
                getPage("/qreplies/" + bno + "/" + replyPage);
-               replyerObj.val("");
                replytextObj.val("");
             }
          }

@@ -84,7 +84,6 @@ public class NoteController {
   }
   @RequestMapping(value = "/send", method = RequestMethod.GET)
   public void sendGET() throws Exception {
-	  
   }
 
   @RequestMapping(value = "/send", method = RequestMethod.POST)
@@ -93,6 +92,7 @@ public class NoteController {
 		String str = service.find(find).getUname();
 		logger.info(find);
 		logger.info(sender);
+		logger.info(str);
 		if (sender.equalsIgnoreCase(find)) {
 			logger.info("FAILSELF");
 			rttr.addFlashAttribute("msg", "FAILSELF");

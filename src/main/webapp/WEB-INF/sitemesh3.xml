@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <sitemesh>
-  <!-- Map default decorator. This shall be applied to all paths if no other paths match. -->
-<!--   <mapping decorator="/default-decorator.html"/> -->
+	<!-- Map default decorator. This shall be applied to all paths if no other 
+		paths match. -->
+	<!-- <mapping decorator="/default-decorator.html"/> -->
 
-  <!-- Map decorators to path patterns. -->
-  <mapping path="/*" decorator="/WEB-INF/views/decorator/main_decorator.jsp"/>
-  
-<!--   <mapping path="/*.special.jsp" decorator="/special-decorator.html"/> -->
+	<!-- Map decorators to path patterns. -->
+	<!-- <mapping path="/*" decorator="/WEB-INF/views/decorator/main_decorator.jsp"/> -->
+	<mapping path="/" decorator="/WEB-INF/views/decorator/main_decorator.jsp" />
+	<mapping path="/book/*" decorator="/WEB-INF/views/decorator/my_decorator.jsp" />
 
-  <!-- Alternative convention. This is more verbose but allows multiple decorators
-       to be applied to a single path. -->
-<!--   <mapping> -->
-<!--     <path>/articles/*</path> -->
-<!--     <decorator>/decorators/article.html</decorator> -->
-<!--     <decorator>/decorators/two-page-layout.html</decorator> -->
-<!--     <decorator>/decorators/common.html</decorator> -->
-<!--   </mapping> -->
+	<!-- <mapping path="/*.special.jsp" decorator="/special-decorator.html"/> -->
 
-  <!-- Exclude path from decoration. -->
-  <mapping path="/study/**" exclue="true"/>
-<!--   <mapping path="/brochures/*" exclue="true"/> -->
+	<!-- Alternative convention. This is more verbose but allows multiple decorators 
+		to be applied to a single path. -->
+	<!-- <mapping> -->
+	<!-- <path>/articles/*</path> -->
+	<!-- <decorator>/decorators/article.html</decorator> -->
+	<!-- <decorator>/decorators/two-page-layout.html</decorator> -->
+	<!-- <decorator>/decorators/common.html</decorator> -->
+	<!-- </mapping> -->
+
+	<!-- Exclude path from decoration. -->
+	<mapping path="/study/**" exclue="true" />
+	<mapping path="/user/**" exclue="true" />
+	<mapping path="/member/**" exclue="true" />
+	<!-- <mapping path="/brochures/*" exclue="true"/> -->
 
 </sitemesh>

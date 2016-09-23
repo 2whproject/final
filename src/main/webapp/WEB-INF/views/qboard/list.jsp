@@ -60,7 +60,7 @@
 										${qnaVO.title}<strong>[ ${qnaVO.replycnt} ]</strong>
 								</a></td>
 								</c:if>
-								<td onclick="send()" class="drop" style="cursor: pointer;">${qnaVO.writer}</td>
+								<td class="drop">${qnaVO.writer}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${qnaVO.regdate}" /></td>
 								<td><span class="badge bg-red">${qnaVO.viewcnt }</span></td>

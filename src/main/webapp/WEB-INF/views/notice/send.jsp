@@ -27,7 +27,7 @@
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">받는 사람</label>
-							<input id="uname" type="text" name="uname" value="">
+							<input id="uname" type="text" name="uname" value="${sender}">
 							<p id="unamenull" style="color: red;"> </p>
 						</div>
 						<div class="form-group">

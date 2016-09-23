@@ -5,7 +5,7 @@
 <title>register.jsp</title>
 <script type="text/javascript">
 	function back() {
-		history.back();
+		self.location="list";
 	}
 </script>
 </head>
