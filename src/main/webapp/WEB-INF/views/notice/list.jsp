@@ -15,6 +15,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">받은 쪽지</h3>
+					<button style="margin-left: 10px;" id="newNotice">쪽지 보내기</button>
 				</div>
 				<div class="box-body">
 					<table class="table table-bordered">
@@ -22,10 +23,10 @@
 							<th style="width: 120px">보낸 사람</th>
 							<th style>제목</th>
 							<th style="width: 150px">보낸 시간</th>
-							<th style="width: 45px">읽음</th>
+							<th style="width: 60px">읽음</th>
 						</tr>
 						<c:forEach items="${list}" var="noteVO">
-						<c:if test="${login.uname == noteVO.uname}">
+						<c:if test="${login.uname.toLowerCase() == noteVO.uname.toLowerCase()}">
 							<tr>
 								<td>${noteVO.sender}</td>
 								<td><a
@@ -50,6 +51,9 @@
 	</div>
 	<!-- /.row -->
 		<script>
+		$('#newNotice').on("click", function(evt) {
+			self.location = "send";
+		});
 		var result ="${msg}";
 		if (result == 'SUCCESS') {
 			alert("처리가 완료되었습니다.");

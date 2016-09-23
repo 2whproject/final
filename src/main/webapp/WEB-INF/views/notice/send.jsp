@@ -2,12 +2,12 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>register.jsp</title>
-<script type="text/javascript">
-	function back() {
-		history.back();
+<style type="text/css">
+	.bg {
+		background-color: rgb(238,238,238);
 	}
-</script>
+</style>
+<title>쪽지 보내기</title>
 </head>
 <body>
 	<div class="row">
@@ -26,8 +26,8 @@
 							<input id="viewing" type="hidden" name="viewing" value="0">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">받는 사람 닉네임</label>
-							<input id="uname" type="text" name="uname">
+							<label for="exampleInputEmail1">받는 사람</label>
+							<input id="uname" type="text" name="uname" value="">
 							<p id="unamenull" style="color: red;"> </p>
 						</div>
 						<div class="form-group">
@@ -51,15 +51,27 @@
 							<hr>
 						</div>
 						<button type="submit" class="btn btn-primary">Submit</button>
-						<button onclick="back()" type="button" class="btn btn-danger">Cancel</button>
+						<button id="back" type="button" class="btn btn-danger">Cancel</button>
 					</div>
 				</form>
 			</div>
 		<script>
+		$('#back').on("click", function(evt) {
+			history.back();
+		});
 		var result = '${msg}';
 		if (result == 'FAIL') {
 			document.getElementById("unamenull").innerHTML= "해당 닉네임은 존재하지 않습니다!";
-		} 
+		}
+		if (result == 'FAILSELF') {
+			document.getElementById("unamenull").innerHTML= "자기 자신에게 보낼 수 없습니다.";
+		}
+		var sender = '${name}';
+		if (sender != '') {
+			document.getElementById("uname").value=sender;
+			document.getElementById("uname").setAttribute("class", "bg");
+			document.getElementById("uname").readOnly = true;
+		}
 		</script>
 			<!-- /.box -->
 		</div>

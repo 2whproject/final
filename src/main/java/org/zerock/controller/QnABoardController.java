@@ -75,7 +75,7 @@ public class QnABoardController {
     rttr.addAttribute("searchType", cri.getSearchType());
     rttr.addAttribute("keyword", cri.getKeyword());
 
-    rttr.addFlashAttribute("msg", "SUCCESS");
+    rttr.addFlashAttribute("msg", "DELSUCCESS");
 
     return "redirect:/qboard/list";
   }

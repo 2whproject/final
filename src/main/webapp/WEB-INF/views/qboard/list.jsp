@@ -11,14 +11,13 @@
 	}
 </style>
 <script type="text/javascript">
-	function ang() {
-		location.href = "/notice/send";
+	function send() {
+		
 	}
 </script>
 <title>list.jsp</title>
 </head>
 <body>
-
 	<div class="row">
 		<!-- left column -->
 
@@ -43,15 +42,25 @@
 							<th style="width: 160px">글 등록일</th>
 							<th style="width: 40px">VIEWCNT</th>
 						</tr>
-
+						 <form role="form" action="modifyPage" method="post">
+              				<input id="sender" type="hidden" name="sender" value="">
+            			 </form>
 						<c:forEach items="${list}" var="qnaVO">
 							<tr>
 								<td>${qnaVO.bno}</td>
-								<td><a
-									href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>
-										${qnaVO.title} <strong>[ ${qnaVO.replycnt} ]</strong>
+								<c:if test="${not empty qnaVO.pass}">
+								<td>
+								<a href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>
+										이 글은 비밀글입니다 <span class="glyphicon glyphicon-lock"></span>
 								</a></td>
-								<td class="drop" style="cursor: pointer;" onclick="ang()">${qnaVO.writer}</td>
+								</c:if>
+								<c:if test="${empty qnaVO.pass}">
+								<td>
+								<a href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>
+										${qnaVO.title}<strong>[ ${qnaVO.replycnt} ]</strong>
+								</a></td>
+								</c:if>
+								<td onclick="send()" class="drop" style="cursor: pointer;">${qnaVO.writer}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 										value="${qnaVO.regdate}" /></td>
 								<td><span class="badge bg-red">${qnaVO.viewcnt }</span></td>
@@ -88,8 +97,8 @@
 		if (result == 'FAIL') {
 			alert("비밀번호가 다릅니다.");
 		}
-		if (result == 'SUCCESS') {
-			alert("처리가 완료되었습니다.");
+		if (result == 'DELSUCCESS') {
+			alert("삭제되었습니다.");
 			location.replace(self.location);
 		}
 	</script>

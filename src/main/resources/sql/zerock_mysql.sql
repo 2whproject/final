@@ -20,7 +20,7 @@ create table tbl_note (
 	title		varchar(24) not null,
 	content		varchar(255) not null,
 	sender		varchar(30) not null,
-	receiver	varchar(30) not null,
+	uname	varchar(30) not null,
 	date		TIMESTAMP DEFAULT now(),
 	viewing		boolean,
 	primary key(no)

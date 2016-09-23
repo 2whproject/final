@@ -76,16 +76,28 @@ public class NoteController {
 
     return "redirect:/notice/list";
   }
+  @RequestMapping(value = "/answerNote", method = RequestMethod.POST)
+  public String answer(@RequestParam("sender") String sender, RedirectAttributes rttr) throws Exception {
+	logger.info(sender);
+    rttr.addFlashAttribute("name", sender);
+    return "redirect:/notice/send";
+  }
   @RequestMapping(value = "/send", method = RequestMethod.GET)
   public void sendGET() throws Exception {
 	  
   }
 
   @RequestMapping(value = "/send", method = RequestMethod.POST)
-  public String sendPOST(@RequestParam("uname") String find, NoteVO send, RedirectAttributes rttr, Model model) throws Exception {
+  public String sendPOST(@RequestParam("sender") String sender, @RequestParam("uname") String find, NoteVO send, RedirectAttributes rttr) throws Exception {
 	try {
 		String str = service.find(find).getUname();
-		logger.info(str);
+		logger.info(find);
+		logger.info(sender);
+		if (sender.equalsIgnoreCase(find)) {
+			logger.info("FAILSELF");
+			rttr.addFlashAttribute("msg", "FAILSELF");
+			return "redirect:/notice/send";
+		}
 	} catch (NullPointerException e) {
 		logger.info("FAIL");
 		rttr.addFlashAttribute("msg", "FAIL");

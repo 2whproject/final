@@ -2,8 +2,6 @@
 -- DROP table
 --
 drop table emp;
-drop table tbl_message;
-DROP TABLE tbl_member;
 DROP TABLE tbl_user;
 DROP TABLE tbl_qreply;
 DROP TABLE tbl_qnaboard;
@@ -24,19 +22,6 @@ create table tbl_note (
 	primary key(no)
 );
 
-create table tbl_message
-(
-	no int not null auto_increment,
-	sender varchar(50) not null,
-	title varchar(50) not null,
-	content	varchar(255) not null,
-	receiver varchar(50) not null,
-	sendtime timestamp default now(),
-	reading boolean not null,
-	primary key(no)
-);
-
-select * from tbl_message where receiver = 'ADMINISTRATOR';
 
 create table emp
 (
@@ -52,19 +37,6 @@ create table emp
 	primary key(bno)
 );
 
---
--- tbl_member
---
-CREATE TABLE tbl_member
-(
-   userid       VARCHAR(50) NOT NULL,
-   userpw       VARCHAR(50) NOT NULL,
-   username     VARCHAR(100) NOT NULL,
-   email        VARCHAR(100),
-   regdate      TIMESTAMP DEFAULT now(),
-   updatedate   TIMESTAMP DEFAULT now(),
-   PRIMARY KEY(userid)
-);
 
 --
 -- tbl_user
@@ -82,18 +54,6 @@ CREATE TABLE tbl_user
    PRIMARY KEY(uid)
 );
 
-
-INSERT INTO tbl_user(UID, upw, uname)
-     VALUES ('user00', 'user00', 'IRON MAN');
-
-INSERT INTO tbl_user(UID, upw, uname)
-     VALUES ('user01', 'user01', 'CAPTAIN');
-
-INSERT INTO tbl_user(UID, upw, uname)
-     VALUES ('user02', 'user02', 'HULK');
-
-INSERT INTO tbl_user(UID, upw, uname)
-     VALUES ('user03', 'user03', 'THOR');
 insert into tbl_user(UID, upw, uname, email)
 	 values ('zerock', '1234', 'ADMINISTRATOR','zerock@project.com');
 	 
@@ -102,22 +62,9 @@ create table tbl_leave
 	uname	varchar(50),
 	primary key(uid)
 );
-
-insert into tbl_leave(uid, uname)
-	 values ('user00', 'IRON MAN');
-insert into tbl_leave(uid, uname)
-	 values ('user01','CAPTAIN');
-insert into tbl_leave(uid, uname)
-	 values ('user02', 'HULK');
-insert into tbl_leave(uid, uname)
-	 values ('user03', 'THOR');
 insert into tbl_leave(uid, uname)
 	 values ('zerock', 'ADMINISTRATOR');
 
-
---
--- tbl_board
---
 CREATE TABLE tbl_qnaboard
 (
    bno        int NOT NULL AUTO_INCREMENT,
@@ -142,12 +89,6 @@ create table tbl_log
 	primary key(no)
 );
 
-
-
-
---
--- tbl_reply
---
 CREATE TABLE tbl_qreply
 (
    rno          int NOT NULL AUTO_INCREMENT,
@@ -161,6 +102,3 @@ CREATE TABLE tbl_qreply
 
 ALTER TABLE tbl_qreply
   ADD CONSTRAINT fk_qnaboard_reply FOREIGN KEY(bno) REFERENCES tbl_qnaboard(bno);
---
--- tbl_attach
---

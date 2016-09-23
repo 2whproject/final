@@ -7,7 +7,7 @@
 <head>
 <script type="text/javascript">
 	function back() {
-		location.href ="/notice/list";
+		self.location ="list";
 	}
 </script>
 <title></title>
@@ -69,6 +69,7 @@
                   type='hidden' name='perPageNum' value="${cri.perPageNum}">
                <input type='hidden' name='searchType' value="${cri.searchType}">
                <input type='hidden' name='keyword' value="${cri.keyword}">
+               <input type="hidden" name="sender" value="${noteVO.sender}">
 
             </form>
 
@@ -85,7 +86,7 @@
                </div>
                <div class="form-group">
                   <label for="exampleInputEmail1">Sender</label> <input type="text"
-                     name="Sender" class="form-control" value="${noteVO.sender}"
+                     name="sender" class="form-control" value="${noteVO.sender}"
                      readonly="readonly">
                </div>
             </div>
@@ -95,13 +96,26 @@
                   <hr>
                </div>
                   <button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
-               <button type="button" class="btn btn-primary" onclick="back()">GO
-                  LIST</button>
+                  <button type="submit" class="btn btn-warning" id="answer">ANSWER</button>
+                  <button type="button" class="btn btn-primary" onclick="back()">GO LIST</button>
             </div>
          </div>
          <!-- /.box -->
       </div>
       <!--/.col (left) -->
    </div>
+   <script>
+   $(document).ready(function(){
+	   var formObj = $("form[role='form']");
+    $("#removeBtn").on("click", function(){
+        formObj.attr("action", "/notice/removeNote");
+        formObj.submit();
+     }); 
+	$('#answer').on("click", function(evt) {
+        formObj.attr("action", "/notice/answerNote");
+        formObj.submit();
+	});
+   });
+   </script>
 </body>
 </html>

@@ -42,24 +42,24 @@
    </style>
 </head>
 <body>
- 			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">빠른 글 내용 보기</h3>
-				</div>
-				<div class="box-body">
-							<select class="op" id="value">
-								<option value="">선택하세요</option>
-								<optgroup label="자유 게시판">
-									<c:forEach items="${list}" var="quickVO">
-								<option value="${quickVO.content}">글 제목 : ${quickVO.title}&nbsp; / 글쓴이 : &nbsp;${quickVO.writer}</option>
-									</c:forEach>
-								</optgroup>
-							</select>
-							<hr>
-							<p onclick="move()" id="select" style="cursor: pointer;"></p>
-				</div>
-				<!-- /.box-body -->
-			</div>
+<!--  			<div class="box"> -->
+<!-- 				<div class="box-header with-border"> -->
+<!-- 					<h3 class="box-title">빠른 글 내용 보기</h3> -->
+<!-- 				</div> -->
+<!-- 				<div class="box-body"> -->
+<!-- 							<select class="op" id="value"> -->
+<!-- 								<option value="">선택하세요</option> -->
+<!-- 								<optgroup label="자유 게시판"> -->
+<%-- 									<c:forEach items="${list}" var="quickVO"> --%>
+<%-- 								<option value="${quickVO.content}">글 제목 : ${quickVO.title}&nbsp; / 글쓴이 : &nbsp;${quickVO.writer}</option> --%>
+<%-- 									</c:forEach> --%>
+<!-- 								</optgroup> -->
+<!-- 							</select> -->
+<!-- 							<hr> -->
+<!-- 							<p onclick="move()" id="select" style="cursor: pointer;"></p> -->
+<!-- 				</div> -->
+<!-- 				/.box-body -->
+<!-- 			</div> -->
 		</div>
 	<script>
 	var result = '${msg}';

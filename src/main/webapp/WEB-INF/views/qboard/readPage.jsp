@@ -42,7 +42,7 @@
    </style>
 </head>
 <body>
-	<c:if test="${pass == qnaVO.pass||qnaVO.pass == ''||login.uname == 'ADMINISTRATOR'}">
+	<c:if test="${pass == qnaVO.pass||qnaVO.pass == ''||login.uname == 'ADMINISTRATOR'||login.uid == qnaVO.secret}">
     <div class='popup back' style="display:none;"></div>
     <div id="popup_front" class='popup front' style="display:none;">
      <img id="popup_img">
@@ -54,7 +54,7 @@
          <!-- general form elements -->
          <div class="box box-primary">
             <div class="box-header">
-               <h3 class="box-title">READ BOARD</h3>
+               <h3 class="box-title">문의 내용</h3>
             </div>
             <!-- /.box-header -->
 
@@ -117,8 +117,9 @@
       <div class="col-md-12">
 
          <div class="box box-success">
+         <c:if test="${login.uid == qnaVO.secret||login.uid == 'zerock'}">
             <div class="box-header">
-               <h3 class="box-title">ADD NEW REPLY</h3>
+               <h3 class="box-title">답글</h3>
             </div>
 
 
@@ -159,7 +160,7 @@
                      ${qnaVO.replycnt} ] </small>
             </span></li>
          </ul>
-
+		</c:if>
          <div class='text-center'>
             <ul id="pagination" class="pagination pagination-sm no-margin ">
 
@@ -231,7 +232,11 @@
                         </div>         
                        </li>
                  {{/each}}
-   </script>  
+   </script>
+      <script id="templateEmpty" type="text/x-handlebars-template">
+            {{#each .}}
+            {{/each}}
+   </script> 
 <script>
    
    Handlebars.registerHelper("eqReplyer", function(replyer, block) {
@@ -263,17 +268,22 @@
    var bno = ${qnaVO.bno};//Board Number
 
    var replyPage = 1;
-
+   var close = false;
    function getPage(pageInfo) {
-
+	  if (close == false) {
       $.getJSON(pageInfo, function(data) {
          printData(data.list, $("#repliesDiv"), $('#template'));
          printPaging(data.pageMaker, $(".pagination"));
-
          $("#modifyModal").modal('hide');
          $("#replycntSmall").html("[ " + data.pageMaker.totalCount + " ]");
-
+         close = true;
       });
+	  } else if (close == true) {
+	      $.getJSON(pageInfo, function(data) {
+	          printData(data.list, $("#repliesDiv"), $('#templateEmpty'));
+	          close = false
+	       });
+	  }
    }
 
    var printPaging = function(pageMaker, target) {
@@ -298,14 +308,11 @@
       target.html(str);
    }; // 서버상에서 만들어지는것이 아니라 javaScript 로 만드는것
 
-   
    $("#repliesDiv").on("click", function() {
-      
       if ($(".timeline li").size() > 1) {
-         return;
+    	  getPage();
       }
-      getPage("/qreplies/" + bno + "/1");
-
+      	getPage("/qreplies/" + bno + "/1");
    });
 
    $(".pagination").on("click", "li a", function(event) {
@@ -514,6 +521,7 @@ $(document).ready(function(){
 		<c:when test="${not empty qnaVO.pass}">
 		<c:if test="${empty pass}">
 		<c:if test="${login.uname!='ADMINISTRATOR'}">
+		<c:if test="${login.uid != qnaVO.secret}">
    <div class="login-box">
       <div class="login-logo">
       </div><!-- /.login-logo -->
@@ -536,6 +544,7 @@ $(document).ready(function(){
 </form>
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
+    </c:if>
     </c:if>
     </c:if>
     </c:when>
