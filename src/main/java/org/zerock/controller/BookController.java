@@ -1,5 +1,7 @@
 package org.zerock.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,32 +17,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zerock.domain.QnaVO;
+import org.zerock.domain.BookVO;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.SearchCriteria;
-import org.zerock.service.QnaService;
+import org.zerock.service.BookService;
 
 @Controller
-@RequestMapping("/qboard/*")
-public class QnABoardController {
+@RequestMapping("/book/*")
+public class BookController {
 
-  private static final Logger logger = LoggerFactory.getLogger(QnABoardController.class);
+  private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 
   @Inject
-  private QnaService service;
+  private BookService service;
+  
+  @RequestMapping(value = "/search", method = RequestMethod.GET)
+  public void searchListPage(@RequestParam ("cate_id") Integer cate_id, Model model) throws Exception {
+	  model.addAttribute("cate_id", cate_id);
+  }
+  
 
   @RequestMapping(value = "/list", method = RequestMethod.GET)
   public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
     logger.info(cri.toString());
 
-    // model.addAttribute("list", service.listCriteria(cri));
     model.addAttribute("list", service.listSearchCriteria(cri));
 
     PageMaker pageMaker = new PageMaker();
     pageMaker.setCri(cri);
 
-    // pageMaker.setTotalCount(service.listCountCriteria(cri));
     pageMaker.setTotalCount(service.listSearchCount(cri));
 
     model.addAttribute("pageMaker", pageMaker);
@@ -49,20 +56,8 @@ public class QnABoardController {
   @RequestMapping(value = "/readPage", method = RequestMethod.GET)
   public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model)
       throws Exception {
+
     model.addAttribute(service.read(bno));
-  }
-  @RequestMapping(value = "/readPage", method = RequestMethod.POST)
-  public String read(QnaVO pass, RedirectAttributes rttr, Model model) throws Exception {
-	QnaVO vo = service.pass(pass);
-	if (vo == null) {
-		rttr.addFlashAttribute("msg", "FAIL");
-		return "redirect:/qboard/list";
-	}
-	logger.info("CORRECT");
-	rttr.addFlashAttribute("msg", "CORRECT");
-	rttr.addFlashAttribute("pass", pass.getPass());
-	rttr.addAttribute("bno", pass.getBno());
-	return "redirect:/qboard/readPage";
   }
 
   @RequestMapping(value = "/removePage", method = RequestMethod.POST)
@@ -75,9 +70,9 @@ public class QnABoardController {
     rttr.addAttribute("searchType", cri.getSearchType());
     rttr.addAttribute("keyword", cri.getKeyword());
 
-    rttr.addFlashAttribute("msg", "DELSUCCESS");
+    rttr.addFlashAttribute("msg", "SUCCESS");
 
-    return "redirect:/qboard/list";
+    return "redirect:/book/list";
   }
 
   @RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
@@ -87,7 +82,7 @@ public class QnABoardController {
   }
 
   @RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
-  public String modifyPagingPOST(QnaVO board, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
+  public String modifyPagingPOST(BookVO board, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
 
     logger.info(cri.toString());
     service.modify(board);
@@ -101,25 +96,46 @@ public class QnABoardController {
 
     logger.info(rttr.toString());
 
-    return "redirect:/qboard/list";
+    return "redirect:/book/list";
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.GET)
-  public void registGET() throws Exception {
-
+  public void registGET(@RequestParam("title") String title,
+		  				@RequestParam("author") String author,
+					    @RequestParam("price") String price,
+					    @RequestParam("publisher") String publisher,
+					    @RequestParam("overview") String overview,
+					    @RequestParam("link") String link,
+					    Model model){
+	
+	model.addAttribute("title", title);
+	model.addAttribute("author", author);
+	model.addAttribute("publisher", publisher);
+	model.addAttribute("price", price);
+	model.addAttribute("overview", overview);
+	model.addAttribute("link", link);
+	
     logger.info("regist get ...........");
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.POST)
-  public String registPOST(QnaVO board, RedirectAttributes rttr) throws Exception {
-
+  public String registPOST(BookVO board, RedirectAttributes rttr) throws Exception {
     logger.info("regist post ...........");
     logger.info(board.toString());
-
+    
     service.regist(board);
 
     rttr.addFlashAttribute("msg", "SUCCESS");
 
-    return "redirect:/qboard/list";
+    return "redirect:/book/list";
   }
+  
+  
+  @RequestMapping("/getAttach/{bno}")
+  @ResponseBody
+  public List<String> getAttach(@PathVariable("bno")Integer bno)throws Exception{
+    
+    return service.getAttach(bno);
+  }  
+
 }

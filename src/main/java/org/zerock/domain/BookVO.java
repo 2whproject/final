@@ -1,42 +1,53 @@
 package org.zerock.domain;
 
-import java.util.Arrays;
 import java.util.Date;
 
-public class QnaVO {
+public class BookVO {
 	
 	private Integer bno;
 	private String title;
+	private String author;
 	private String content;
 	private String writer;
-	private String secret;
-	private String pass;
-	
-	public String getPass() {
-		return pass;
-	}
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
-	public String getSecret() {
-		return secret;
-	}
-	public void setSecret(String secret) {
-		this.secret = secret;
-	}
 	private Date regdate;
 	private int viewcnt;
 	private int replycnt;
+	private String publisher;
+	private int price;
+	private String overview;
+	private String link;
 	
-	private String[] files;
-	
-		
-	public String[] getFiles() {
-		return files;
+	public String getLink() {
+		return link;
 	}
-	public void setFiles(String[] files) {
-		this.files = files;
+	public void setLink(String link) {
+		this.link = link;
 	}
+	public String getOverview() {
+		return overview;
+	}
+	public void setOverview(String overview) {
+		this.overview = overview;
+	}
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
 	public int getReplycnt() {
 		return replycnt;
 	}
@@ -81,10 +92,10 @@ public class QnaVO {
 	}
 	@Override
 	public String toString() {
-		return "BoardVO [bno=" + bno + ", title=" + title + ", content="
+		return "BookVO [bno=" + bno + ", title=" + title + ", author=" + author + ", content="
 				+ content + ", writer=" + writer + ", regdate=" + regdate
-				+ ", viewcnt=" + viewcnt + ", replycnt=" + replycnt + ", pass=" + pass
-				+ ", files=" + Arrays.toString(files) + "]";
+				+ ", viewcnt=" + viewcnt + ", replycnt=" + replycnt
+				+ "price=" + price + "publisher=" + publisher + "overview=" + overview + "link=" + link + "]";
 	}
 
 }

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false"%>
 <html>
 <head>
 <style type="text/css">
@@ -9,6 +10,11 @@
 		color: lime;
 	}
 </style>
+<script type="text/javascript">
+	function send() {
+		
+	}
+</script>
 <title>list.jsp</title>
 </head>
 <body>
@@ -23,9 +29,6 @@
 				</div>
 				<div class='box-body'>
 					<button id='newBtn'>새 글 쓰기</button>
-				<c:if test="${login.uname == 'ADMINISTRATOR'}">
-					<button id='newBtn1'>새 공지 쓰기</button>
-				</c:if>
 				</div>
 			</div>
 			<div class="box">
@@ -33,25 +36,18 @@
 				<div class="box-body">
 					<table class="table table-bordered">
 						<tr>
-							<th style="width: 100px">NO</th>
+							<th style="width: 10px">NO</th>
 							<th style="width: 600px">제목</th>
 							<th style="width: 100px">작성자</th>
-							<th style="width: 190px">글 등록일</th>
-							<th style="width: 30px">VIEWCNT</th>
+							<th style="width: 160px">글 등록일</th>
+							<th style="width: 40px">VIEWCNT</th>
 						</tr>
 						 <form role="form" action="modifyPage" method="post">
               				<input id="sender" type="hidden" name="sender" value="">
             			 </form>
 						<c:forEach items="${list}" var="qnaVO">
 							<tr>
-								<c:choose>
-									<c:when test="${qnaVO.notice == false}">
-										<td style="font-size: 12px;">공지사항</td>
-									</c:when>
-									<c:otherwise>
-										<td>${qnaVO.bno}</td>
-									</c:otherwise>
-								</c:choose>
+								<td>${qnaVO.bno}</td>
 								<c:if test="${not empty qnaVO.pass}">
 								<td>
 								<a href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>
@@ -59,20 +55,10 @@
 								</a></td>
 								</c:if>
 								<c:if test="${empty qnaVO.pass}">
-									<c:choose>
-									<c:when test="${qnaVO.notice == false}">
-									<td>
-								<a href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>
-										<strong style="font-size: 14px;">${qnaVO.title}</strong>
-								</a></td>
-									</c:when>
-								<c:otherwise>
 								<td>
-								<a style="font-size: 14px;" href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>
+								<a href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>
 										${qnaVO.title}<strong>[ ${qnaVO.replycnt} ]</strong>
 								</a></td>
-								</c:otherwise>
-									</c:choose>
 								</c:if>
 								<td class="drop">${qnaVO.writer}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
@@ -132,9 +118,6 @@
 							});
 					$('#newBtn').on("click", function(evt) {
 						self.location = "register";
-					});
-					$('#newBtn1').on("click", function(evt) {
-						self.location = "registerNotice";
 					});
 				});
 	</script>

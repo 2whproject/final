@@ -104,14 +104,7 @@ body {
 		<div class="panel panel-default col-lg-5" >
 			<div class="panel-body">문의게시판</div>
 			<c:forEach items="${title1}" var="qnaVO">
-				<c:choose>
-					<c:when test="${qnaVO.notice == false}">
-						<li></li>
-					</c:when>
-				<c:otherwise>
-					<li><a href="qboard/readPage?bno=${qnaVO.bno}">${qnaVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
-				</c:otherwise>
-				</c:choose>
+							<li><a href="qboard/readPage?bno=${qnaVO.bno}">${qnaVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
 			</c:forEach>
 		</div>
 	</div>

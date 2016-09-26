@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Log in</title>
+    <title>AdminLTE 2 | Log in</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -27,9 +27,10 @@
     <c:if test="${login.uname == null}">
     <div class="login-box">
       <div class="login-logo">
+        <a href="/resources/index2.html"><b>Zerock</b>Project</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">로그인 하십시오</p>
+        <p class="login-box-msg">Sign in to start your session</p>
 
 <form action="/user/loginPost" method="post">
   <div class="form-group has-feedback">
