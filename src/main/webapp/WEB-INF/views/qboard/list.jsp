@@ -6,89 +6,86 @@
 <html>
 <head>
 <style type="text/css">
-	.drop:HOVER{
-		color: lime;
-	}
+/* 	.drop:HOVER{ */
+/* 		color: lime; */
+/* 	} */
+td, th{
+	text-align: center;
+}
+select, input, button {
+	height: 30px;
+}
+#newBtn {
+	height: 25px;
+}
+*{
+	font-size: 15px;
+}
 </style>
-<script type="text/javascript">
-	function send() {
-		
-	}
-</script>
 <title>list.jsp</title>
 </head>
 <body>
-	<div class="row">
-		<!-- left column -->
-
-		<div class="col-md-12">
-			<!-- general form elements -->
-			<div class='box'>
-				<div class="box-header with-border">
-					<h3 class="box-title">문의 게시판</h3>
-				</div>
-				<div class='box-body'>
-					<button id='newBtn'>새 글 쓰기</button>
-				</div>
-			</div>
-			<div class="box">
-				<div class="box-header with-border">
-				<div class="box-body">
-					<table class="table table-bordered">
-						<tr>
-							<th style="width: 10px">NO</th>
-							<th style="width: 600px">제목</th>
-							<th style="width: 100px">작성자</th>
-							<th style="width: 160px">글 등록일</th>
-							<th style="width: 40px">VIEWCNT</th>
-						</tr>
-						 <form role="form" action="modifyPage" method="post">
-              				<input id="sender" type="hidden" name="sender" value="">
-            			 </form>
-						<c:forEach items="${list}" var="qnaVO">
-							<tr>
-								<td>${qnaVO.bno}</td>
-								<c:if test="${not empty qnaVO.pass}">
-								<td>
-								<a href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>
-										이 글은 비밀글입니다 <span class="glyphicon glyphicon-lock"></span>
-								</a></td>
-								</c:if>
-								<c:if test="${empty qnaVO.pass}">
-								<td>
-								<a href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>
-										${qnaVO.title}<strong>[ ${qnaVO.replycnt} ]</strong>
-								</a></td>
-								</c:if>
-								<td class="drop">${qnaVO.writer}</td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-										value="${qnaVO.regdate}" /></td>
-								<td><span class="badge bg-red">${qnaVO.viewcnt }</span></td>
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
-				<div class="box-footer">
-					<div class="text-center">
-						<ul class="pagination">
-							<c:if test="${pageMaker.prev}">
-								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
-							</c:if>
-							<c:forEach begin="${pageMaker.startPage }"
-								end="${pageMaker.endPage }" var="idx">
-								<li
-									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-									<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-								</li>
-							</c:forEach>
-							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a
-									href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
-							</c:if>
-						</ul>
-					</div>
-				</div>
+	<div class="box">
+		<div class="box-header with-border">
+			<h3 class="box-title">문의 게시판</h3>
+		</div>
+		<div class="box-body text-right">
+			<button id='newBtn'>글쓰기</button>
+		</div>
+		<div class='box-body'>
+			<table class="table table-bordered">
+				<tr>
+					<th style="width: 60px">NO</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>글 등록일</th>
+					<th style="width: 60px">VIEWCNT</th>
+				</tr>
+				 <form role="form" action="modifyPage" method="post">
+            		<input id="sender" type="hidden" name="sender" value="">
+          		</form>
+				<c:forEach items="${list}" var="qnaVO">
+					<tr>
+						<td>${qnaVO.bno}</td>
+						<c:if test="${not empty qnaVO.pass}">
+						<td>
+						<a href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>
+								이 글은 비밀글입니다 <span class="glyphicon glyphicon-lock"></span>
+						</a></td>
+						</c:if>
+						<c:if test="${empty qnaVO.pass}">
+						<td>
+						<a href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>
+								${qnaVO.title}<strong>[ ${qnaVO.replycnt} ]</strong>
+						</a></td>
+						</c:if>
+						<td class="drop">${qnaVO.writer}</td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+								value="${qnaVO.regdate}" /></td>
+						<td><span class="badge bg-red">${qnaVO.viewcnt }</span></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<div class="box-footer">
+			<div class="text-center">
+				<ul class="pagination">
+					<c:if test="${pageMaker.prev}">
+						<li><a
+							href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+					</c:if>
+					<c:forEach begin="${pageMaker.startPage }"
+						end="${pageMaker.endPage }" var="idx">
+						<li
+							<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+							<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+						</li>
+					</c:forEach>
+					<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+						<li><a
+							href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+					</c:if>
+				</ul>
 			</div>
 		</div>
 	</div>

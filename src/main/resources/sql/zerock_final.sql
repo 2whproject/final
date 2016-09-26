@@ -55,6 +55,7 @@ CREATE TABLE tbl_user
 --성룡
 
 CREATE TABLE tbl_board_torrent
+
 (
    BNO        int NOT NULL AUTO_INCREMENT,
    TITLE      varchar(200) NOT NULL,
@@ -77,7 +78,7 @@ CREATE TABLE tbl_reply_torrent
    updatedate   timestamp NOT NULL DEFAULT now(),
    PRIMARY KEY(rno)
 );
-ALTER TABLE tbl_reply_book
+ALTER TABLE tbl_reply_torrent
   ADD CONSTRAINT fk_board_reply FOREIGN KEY(bno) REFERENCES tbl_board_torrent(bno);
   
 
@@ -95,13 +96,13 @@ ALTER TABLE tbl_attach
 CREATE TABLE tbl_board_book
 (
    BNO        	int NOT NULL AUTO_INCREMENT,
-   TITLE      	varchar(200) NOT NULL,
-   CONTENT    	text NULL,
    OVERVIEW		text NOT NULL,
+   TITLE      	varchar(200) NOT NULL,
+   LINK      	varchar(200) NOT NULL,
+   CONTENT    	text NULL,
+   AUTHOR		varchar(200) NOT NULL,
    WRITER     	varchar(50) NOT NULL,
    PRICE		int NOT NULL,
-   BUYDATE	  	date NULL,
-   FINISHDATE 	date NULL,
    PUBLISHER	varchar(100) null,
    REGDATE    	timestamp NOT NULL DEFAULT now(),
    VIEWCNT    	int DEFAULT 0,
@@ -109,7 +110,7 @@ CREATE TABLE tbl_board_book
    PRIMARY KEY(bno)
 );
 
-CREATE TABLE tbl_reply
+CREATE TABLE tbl_reply_book
 (
    rno          int NOT NULL AUTO_INCREMENT,
    bno          int NOT NULL DEFAULT 0,

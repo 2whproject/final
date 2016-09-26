@@ -37,16 +37,10 @@
 }
 
 #home {
-	font-size: 10px;
+	font-size: 15px;
 }
 #topnavbar li, a {
-	font-size: 10px;
-}
-#navboard {
- 	padding-left: 33%; 
- 	width: 33%; 
 	font-size: 15px;
-	font-weight: bold;
 }
 #toprow{
 	font-size: 12px;
@@ -78,15 +72,14 @@ footer {
 	<!-- .wrapper -->
 	<div class="wrapper">
 		<div class="container-fluid text-center">
-		<div class="row">
-			<div class="col-lg-3 side"></div>
-			<div class="col-lg-6">
+		<div class="box">
+			<div class="box-body">
 				<!-- header start -->
 				<!-- Navbar -->
 				<nav class="navbar navbar-inverse">
 					<div class="container-fluid">
 						<div class="navbar-header">
-							<a id="home" class="nav navbar-brand" href="http://localhost:8080/">Home</a>
+							<a id="home" class="nav navbar-brand" href="/">Home</a>
 						</div>
 						<ul id="topnavbar" class="nav navbar-nav">
 							<li><a href="#">공지사항</a></li>
@@ -116,8 +109,8 @@ footer {
 									도서<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a
-										href="http://localhost:8080/book/search?cate_id=33">도서검색</a></li>
-									<li><a href="http://localhost:8080/book/list">나의 독서노트
+										href="book/search?cate_id=33">도서검색</a></li>
+									<li><a href="book/list">나의 독서노트
 											리스트</a></li>
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
@@ -133,7 +126,7 @@ footer {
 								<ul class="dropdown-menu">
 									<li><a href="#">투표하기</a></li>
 								</ul></li>
-							<li><a href="#">자유게시판</a></li>
+							<li><a href="qboard/list">문의 게시판</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">z
 						<c:if test="${login == null}">

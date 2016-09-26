@@ -25,16 +25,17 @@ body {
 }
 #recent li{
 	list-style: none;
-	font-size: 13px;
 	margin-bottom: 3px;
 }
 .panel-default {
-	padding: 20px;
-	margin: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
 }
-.panel-body {
+#recent .panel-body {
 	padding-left: 0px;
 	font-size: 15px;
+	height: 50px;
 }
 .label-danger{
 	background-color: black;
@@ -45,11 +46,19 @@ body {
 .pannel-body, li {
 	text-align: left;
 }
+
 .panel{
 	float: left;
 }
+.side {
+	height: auto;
+}
+img {
+	width: 20px;
+	height: 198px;
+}
 *{
-/* 	border: 1px solid red; */
+/*    	border: 1px solid red; */
 }
 </style>
 </head>
@@ -58,57 +67,90 @@ body {
 <!-- 이미지 슬라이드 -->
 <!-- 게시판별 최신글 -->
 	<div id="recent" class="row">
-		<div class="panel panel-default col-lg-5" >
-			<div class="panel-body">공지사항</div>
-			<c:forEach items="${title}" var="bookVO">
-							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
-			</c:forEach>		
+		<div class="col-lg-3 side"></div>
+<!-- 		<div class="panel panel-default col-lg-5 marginleft" > -->
+<!-- 			<div class="panel-body">공지사항</div> -->
+<!-- 			<div class="col-lg-6"> -->
+<!-- 				<div><i class="fa fa-film fa-5x" aria-hidden="true"></i></div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-lg-6"> -->
+<%-- 			<c:forEach items="${title}" var="bookVO"> --%>
+<%-- 							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li> --%>
+<%-- 			</c:forEach>		 --%>
+<!-- 			</div> -->
+<!-- 		</div> -->
+		<div class="col-lg-6 side">
+			<div class="row">
+			<div class="col-lg-6">
+				<div class="panel panel-default col-lg-12" >
+					<img class="col-lg-6" alt="" src="http://ojsfile.ohmynews.com/STD_IMG_FILE/2016/0722/IE001994478_STD.jpg"/>
+					<div class="col-lg-6">
+						<div class="panel-body">영화</div>
+						<c:forEach items="${title}" var="bookVO">
+										<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
+						</c:forEach>
+					</div>
+				</div>
+				<div class="panel panel-default col-lg-12" >
+					<img class="col-lg-6" alt="" src="http://1.bp.blogspot.com/-slxwydRfBQs/VnsNj05BvWI/AAAAAAAAAyA/hCWlI8WReDM/s1600/%25EC%259D%25B8%25EC%2583%259D%25EC%259D%2580%25EC%2595%2584%25EB%25A6%2584%25EB%258B%25A4%25EC%259B%258C_1.png"/>
+					<div class="col-lg-6">
+						<div class="panel-body">영화리뷰</div>
+						<c:forEach items="${title}" var="bookVO">
+										<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
+						</c:forEach>
+					</div>
+				</div>
+				<div class="panel panel-default col-lg-12">
+					<img class="col-lg-6" alt="" src="http://cfile7.uf.tistory.com/image/2155CE3B56D196CD0675DB"/>
+					<div class="col-lg-6">
+						<div class="panel-body">만화</div>
+						<c:forEach items="${title}" var="bookVO">
+										<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="panel panel-default col-lg-12" >
+					<img class="col-lg-6" alt="" src="http://lh3.googleusercontent.com/iZfeKtn0NNmmlVnNryu782dCPgjEQqZ_-h0Hg0OxXSft6Suc_Uj2Qfg3B7DCmtdLFg=w300"/>
+					<div class="col-lg-6">
+						<div class="panel-body">게임</div>
+						<c:forEach items="${title}" var="bookVO">
+										<li><a href="#">${bookVO.title}</a> <span class="label label-danger bg-red-gradient">n</span></li>
+						</c:forEach>
+					</div>
+				</div>
+				<div class="panel panel-default col-lg-12" >
+					<img class="col-lg-6" alt="" src="http://image.kyobobook.co.kr/new_ink/booknews/upload/thum/396/th_large_8FDD65666BB24110B6A8A0035B427247.jpg"/>
+					<div class="col-lg-6">
+						<div class="panel-body">도서</div>
+						<c:forEach items="${title}" var="bookVO">
+										<li><a href="book/readPage?bno=${bookVO.bno}">${bookVO.title}</a> 
+										<span class="label label-danger bg-red-gradient">n</span></li>
+						</c:forEach>
+					</div>
+				</div>
+				<div class="panel panel-default col-lg-12" >
+					<img class="col-lg-6" alt="" src="http://tomahconnect.org/art/wp-content/uploads/qna.jpg"/>
+					<div class="col-lg-6">
+						<div class="panel-body">문의게시판</div>
+						<c:forEach items="${title1}" var="qnaVO">
+										<li><a href="qboard/readPage?bno=${qnaVO.bno}">${qnaVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+	<!-- 		<div class="panel panel-default col-lg-2" > -->
+			</div>
+<!-- 			<div class="panel-body">랭킹</div> -->
+<%-- 			<c:forEach items="${title}" var="bookVO"> --%>
+<%-- 							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li> --%>
+<%-- 			</c:forEach> --%>
+<!-- 		</div> -->
+			</div>
 		</div>
-		<div class="panel panel-default col-lg-5" >
-			<div class="panel-body">영화</div>
-			<c:forEach items="${title}" var="bookVO">
-							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
-			</c:forEach>
-		</div>
-		<div class="panel panel-default col-lg-5" >
-			<div class="panel-body">영화리뷰</div>
-			<c:forEach items="${title}" var="bookVO">
-							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
-			</c:forEach>
-		</div>
-		<div class="panel panel-default col-lg-5">
-			<div class="panel-body">만화</div>
-			<c:forEach items="${title}" var="bookVO">
-							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
-			</c:forEach>
-		</div>
-		<div class="panel panel-default col-lg-5" >
-			<div class="panel-body">게임</div>
-			<c:forEach items="${title}" var="bookVO">
-							<li><a href="#">${bookVO.title}</a> <span class="label label-danger bg-red-gradient">n</span></li>
-			</c:forEach>
-		</div>
-		<div class="panel panel-default  col-lg-5" >
-			<div class="panel-body">도서</div>
-			<c:forEach items="${title}" var="bookVO">
-							<li><a href="book/readPage?bno=${bookVO.bno}">${bookVO.title}</a> 
-							<span class="label label-danger bg-red-gradient">n</span></li>
-			</c:forEach>						
-		</div>
-		<div class="panel panel-default col-lg-5" >
-			<div class="panel-body">랭킹</div>
-			<c:forEach items="${title}" var="bookVO">
-							<li><a href="#">${bookVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
-			</c:forEach>
-		</div>
-		<div class="panel panel-default col-lg-5" >
-			<div class="panel-body">문의게시판</div>
-			<c:forEach items="${title1}" var="qnaVO">
-							<li><a href="qboard/readPage?bno=${qnaVO.bno}">${qnaVO.title}</a>  <span class="label label-danger bg-red-gradient">n</span></li>
-			</c:forEach>
-		</div>
+		<div class="col-lg-3 side"></div>
 	</div>
-</section>
 	<script>
 	var result = '${msg}';
 	if (result == 'LOGOFF') {
