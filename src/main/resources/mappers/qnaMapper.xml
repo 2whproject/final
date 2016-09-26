@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="org.zerock.mapper.QnaMapper">
 
 	<insert id="create">
-		insert into tbl_qnaboard (title, content, writer, secret, pass)
-		values(#{title},#{content}, #{writer}, #{secret}, #{pass})
+		insert into tbl_qnaboard (title, content, writer, secret, pass, notice)
+		values(#{title},#{content}, #{writer}, #{secret}, #{pass}, #{notice})
 	</insert>
 	<select id="pass" resultType="org.zerock.domain.QnaVO">
 		select bno, pass from tbl_qnaboard where pass = #{pass} and bno = #{bno}
@@ -23,22 +23,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listAll" resultType="org.zerock.domain.QnaVO">
  <![CDATA[
  select 
-   bno, title, content, writer, regdate, viewcnt 
+   bno, title, content, writer, regdate, viewcnt, notice
  from 
    tbl_qnaboard 
  where bno > 0 
- order by bno desc, regdate desc limit 5
+ order by notice desc, bno desc limit 5
  ]]>
 	</select>
 
 	<select id="listPage" resultType="QnaVO">
  <![CDATA[
  select 
-   bno, title, content, writer, regdate, viewcnt , replycnt
+   bno, title, content, writer, regdate, viewcnt , replycnt, notice
  from 
    tbl_qnaboard 
  where bno > 0 
- order by bno desc, regdate desc
+ order by notice, bno desc
  limit #{page}, 10
  ]]>
 	</select>
@@ -46,11 +46,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listCriteria" resultType="QnaVO">
  <![CDATA[
  select 
-   bno, title, content, writer, regdate, viewcnt , replycnt
+   bno, title, content, writer, regdate, viewcnt , replycnt, notice
  from 
    tbl_qnaboard 
  where bno > 0 
- order by bno desc, regdate desc
+ order by notice, bno desc
  limit #{pageStart}, #{perPageNum}
  ]]>
 	</select>
@@ -74,7 +74,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  from 
    tbl_qnaboard 
  where 
-   bno > 0 
+   bno > 0
  ]]>
 	</select>
 
@@ -113,13 +113,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <![CDATA[  
   select * 
   from tbl_qnaboard 
-  where bno > 0 
+  where bno > 0
 ]]>
 
 		<include refid="search"></include>
   
 <![CDATA[    
-  order by bno desc
+  order by notice, bno desc
   limit #{pageStart}, #{perPageNum}
 ]]>
 	</select>
@@ -128,7 +128,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <![CDATA[  
   select count(bno) 
   from tbl_qnaboard 
-  where bno > 0 
+  where bno > 0
 ]]>
 		<include refid="search"></include>
 

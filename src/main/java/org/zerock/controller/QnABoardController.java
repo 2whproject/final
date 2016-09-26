@@ -122,4 +122,21 @@ public class QnABoardController {
 
     return "redirect:/qboard/list";
   }
+  @RequestMapping(value = "/registerNotice", method = RequestMethod.GET)
+  public void registnoticeGET() throws Exception {
+    logger.info("regist get ...........");
+  }
+
+  @RequestMapping(value = "/registerNotice", method = RequestMethod.POST)
+  public String registnoticePOST(QnaVO board, RedirectAttributes rttr) throws Exception {
+
+    logger.info("regist post ...........");
+    logger.info(board.toString());
+
+    service.regist(board);
+
+    rttr.addFlashAttribute("msg", "SUCCESS");
+
+    return "redirect:/qboard/list";
+  }
 }
