@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="org.zerock.mapper.BookMapper">
 
 	<insert id="create">
-		insert into tbl_book_board (title, author, content, writer, price, publisher, link, regdate, overview)
+		insert into tbl_board_book (title, author, content, writer, price, publisher, link, regdate, overview)
 		values(#{title}, #{author}, #{content}, #{writer}, #{price}, #{publisher}, #{link}, #{regdate}, #{overview} )
 	</insert>
 
@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select
 		bno, title, author, content, writer, price, publisher, regdate, viewcnt , replycnt, link, overview
 		from
-		tbl_book_board
+		tbl_board_book
 		where bno = #{bno}
 	</select>
 
@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  select 
    bno, title, author, content, writer, regdate, viewcnt 
  from 
-   tbl_book_board 
+   tbl_board_book 
  where bno > 0 
  order by bno desc, regdate desc
  ]]>
@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  select 
    title, bno
  from 
-   tbl_book_board 
+   tbl_board_book 
  where bno > 0 
  order by bno desc, regdate desc
  limit 5
@@ -45,7 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  select 
    bno, title, author, content, writer, regdate, viewcnt , replycnt
  from 
-   tbl_book_board 
+   tbl_board_book 
  where bno > 0 
  order by bno desc, regdate desc
  limit #{page}, 10
@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  select 
    bno, title, author, content, writer, regdate, viewcnt , replycnt
  from 
-   tbl_book_board 
+   tbl_board_book 
  where bno > 0 
  order by bno desc, regdate desc
  limit #{pageStart}, #{perPageNum}
@@ -66,12 +66,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<update id="update">
-		update tbl_book_board set content =#{content}
+		update tbl_board_book set content =#{content}
 		where bno = #{bno}
 	</update>
 
 	<delete id="delete">
-		delete from tbl_book_board where bno = #{bno}
+		delete from tbl_board_book where bno = #{bno}
 	</delete>
 
 
@@ -81,7 +81,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  select 
    count(bno) 
  from 
-   tbl_book_board 
+   tbl_board_book 
  where 
    bno > 0 
  ]]>
@@ -126,7 +126,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listSearch" resultType="BookVO">
 <![CDATA[  
   select * 
-  from tbl_book_board 
+  from tbl_board_book 
   where bno > 0 
 ]]>
 
@@ -141,7 +141,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listSearchCount" resultType="int">
 <![CDATA[  
   select count(bno) 
-  from tbl_book_board 
+  from tbl_board_book 
   where bno > 0 
 ]]>
 		<include refid="search"></include>
@@ -151,12 +151,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
  
 <update id="updateReplyCnt">
-  update tbl_book_board set replycnt = replycnt + #{amount} where bno = #{bno}
+  update tbl_board_book set replycnt = replycnt + #{amount} where bno = #{bno}
 </update>
 
 
 <update id="updateViewCnt">
-  update tbl_book_board set viewcnt = viewcnt +1 where bno = #{bno}
+  update tbl_board_book set viewcnt = viewcnt +1 where bno = #{bno}
 </update>
 
 
