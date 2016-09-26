@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="false"%>
 <html>
 <head>
 <style type="text/css">
@@ -25,12 +24,16 @@ select, input, button {
 <title>list.jsp</title>
 </head>
 <body>
+<<<<<<< HEAD
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title">문의 게시판</h3>
 		</div>
 		<div class="box-body text-right">
 			<button id='newBtn'>글쓰기</button>
+			<c:if test="${login.uname == 'ADMINISTRATOR'}">
+				<button id='newBtn1'>새 공지 쓰기</button>
+			</c:if>
 		</div>
 		<div class='box-body'>
 			<table class="table table-bordered">
@@ -115,6 +118,9 @@ select, input, button {
 							});
 					$('#newBtn').on("click", function(evt) {
 						self.location = "register";
+					});
+					$('#newBtn1').on("click", function(evt) {
+						self.location = "registerNotice";
 					});
 				});
 	</script>

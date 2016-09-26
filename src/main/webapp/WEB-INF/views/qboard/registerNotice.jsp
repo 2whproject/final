@@ -8,6 +8,9 @@
 	function back() {
 		self.location="list";
 	}
+	function normal() {
+		self.location="register";
+	}
 </script>
 </head>
 <body>
@@ -15,17 +18,22 @@
 		<!-- left column -->
 		<div class="col-md-12">
 			<!-- general form elements -->
+			<div class='box'>
+				<div class='box-body'>
+					<button onclick="normal()">일반 글 쓰기</button>
+				</div>
+			</div>
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">글쓰기</h3>
+					<h3 class="box-title">공지 글 쓰기</h3>
 				</div>
 				<!-- /.box-header -->
 
 				<form id='registerForm' role="form" method="post">
-							<input name="notice" class="form-control" type="hidden" value="true">
+							<input name="notice" class="form-control" type="hidden" value="false">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="exampleInputPassword1">비밀번호</label>
+							<label style="float: left" for="exampleInputPassword1">비밀번호 </label>
 							<input id="secpass" class="form-control" type="password" name="pass" style="position:relative; width: 100px;">
 						</div>
 						<div class="form-group">

@@ -63,8 +63,6 @@ img {
 </style>
 </head>
 <body>
-<!-- 인트로 -->
-<!-- 이미지 슬라이드 -->
 <!-- 게시판별 최신글 -->
 	<div id="recent" class="row">
 		<div class="col-lg-3 side"></div>
@@ -79,8 +77,8 @@ img {
 <%-- 			</c:forEach>		 --%>
 <!-- 			</div> -->
 <!-- 		</div> -->
+		<div class="row">
 		<div class="col-lg-6 side">
-			<div class="row">
 			<div class="col-lg-6">
 				<div class="panel panel-default col-lg-12" >
 					<img class="col-lg-6" alt="" src="http://ojsfile.ohmynews.com/STD_IMG_FILE/2016/0722/IE001994478_STD.jpg"/>
@@ -148,7 +146,6 @@ img {
 <%-- 			</c:forEach> --%>
 <!-- 		</div> -->
 			</div>
-		</div>
 		<div class="col-lg-3 side"></div>
 	</div>
 	<script>
