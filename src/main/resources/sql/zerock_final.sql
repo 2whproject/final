@@ -157,6 +157,7 @@ CREATE TABLE tbl_qnaboard
    replycnt   int DEFAULT 0,
    secret	  varchar(50) NOT NULL,
    pass		  varchar(50),
+   notice	  boolean,
    PRIMARY KEY(bno)
 );
 
