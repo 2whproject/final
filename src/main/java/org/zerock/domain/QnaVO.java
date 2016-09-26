@@ -11,7 +11,14 @@ public class QnaVO {
 	private String writer;
 	private String secret;
 	private String pass;
+	private Boolean notice;
 	
+	public Boolean getNotice() {
+		return notice;
+	}
+	public void setNotice(Boolean notice) {
+		this.notice = notice;
+	}
 	public String getPass() {
 		return pass;
 	}
@@ -28,15 +35,6 @@ public class QnaVO {
 	private int viewcnt;
 	private int replycnt;
 	
-	private String[] files;
-	
-		
-	public String[] getFiles() {
-		return files;
-	}
-	public void setFiles(String[] files) {
-		this.files = files;
-	}
 	public int getReplycnt() {
 		return replycnt;
 	}
@@ -84,7 +82,7 @@ public class QnaVO {
 		return "BoardVO [bno=" + bno + ", title=" + title + ", content="
 				+ content + ", writer=" + writer + ", regdate=" + regdate
 				+ ", viewcnt=" + viewcnt + ", replycnt=" + replycnt + ", pass=" + pass
-				+ ", files=" + Arrays.toString(files) + "]";
+				+ ", notice=" + notice + "]";
 	}
 
 }
