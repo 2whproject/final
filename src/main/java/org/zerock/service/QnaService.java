@@ -24,10 +24,11 @@ public interface QnaService {
 
   public int listCountCriteria(Criteria cri) throws Exception;
 
-  public List<QnaVO> listSearchCriteria(SearchCriteria cri) 
-      throws Exception;
+  public List<QnaVO> listSearchCriteria(SearchCriteria cri) throws Exception;
 
   public int listSearchCount(SearchCriteria cri) throws Exception;
+
+  public List<QnaVO> listNew() throws Exception;
 
 
 }

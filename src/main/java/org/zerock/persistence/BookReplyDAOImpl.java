@@ -9,31 +9,30 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.zerock.domain.Criteria;
-import org.zerock.domain.ReplyVO;
 import org.zerock.domain.BookReplyVO;
 
 @Repository
-public class ReplyDAOImpl implements ReplyDAO {
+public class BookReplyDAOImpl implements BookReplyDAO {
 
   @Inject
   private SqlSession session;
 
-  private static String namespace = "org.zerock.mapper.bookreplymapper";
+  private static String namespace = "org.zerock.mapper.bookreplyMapper";
 
   @Override
-  public List<ReplyVO> list(Integer bno) throws Exception {
+  public List<BookReplyVO> list(Integer bno) throws Exception {
 
     return session.selectList(namespace + ".list", bno);
   }
 
   @Override
-  public void create(ReplyVO vo) throws Exception {
+  public void create(BookReplyVO vo) throws Exception {
 
     session.insert(namespace + ".create", vo);
   }
 
   @Override
-  public void update(ReplyVO vo) throws Exception {
+  public void update(BookReplyVO vo) throws Exception {
 
     session.update(namespace + ".update", vo);
   }
@@ -45,7 +44,7 @@ public class ReplyDAOImpl implements ReplyDAO {
   }
 
   @Override
-  public List<ReplyVO> listPage(Integer bno, Criteria cri) throws Exception {
+  public List<BookReplyVO> listPage(Integer bno, Criteria cri) throws Exception {
 
     Map<String, Object> paramMap = new HashMap<>();
 

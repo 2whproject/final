@@ -103,4 +103,9 @@ public QnaVO pass(QnaVO pass) throws Exception {
 	return session.selectOne(namespace + ".pass", pass);
 }
 
+@Override
+public List<QnaVO> listNew() {
+	return session.selectList(namespace + ".listNew");
+}
+
 }

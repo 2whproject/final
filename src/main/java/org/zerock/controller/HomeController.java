@@ -26,7 +26,7 @@ public class HomeController {
   @Inject
   private BookService service;
   @Inject
-  private QnaService service1;
+  private QnaService serviceqna;
   
   /**
    * Simply selects the home view to render by returning its name.
@@ -42,8 +42,8 @@ public class HomeController {
 
     model.addAttribute("serverTime", formattedDate);
     
-    model.addAttribute("title",service.newList());
-    model.addAttribute("title1",service1.listAll());
+    model.addAttribute("book",service.newList());
+    model.addAttribute("qna",serviceqna.listNew());
     
     return "home";
   }

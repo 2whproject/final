@@ -3,16 +3,16 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.zerock.mapper.BookMapper">
+<mapper namespace="org.zerock.mapper.bookMapper">
 
 	<insert id="create">
-		insert into tbl_board_book (title, author, content, writer, price, publisher, link, regdate, overview)
-		values(#{title}, #{author}, #{content}, #{writer}, #{price}, #{publisher}, #{link}, #{regdate}, #{overview} )
+		insert into tbl_board_book (title, author, content, writer, price, publisher, link, regdate, overview, star)
+		values(#{title}, #{author}, #{content}, #{writer}, #{price}, #{publisher}, #{link}, #{regdate}, #{overview}, #{star} )
 	</insert>
 
 	<select id="read" resultType="org.zerock.domain.BookVO">
 		select
-		bno, title, author, content, writer, price, publisher, regdate, viewcnt , replycnt, link, overview
+		bno, title, author, content, writer, price, publisher, regdate, viewcnt , replycnt, link, overview, star
 		from
 		tbl_board_book
 		where bno = #{bno}
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listAll" resultType="org.zerock.domain.BookVO">
  <![CDATA[
  select 
-   bno, title, author, content, writer, regdate, viewcnt 
+   bno, title, author, content, writer, regdate, viewcnt, replycnt 
  from 
    tbl_board_book 
  where bno > 0 
@@ -31,12 +31,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="newList" resultType="org.zerock.domain.BookVO">
  <![CDATA[
  select 
-   title, bno
+    bno, title, author, content, writer, regdate, viewcnt, replycnt 
  from 
    tbl_board_book 
  where bno > 0 
  order by bno desc, regdate desc
- limit 5
+ limit 6
  ]]>
 	</select>
 

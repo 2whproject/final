@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,20 +15,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.zerock.domain.BookReplyVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageMaker;
 import org.zerock.domain.ReplyVO;
+import org.zerock.service.BookReplyService;
 import org.zerock.service.ReplyService;
 
 @RestController
 @RequestMapping("/replies")
-public class ReplyController {
-
+public class BookReplyController {
+  
+	private static final Logger logger = LoggerFactory.getLogger(BookReplyController.class);
+	
   @Inject
-  private ReplyService service;
+  private BookReplyService service;
 
   @RequestMapping(value = "", method = RequestMethod.POST)
-  public ResponseEntity<String> register(@RequestBody ReplyVO vo) {
+  public ResponseEntity<String> register(@RequestBody BookReplyVO vo) {
+	  logger.info("##########################");
+	  logger.info(vo.toString());
 
     ResponseEntity<String> entity = null;
     try {
@@ -40,9 +48,9 @@ public class ReplyController {
   }
 
   @RequestMapping(value = "/all/{bno}", method = RequestMethod.GET)
-  public ResponseEntity<List<ReplyVO>> list(@PathVariable("bno") Integer bno) {
+  public ResponseEntity<List<BookReplyVO>> list(@PathVariable("bno") Integer bno) {
 
-    ResponseEntity<List<ReplyVO>> entity = null;
+    ResponseEntity<List<BookReplyVO>> entity = null;
     try {
       entity = new ResponseEntity<>(service.listReply(bno), HttpStatus.OK);
 
@@ -55,7 +63,7 @@ public class ReplyController {
   }
 
   @RequestMapping(value = "/{rno}", method = { RequestMethod.PUT, RequestMethod.PATCH })
-  public ResponseEntity<String> update(@PathVariable("rno") Integer rno, @RequestBody ReplyVO vo) {
+  public ResponseEntity<String> update(@PathVariable("rno") Integer rno, @RequestBody BookReplyVO vo) {
 
     ResponseEntity<String> entity = null;
     try {
@@ -99,7 +107,7 @@ public class ReplyController {
       pageMaker.setCri(cri);
 
       Map<String, Object> map = new HashMap<String, Object>();
-      List<ReplyVO> list = service.listReplyPage(bno, cri);
+      List<BookReplyVO> list = service.listReplyPage(bno, cri);
 
       map.put("list", list);
 

@@ -25,46 +25,53 @@
   </head>	
   <body class="login-page">
     <c:if test="${login.uname == null}">
-    <div class="login-box">
-      <div class="login-logo">
-        <a href="/resources/index2.html"><b>Zerock</b>Project</a>
-      </div><!-- /.login-logo -->
-      <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+		<div class="login-box">
+			<div class="login-logo">
+				<a href="/resources/index2.html"><b>Zerock</b>Project</a>
+			</div>
+			<!-- /.login-logo -->
+			<div class="login-box-body">
+				<p class="login-box-msg">Sign in to start your session</p>
 
-<form action="/user/loginPost" method="post">
-  <div class="form-group has-feedback">
-    <input type="text" name="uid" class="form-control" placeholder="ID" required="required"/>
-    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-  </div>
-  <div class="form-group has-feedback">
-    <input type="password" name="upw" class="form-control" placeholder="비밀번호" required="required"/>
-    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-  </div>
-  <div class="row">
-    <div class="col-xs-8">    
-      <div class="checkbox icheck">
-        <label>
-          <input type="checkbox" name="useCookie"> 자동 로그인
-        </label>
-      </div>                        
-    </div><!-- /.col -->
-    <div class="col-xs-4">
-      <button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
-    </div><!-- /.col -->
-  </div>
-</form>
+				<form action="/user/loginPost" method="post">
+					<div class="form-group has-feedback">
+						<input type="text" name="uid" class="form-control"
+							placeholder="ID" required="required" /> <span
+							class="glyphicon glyphicon-envelope form-control-feedback"></span>
+					</div>
+					<div class="form-group has-feedback">
+						<input type="password" name="upw" class="form-control"
+							placeholder="비밀번호" required="required" /> <span
+							class="glyphicon glyphicon-lock form-control-feedback"></span>
+					</div>
+					<div class="row">
+						<div class="col-xs-8">
+							<div class="checkbox icheck">
+								<label> <input type="checkbox" name="useCookie">
+									자동 로그인
+								</label>
+							</div>
+						</div>
+						<!-- /.col -->
+						<div class="col-xs-4">
+							<button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
+						</div>
+						<!-- /.col -->
+					</div>
+				</form>
 
 
-        <a href="/member/find">ID & 비밀번호 찾기</a><br>
-        <a href="/member/register" class="text-center">새로운 회원으로 가입</a><br>
-        <br>
-        <p id="error" style="color: red;"> </p>
+				<a href="/member/find">ID & 비밀번호 찾기</a><br> <a
+					href="/member/register" class="text-center">새로운 회원으로 가입</a><br>
+				<br>
+				<p id="error" style="color: red;"></p>
 
-      </div><!-- /.login-box-body -->
-    </div><!-- /.login-box -->
+			</div>
+			<!-- /.login-box-body -->
+		</div>
+		<!-- /.login-box -->
 
-    <!-- jQuery 2.1.4 -->
+		<!-- jQuery 2.1.4 -->
     <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

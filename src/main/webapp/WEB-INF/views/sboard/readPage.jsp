@@ -213,7 +213,14 @@
            </div>   
          </span>
       </li>                
-   </script>  
+   </script>
+   <script id="templateAttach" type="text/x-handlebars-template">
+	<div>
+		<img>
+		<div>제목</div>
+		<div>조회수</div>
+	</div>
+   </script>    
 
 
           

@@ -2,30 +2,26 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
+<!-- Bootstrap 3.3.4 -->
+    <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    
+    <link href="/resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    
 <head>
 <script type="text/javascript" src="/resources/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <script id="template" type="text/x-handlebars-template">
-<li>
-  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
-  <div class="mailbox-attachment-info">
-	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
-	<a href="{{fullName}}" 
-     class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
-	</span>
-  </div>
-</li>  
 </script>
 <title>register.jsp</title>
 </head>
-<body>
+<body class="register-page">
 <c:if test="${login.uname == null}">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-header">
-					<h3 class="box-title">회원 가입</h3>
-				</div>
+	<div class="register-box">
+			<div class="register-logo">
+				<p class="register-box-msg">회원 가입</p>
+			</div>
+			<div class="register-box-body">
 				<form id="registerForm" role="form" method="post" onsubmit="return check()">
 					<div class="box-body">
 						<div class="form-group">
@@ -61,6 +57,7 @@
 						<button type="submit" onclick ="check()"class="btn btn-primary">Submit</button>
 					</div>
 				</form>
+				
 			<script>
 		var result = '${msg}';
 		var id = '${id}';
@@ -122,7 +119,6 @@
 						}
 					</script>
 			</div>
-		</div>
 	</div>
 	</c:if>
 	<c:if test="${login.uname != null }">

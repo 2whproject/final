@@ -18,7 +18,7 @@ public class BookDAOImpl implements BookDAO {
   @Inject
   private SqlSession session;
 
-  private static String namespace = "org.zerock.mapper.BookMapper";
+  private static String namespace = "org.zerock.mapper.bookMapper";
 
   @Override
   public void create(BookVO vo) throws Exception {

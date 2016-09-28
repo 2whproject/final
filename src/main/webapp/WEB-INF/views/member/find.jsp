@@ -1,29 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html>
+<!-- Bootstrap 3.3.4 -->
+    <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    
+    <link href="/resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 <head>
 <script type="text/javascript" src="/resources/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <script id="template" type="text/x-handlebars-template">
-<li>
-  <span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
-  <div class="mailbox-attachment-info">
-	<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
-	<a href="{{fullName}}" 
-     class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove"></i></a>
-	</span>
-  </div>
-</li>  
 </script>
 <title>find.jsp</title>
 </head>
-<body>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-header">
-					<h3 class="box-title">ID & 비밀번호 찾기</h3>
+<body class="register-page">
+	<div class="register-box">
+				<div class="register-logo">
+					<p class="register-box-msg">계정찾기</p>
 				</div>
+				<div class="register-box-body">
 				<form id="registerForm" role="form" method="post">
 					<div class="box-body">
 						<div class="form-group">
@@ -32,13 +27,11 @@
 							<p id="email" style="color: red;"> </p>
 						</div>
 					</div>
-					<div class="box-footer">
-						<div>
-							<hr>
-						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
+					<div class="box-footer text-right">
+						<button type="submit" class="btn btn-primary">확인</button>
 					</div>
 				</form>
+				</div>
 			<script>
 		var result = '${msg}';
 		var id = '${id}';
@@ -50,8 +43,6 @@
 			alert("ID와 비밀번호를 찾았습니다." + "\n" + "ID = " + id + "\n" + "비밀번호 = " + pw);
 		}
 			</script>
-			</div>
-		</div>
 	</div>
 </body>
 </html>

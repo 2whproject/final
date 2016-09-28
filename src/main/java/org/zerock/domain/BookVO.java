@@ -16,7 +16,14 @@ public class BookVO {
 	private int price;
 	private String overview;
 	private String link;
+	private int star;
 	
+	public int getStar() {
+		return star;
+	}
+	public void setStar(int star) {
+		this.star = star;
+	}
 	public String getLink() {
 		return link;
 	}
@@ -95,7 +102,7 @@ public class BookVO {
 		return "BookVO [bno=" + bno + ", title=" + title + ", author=" + author + ", content="
 				+ content + ", writer=" + writer + ", regdate=" + regdate
 				+ ", viewcnt=" + viewcnt + ", replycnt=" + replycnt
-				+ "price=" + price + "publisher=" + publisher + "overview=" + overview + "link=" + link + "]";
+				+ "price=" + price + "publisher=" + publisher + "overview=" + overview + "link=" + link + "star="+ star + "]";
 	}
 
 }

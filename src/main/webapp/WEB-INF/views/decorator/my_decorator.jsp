@@ -6,6 +6,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
+<!-- jQuery 2.1.4 -->
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.4 -->
 <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
@@ -21,8 +23,6 @@
      folder instead of downloading all of them to reduce the load. -->
 <link href="/resources/dist/css/skins/_all-skins.min.css"
 	rel="stylesheet" type="text/css" />
-<!-- jQuery 2.1.4 -->
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <head>
 <meta charset="UTF-8">
 <title><sitemesh:write property="title" /></title>
@@ -51,7 +51,9 @@
 	padding-top: 20px;
 	height: 100%;
 }
-
+.nav {
+	z-index: 999;
+}
 footer {
 }
 /* On small screens, set height to 'auto' for sidenav and grid */
@@ -71,84 +73,18 @@ footer {
 <body>
 	<!-- .wrapper -->
 	<div class="wrapper">
-		<!-- 		header start -->
-		<!-- Navbar -->
-					<nav class="navbar navbar-inverse">
-						<div class="container-fluid">
-							<div class="navbar-header">
-								<a class="nav navbar-brand" href="http://localhost:8080/">Home</a>
-							</div>
-							<ul class="nav navbar-nav">
-								<li><a href="#">공지사항</a></li>
-								<li class="dropdown"><a class="dropdown-toggle"
-									data-toggle="dropdown" href="#"><i class="fa fa-file"></i>
-										파일공유<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="#">공유게시판</a></li>
-										<li><a href="#">요청게시판</a></li>
-									</ul></li>
-								<li class="dropdown"><a class="dropdown-toggle"
-									data-toggle="dropdown" href="#"><i class="fa fa-film"></i>
-										영화<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="#">영화검색</a></li>
-										<li><a href="#">영화리뷰</a></li>
-									</ul></li>
-								<li class="dropdown"><a class="dropdown-toggle"
-									data-toggle="dropdown" href="#"><i class="fa fa-smile-o"></i>
-										만화<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="#">만화검색</a></li>
-										<li><a href="#">만화리뷰</a></li>
-									</ul></li>
-								<li class="dropdown"><a class="dropdown-toggle"
-									data-toggle="dropdown" href="#"><i class="fa fa-book"></i>
-										도서<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a
-											href="http://localhost:8080/book/search?cate_id=33">도서검색</a></li>
-										<li><a href="http://localhost:8080/book/list">나의 독서노트
-												리스트</a></li>
-									</ul></li>
-								<li class="dropdown"><a class="dropdown-toggle"
-									data-toggle="dropdown" href="#"><i class="fa fa-gamepad"></i>
-										게임<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="#">게임검색</a></li>
-										<li><a href="#">게임리뷰</a></li>
-									</ul></li>
-								<li class="dropdown"><a class="dropdown-toggle"
-									data-toggle="dropdown" href="#"><i class="fa fa-thumbs-up"></i>
-										투표<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="#">투표하기</a></li>
-									</ul></li>
-								<li><a href="#">자유게시판</a></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li><a href="http://localhost:8080/member/register"><span
-										class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-								<li><a href="http://localhost:8080/user/login"><span
-										class="glyphicon glyphicon-log-in"></span> Login</a></li>
-							</ul>
-						</div>
-					</nav>
-				</div>
-		</div>
-	</div>
-	<!-- 		header end -->
 	<!-- 		Body start -->
-	<div class="container-fluid text-center">
+	<div id="#top" class="container-fluid text-center">
 		<div id="bodyrow" class="row">
 			<div class="col-sm-2 sidenav">
 				<ul id="sidenav" class="nav nav-stacked text-left">
-					<li><a href="#">공지사항</a></li>
+					<li><a href="/"><i class="fa fa-home"></i>HOME</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"><i class="fa fa-file"></i>
 						파일공유<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">공유게시판</a></li>
-							<li><a href="#">요청게시판</a></li>
+							<li><a href="#">공지게시판</a></li>
+							<li><a href="#">영화게시판</a></li>
 						</ul>
 					</li>
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -175,22 +111,8 @@ footer {
 							<li><a href="http://localhost:8080/book/list">나의 독서노트 리스트</a></li>
 						</ul>
 					</li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"><i class="fa fa-gamepad"></i>
-						게임<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">게임검색</a></li>
-							<li><a href="#">게임리뷰</a></li>
-						</ul>
-					</li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"><i class="fa fa-thumbs-up"></i>
-						투표<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">투표하기</a></li>
-						</ul>
-					</li>
-					<li><a href="#">자유게시판</a></li>
+					<li><a href="#"><i class="fa fa-gamepad"></i>게임리뷰</a></li>
+					<li><a href="#"><i class="fa fa-question"></i>문의게시판</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-8 text-left">
@@ -198,8 +120,7 @@ footer {
 					<sitemesh:write property="body"></sitemesh:write>
 				</div>
 			</div>
-			<div class="col-sm-2 sidenav">
-			</div>
+			<div class="col-sm-2 sidenav"></div>
 		</div>
 	</div>
 	<!-- 	Body end -->

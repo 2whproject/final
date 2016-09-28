@@ -6,24 +6,25 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.zerock.domain.BookReplyVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.ReplyVO;
 import org.zerock.persistence.BoardDAO;
+import org.zerock.persistence.BookDAO;
 import org.zerock.persistence.BookReplyDAO;
-import org.zerock.persistence.ReplyDAO;
 
 @Service
-public class ReplyServiceImpl implements ReplyService {
+public class BookReplyServiceImpl implements BookReplyService {
 
   @Inject
-  private ReplyDAO replyDAO;
+  private BookReplyDAO replyDAO;
   
   @Inject
-  private BoardDAO boardDAO;
+  private BookDAO boardDAO;
 
   @Transactional
   @Override
-  public void addReply(ReplyVO vo) throws Exception {
+  public void addReply(BookReplyVO vo) throws Exception {
 
     replyDAO.create(vo);
     boardDAO.updateReplyCnt(vo.getBno(), 1);
@@ -41,13 +42,13 @@ public class ReplyServiceImpl implements ReplyService {
 
 
   @Override
-  public List<ReplyVO> listReply(Integer bno) throws Exception {
+  public List<BookReplyVO> listReply(Integer bno) throws Exception {
 
     return replyDAO.list(bno);
   }
 
   @Override
-  public void modifyReply(ReplyVO vo) throws Exception {
+  public void modifyReply(BookReplyVO vo) throws Exception {
 
     replyDAO.update(vo);
   }
@@ -55,7 +56,7 @@ public class ReplyServiceImpl implements ReplyService {
 
 
   @Override
-  public List<ReplyVO> listReplyPage(Integer bno, Criteria cri) 
+  public List<BookReplyVO> listReplyPage(Integer bno, Criteria cri) 
       throws Exception {
 
     return replyDAO.listPage(bno, cri);
