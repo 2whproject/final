@@ -223,4 +223,33 @@ ADD CONSTRAINT fk_borad_attach_game FOREIGN KEY(bno) REFERENCES tbl_board_game(b
 
 --소정
 
+CREATE TABLE tbl_board_ani
+(
+   BNO        int NOT NULL AUTO_INCREMENT,
+   TITLE  	  varchar(200) NOT NULL,
+   AUTHOR     varchar(200) NOT NULL,
+   ISBN       varchar(100) NOT NULL,
+   TITLE2     varchar(200) NOT NULL,
+   CONTENT    text NULL,
+   WRITER     varchar(50) NOT NULL,
+   REGDATE    timestamp NOT NULL DEFAULT now(),
+   VIEWCNT    int DEFAULT 0,
+   REPLYCNT   int DEFAULT 0,
+   PRIMARY KEY(bno)
+);
+
+CREATE TABLE tbl_reply_ani
+(
+   rno          int NOT NULL AUTO_INCREMENT,
+   bno          int NOT NULL DEFAULT 0,
+   replytext    varchar(1000) NOT NULL,
+   replyer      varchar(50) NOT NULL,
+   regdate      timestamp NOT NULL DEFAULT now(),
+   updatedate   timestamp NOT NULL DEFAULT now(),
+   PRIMARY KEY(rno)
+);
+
+select * from tbl_board_ani;
+select * from tbl_reply_ani;
+
 --윤정
