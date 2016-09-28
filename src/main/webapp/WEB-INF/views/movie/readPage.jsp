@@ -276,7 +276,9 @@ th {
 							<div class="box-body">
 								<div class="panel-body">
 									<div class="form-group">
-										<input class="form-control" type="text" id="replytext" />
+										<input class="form-control" type="text" id="replytext" 
+										maxlength="140"
+										placeholder="최대 140자까지 가능하며, 스포일러는 삭제될 수 있습니다."/>
 										<button id="addReply" class="btn btn-info">등록</button>
 										<input class="form-control" id="replyer" class="form-control"
 											type="HIDDEN" value="${login.uid}" />
