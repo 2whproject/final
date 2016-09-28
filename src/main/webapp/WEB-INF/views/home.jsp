@@ -119,10 +119,17 @@ body {
 					<img class="col-lg-6 img" alt="" src="http://ojsfile.ohmynews.com/STD_IMG_FILE/2016/0722/IE001994478_STD.jpg"/>
 					<div class="col-lg-6 list">
 						<div class="panel-body">영화</div>
+<%-- 						<c:forEach items="${torrent}" var="torrentVO"> --%>
+<%-- 										<li><a href="/tboard/list?board_id=1">${torrentVO.title}<span class="newreplycnt">[${torrentVO.replycnt}]</span><span class="newdate"> --%>
+<%-- 												<fmt:formatDate pattern="yyyy-MM-dd" value="${torrentVO.regdate}"/></span></a>  <span class="label label-danger bg-red-gradient">n</span></li> --%>
+<%-- 						</c:forEach> --%>
+						
 						<c:forEach items="${torrent}" var="torrentVO">
-										<li><a href='tboard/readPage?bno=${torrentVO.bno}'>${torrentVO.title}<span class="newreplycnt">[${torrentVO.replycnt}]</span><span class="newdate">
+										<li><a href="/tboard/readPage?board_id=1&?page=1&perPageNum=10&searchType&keyworkd&bno=${torrentVO.bno}">${torrentVO.title}<span class="newreplycnt">[${torrentVO.replycnt}]</span><span class="newdate">
 												<fmt:formatDate pattern="yyyy-MM-dd" value="${torrentVO.regdate}"/></span></a>  <span class="label label-danger bg-red-gradient">n</span></li>
 						</c:forEach>
+						
+						
 					</div>
 				</div>
 				<div class="panel panel-default col-lg-12" >
