@@ -42,7 +42,6 @@
    </style>
 </head>
 <body>
-    <c:if test="${pass ==boardVO_BSR.pass||boardVO_BSR.pass == ''||login.uname == 'ADMINISTRATOR'||login.uid == boardVO_BSR.secret}">
     <div class='popup back' style="display:none;"></div>
     <div id="popup_front" class='popup front' style="display:none;">
      <img id="popup_img">
@@ -172,7 +171,6 @@
                      ${boardVO_BSR.replycnt} ] </small>
             </span></li>
          </ul>
-		</c:if>
          <div class='text-center'>
             <ul id="pagination" class="pagination pagination-sm no-margin ">
 
