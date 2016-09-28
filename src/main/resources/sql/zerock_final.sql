@@ -186,20 +186,8 @@ CREATE TABLE tbl_qreply
 );
 ALTER TABLE tbl_qreply
   ADD CONSTRAINT fk_board_reply FOREIGN KEY(bno) REFERENCES tbl_qnaboard(bno);
---교선
-CREATE TABLE tbl_user
-(
-   uid            VARCHAR(50) NOT NULL,
-   upw            VARCHAR(50) NOT NULL,
-   uname          VARCHAR(100) NOT NULL,
-   upoint         int NOT NULL DEFAULT 0,
-   email		  varchar(50),
-   regdate        TIMESTAMP DEFAULT now(),
-   sessionkey     varchar(50) NOT NULL DEFAULT 'none',
-   sessionlimit   timestamp NOT NULL DEFAULT now(),
-   PRIMARY KEY(uid)
-);
 
+--교선
 CREATE TABLE tbl_board_game (
    bno        int NOT NULL AUTO_INCREMENT,
    title      varchar(200) NOT NULL,
@@ -220,7 +208,6 @@ CREATE TABLE tbl_reply_game (
    updatedate   timestamp NOT NULL DEFAULT now(),
    PRIMARY KEY(rno)
 );
-
 ALTER TABLE tbl_reply_game
 ADD CONSTRAINT frk_board_reply FOREIGN KEY(bno) REFERENCES tbl_board_game(bno);
 
@@ -231,25 +218,9 @@ CREATE TABLE tbl_attach_game
    regdate    TIMESTAMP DEFAULT now(),
    PRIMARY KEY(fullName)
 );
-
 ALTER TABLE tbl_attach_game
 ADD CONSTRAINT fk_borad_attach_game FOREIGN KEY(bno) REFERENCES tbl_board_game(bno);
 
-create table tbl_message_game (
-	mno			int not null AUTO_INCREMENT,
-	targetid	varchar(50) not null,
-	sender		varchar(50) not null,
-	message		text not null,
-	opendate	timestamp not null,
-	senddate timestamp NOT NULL DEFAULT now(),
-	PRIMARY KEY(mno)
-);
-
-ALTER TABLE tbl_message_game ADD CONSTRAINT frk_usertarget
-FOREIGN KEY (targetid) REFERENCES tbl_user (uid);
-
-ALTER TABLE tbl_message_game ADD CONSTRAINT frk_usersender
-FOREIGN KEY (sender) REFERENCES tbl_user (uid);
 --소정
 
 --윤정

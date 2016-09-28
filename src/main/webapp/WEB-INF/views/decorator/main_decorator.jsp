@@ -97,18 +97,12 @@ footer {
 							<a id="home" class="nav navbar-brand" href="/">Home</a>
 						</div>
 						<ul id="topnavbar" class="nav navbar-nav">
-							<li><a href="#">공지사항</a></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"><i class="fa fa-file"></i>
-									파일공유<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">공유게시판</a></li>
-									<li><a href="#">요청게시판</a></li>
-								</ul></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><i class="fa fa-film"></i>
 									영화<span class="caret"></span></a>
 								<ul class="dropdown-menu">
+									<li><a href="#">공지 게시판</a></li>
+									<li><a href="#">자료 게시판</a></li>
 									<li><a href="#">영화검색</a></li>
 									<li><a href="#">영화리뷰</a></li>
 								</ul></li>
@@ -125,23 +119,10 @@ footer {
 								<ul class="dropdown-menu">
 									<li><a
 										href="book/search?cate_id=33">도서검색</a></li>
-									<li><a href="book/list">나의 독서노트
-											리스트</a></li>
-								</ul></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><i class="fa fa-gamepad"></i>
-									게임<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">게임검색</a></li>
-									<li><a href="#">게임리뷰</a></li>
-								</ul></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><i class="fa fa-thumbs-up"></i>
-									투표<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">투표하기</a></li>
-								</ul></li>
-							<li><a href="qboard/list">문의 게시판</a></li>
+									<li><a href="book/list">나의 독서노트 리스트</a></li>
+								</ul>
+							</li>
+							<li><a href="gboard/list">게임리뷰</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 						<c:if test="${login == null}">
