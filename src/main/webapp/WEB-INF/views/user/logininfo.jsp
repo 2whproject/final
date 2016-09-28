@@ -2,25 +2,39 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+<!-- Bootstrap 3.3.2 JS -->
+<!-- jQuery 2.1.4 -->
 <html>
 <head>
 <title>list.jsp</title>
+<style type="text/css">
+* {
+/* 	border: 1px solid red; */
+}
+.login-box {
+	width: 600px;
+}
+tr, th {
+	text-align: center;
+}
+</style>
 </head>
-<body>
-	<div class="row">
-		<!-- left column -->
-		<div class="col-md-12">
-			<!-- general form elements -->
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">로그인 기록</h3>
+<body class="login-page">
+		<div class="login-box">
+				<div class="login-logo">
+					<h3 class="login-box-msg">로그인 기록</h3>
 				</div>
-				<div class="box-body">
+				<div class="login-box-body">
 					<table class="table table-bordered">
 						<tr>
-							<th style="width: 10px">로그인 시간</th>
-							<th style="width: 10px">로그인 결과</th>
-							<th style="width: 10px">로그인 한 국가</th>
+							<th style="width: 200px;">로그인 시간</th>
+							<th style="width: 200px;">로그인 결과</th>
+							<th style="width: 200px;">로그인 한 국가</th>
 						</tr>
 						<c:forEach items="${list}" var="logVO">
 							<tr>
@@ -37,9 +51,6 @@
 					</table>
 				</div>
 			</div>
-		</div>
-		<!--/.col (left) -->
 	</div>
-	<!-- /.row -->
 </body>
 </html>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.zerock.domain.Criteria;
 import org.zerock.domain.ReplyVO;
+import org.zerock.domain.BookReplyVO;
 
 public interface ReplyDAO {
 

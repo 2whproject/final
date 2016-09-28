@@ -27,9 +27,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  from 
    tbl_qnaboard 
  where bno > 0 
- order by notice desc, bno desc limit 5
+ order by notice desc, bno desc
  ]]>
-	</select>
+</select>
+	<select id="listNew" resultType="org.zerock.domain.QnaVO">
+ <![CDATA[
+ select 
+   bno, title, content, writer, regdate, viewcnt, notice
+ from 
+   tbl_qnaboard 
+ where bno > 0 
+ order by notice desc, bno desc limit 6
+ ]]>
+</select>
 
 	<select id="listPage" resultType="QnaVO">
  <![CDATA[

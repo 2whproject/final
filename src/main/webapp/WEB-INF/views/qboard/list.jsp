@@ -24,7 +24,6 @@ select, input, button {
 <title>list.jsp</title>
 </head>
 <body>
-<<<<<<< HEAD
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title">문의 게시판</h3>

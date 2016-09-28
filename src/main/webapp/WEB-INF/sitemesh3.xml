@@ -9,7 +9,10 @@
 	<!-- <mapping path="/*" decorator="/WEB-INF/views/decorator/main_decorator.jsp"/> -->
 	<mapping path="/" decorator="/WEB-INF/views/decorator/main_decorator.jsp" />
 	<mapping path="/book/*" decorator="/WEB-INF/views/decorator/my_decorator.jsp" />
-
+	<mapping path="/qboard/*" decorator="/WEB-INF/views/decorator/my_decorator.jsp" />
+	<mapping path="/gboard/*" decorator="/WEB-INF/views/decorator/my_decorator.jsp" />
+	<mapping path="/tboard/*" decorator="/WEB-INF/views/decorator/my_decorator.jsp" />
+	
 	<!-- <mapping path="/*.special.jsp" decorator="/special-decorator.html"/> -->
 
 	<!-- Alternative convention. This is more verbose but allows multiple decorators 

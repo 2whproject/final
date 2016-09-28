@@ -23,7 +23,10 @@ drop table tbl_note;
 --교선
 DROP TABLE tbl_board_game;
 DROP TABLE tbl_reply_game;
-
+DROP TABLE tbl_gattach;
+DROP TABLE tbl_gboard;
+DROP TABLE tbl_gmessage;
+DROP TABLE tbl_greply;
 --소정
 DROP table tbl_board_ani;
 DROP table tbl_reply_ani;
@@ -185,7 +188,40 @@ CREATE TABLE tbl_qreply
 );
 ALTER TABLE tbl_qreply
   ADD CONSTRAINT fk_board_reply FOREIGN KEY(bno) REFERENCES tbl_qnaboard(bno);
+
 --교선
+CREATE TABLE tbl_board_game (
+   bno        int NOT NULL AUTO_INCREMENT,
+   title      varchar(200) NOT NULL,
+   content    text NULL,
+   writer     varchar(50) NOT NULL,
+   regdate    timestamp NOT NULL DEFAULT now(),
+   viewcnt    int DEFAULT 0,
+   replycnt   int DEFAULT 0,
+   PRIMARY KEY(bno)
+);
+
+CREATE TABLE tbl_reply_game (
+   rno          int NOT NULL AUTO_INCREMENT,
+   bno          int NOT NULL DEFAULT 0,
+   replytext    varchar(1000) NOT NULL,
+   replyer      varchar(50) NOT NULL,
+   regdate      timestamp NOT NULL DEFAULT now(),
+   updatedate   timestamp NOT NULL DEFAULT now(),
+   PRIMARY KEY(rno)
+);
+ALTER TABLE tbl_reply_game
+ADD CONSTRAINT frk_board_reply FOREIGN KEY(bno) REFERENCES tbl_board_game(bno);
+
+CREATE TABLE tbl_attach_game
+(
+   fullName   VARCHAR(150) NOT NULL,
+   bno        INT NOT NULL,
+   regdate    TIMESTAMP DEFAULT now(),
+   PRIMARY KEY(fullName)
+);
+ALTER TABLE tbl_attach_game
+ADD CONSTRAINT fk_borad_attach_game FOREIGN KEY(bno) REFERENCES tbl_board_game(bno);
 
 --소정
 

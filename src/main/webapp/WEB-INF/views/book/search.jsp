@@ -81,7 +81,7 @@ select, input {
 <script type="text/javascript">
 $(document).ready(function search_query() {      
 	
-	var query = "java";
+	var query = "신간";
 	var searchType = "all";
 	var perPageNum = "7";
 	var page ="1";
@@ -132,8 +132,8 @@ $(document).ready(function search_query() {
 			result += "</div>";
 
 		}
-		var total = "총 검색결과: "+ totalCount + " 건";
-		$('#total').html(total);
+// 		var total = "총 검색결과: "+ totalCount + " 건";
+// 		$('#total').html(total);
 		$('#category').html(category);
 		
 	}).error(function(XMLHttpRequest, textStatus, errorThrown) {          
@@ -183,7 +183,11 @@ function search_query() {
 			var category = data.channel.item[i].category;
 			var publisher = data.channel.item[i].pub_nm;
 			var overview = data.channel.item[i].description;
-
+			
+			if (cover_l_url=="") {
+				cover_l_url="/resources/no_image.gif"
+			}
+			
 			result += "<div id='li' class="+'"col-md-3"dw'+">";
 			result += '<a target=' + '"_blank"' + "href=" + '"' + link + '"' + ">" +"<img src=" + cover_l_url + '/>' + "</a>"
 						+ "<br>";
@@ -194,11 +198,11 @@ function search_query() {
 						+publisher+'&price='+price+'&overview='+overview+'&link='+link+'">'+"독서노트 남기기</a>";
 			result += "</div>";
 		}
-		var total = "총 검색결과: "+ totalCount + " 건";
-		$('#total').html(total);
+// 		var total = "총 검색결과: "+ totalCount + " 건";
+// 		$('#total').html(total);
 		
 	}).error(function(XMLHttpRequest, textStatus, errorThrown){          
-		result = textStatus;
+		alert("검색어를 입력해 주세요");
 	}).complete(function(){
 			$('#results').html(result);
 	});
@@ -243,8 +247,8 @@ function search_query() {
 	</form>
 	<div class="text-left">
 		<div id="category"></div>
-		<hr>		
-		<div id="total">건</div>
+<!-- 		<hr>		 -->
+<!-- 		<div id="total">건</div> -->
 	</div>
 </div>
 	<div class="container-fluid">

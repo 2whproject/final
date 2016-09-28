@@ -76,5 +76,9 @@ public class QnaServiceImpl implements QnaService {
 @Override
 public QnaVO pass(QnaVO pass) throws Exception {
 	return dao.pass(pass);
+}
+@Override
+public List<QnaVO> listNew() throws Exception {
+	return dao.listNew();
 }   
 }

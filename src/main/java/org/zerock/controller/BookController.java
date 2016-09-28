@@ -56,8 +56,8 @@ public class BookController {
   @RequestMapping(value = "/readPage", method = RequestMethod.GET)
   public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model)
       throws Exception {
-
     model.addAttribute(service.read(bno));
+    logger.info(service.read(bno).toString());
   }
 
   @RequestMapping(value = "/removePage", method = RequestMethod.POST)
@@ -122,7 +122,7 @@ public class BookController {
   public String registPOST(BookVO board, RedirectAttributes rttr) throws Exception {
     logger.info("regist post ...........");
     logger.info(board.toString());
-    
+    board.setStar(board.getStar()-1);
     service.regist(board);
 
     rttr.addFlashAttribute("msg", "SUCCESS");

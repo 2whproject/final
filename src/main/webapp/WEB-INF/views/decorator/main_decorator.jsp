@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <!-- Bootstrap 3.3.4 -->
 <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
@@ -31,6 +32,15 @@
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
 <style type="text/css">
+.headerback {
+	background-image: url("/resources/night.jpg");
+	background-repeat: no-repeat ;
+	background-size: cover;
+	height: 600px;
+}
+nav a {
+	color: white;
+}
 .side {
 	background-color: white;
 	height: 100%;
@@ -46,10 +56,14 @@
 	font-size: 12px;
 	margin-bottom: 0px;
 }
+.margin200 {
+	margin: 200px;
+}
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 
 footer {
 	height: 100px;
+	background-color:  #cccccc;
 }
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
@@ -62,7 +76,7 @@ footer {
 	}
 }
 * {
-/* 	border: 1px solid red; */
+/*  	border: 1px solid red; */
 }
 </style>
 <sitemesh:write property="head" />
@@ -75,25 +89,19 @@ footer {
 		<div class="box">
 			<div class="box-body">
 				<!-- header start -->
+				<div class="container-fluid headerback">
 				<!-- Navbar -->
-				<nav class="navbar navbar-inverse">
+				<nav class="navbar">
 					<div class="container-fluid">
 						<div class="navbar-header">
 							<a id="home" class="nav navbar-brand" href="/">Home</a>
 						</div>
 						<ul id="topnavbar" class="nav navbar-nav">
-							<li><a href="#">공지사항</a></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><i class="fa fa-file"></i>
-									파일공유<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">공유게시판</a></li>
-									<li><a href="#">요청게시판</a></li>
-								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"><i class="fa fa-film"></i>
 									영화<span class="caret"></span></a>
 								<ul class="dropdown-menu">
+									<li><a href="tboard/list?board_id=1">영화공유</a></li>
 									<li><a href="#">영화검색</a></li>
 									<li><a href="#">영화리뷰</a></li>
 								</ul></li>
@@ -110,25 +118,12 @@ footer {
 								<ul class="dropdown-menu">
 									<li><a
 										href="book/search?cate_id=33">도서검색</a></li>
-									<li><a href="book/list">나의 독서노트
-											리스트</a></li>
-								</ul></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><i class="fa fa-gamepad"></i>
-									게임<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">게임검색</a></li>
-									<li><a href="#">게임리뷰</a></li>
-								</ul></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><i class="fa fa-thumbs-up"></i>
-									투표<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">투표하기</a></li>
-								</ul></li>
-							<li><a href="qboard/list">문의 게시판</a></li>
+									<li><a href="book/list">나의 독서노트 리스트</a></li>
+								</ul>
+							</li>
+							<li><a href="gboard/list">게임리뷰</a></li>
 						</ul>
-						<ul class="nav navbar-nav navbar-right">z
+						<ul class="nav navbar-nav navbar-right">
 						<c:if test="${login == null}">
 							<li><a href="/member/register"><span
 									class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -143,6 +138,9 @@ footer {
 						</ul>
 					</div>
 				</nav>
+				<!-- Navbar End -->
+	 			 <h1 class="margin200">2조 프로젝트</h1>
+				</div>
 				<!-- header end -->
 				<!-- Body start -->
 				<div class="container-fluid">
@@ -152,6 +150,7 @@ footer {
 
 				<!-- footer start -->
 				<footer class="text-center">
+					<hr>
 					<a href="#top" id="btntop" title="To Top"><i class="fa fa-angle-up fa-2x"></i></a>
 					<p>made by sang woo Lee in 2016</p>
 				<!-- footer end -->

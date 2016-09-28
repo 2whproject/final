@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.ReplyVO;
 import org.zerock.persistence.BoardDAO;
+import org.zerock.persistence.BookReplyDAO;
 import org.zerock.persistence.ReplyDAO;
 
 @Service

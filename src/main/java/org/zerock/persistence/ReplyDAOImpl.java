@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.ReplyVO;
+import org.zerock.domain.BookReplyVO;
 
 @Repository
 public class ReplyDAOImpl implements ReplyDAO {
@@ -17,7 +18,7 @@ public class ReplyDAOImpl implements ReplyDAO {
   @Inject
   private SqlSession session;
 
-  private static String namespace = "org.zerock.mapper.ReplyMapper";
+  private static String namespace = "org.zerock.mapper.bookreplymapper";
 
   @Override
   public List<ReplyVO> list(Integer bno) throws Exception {
