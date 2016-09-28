@@ -152,7 +152,7 @@ body {
 					<div class="col-lg-6">
 						<div class="panel-body">게임</div>
 						<c:forEach items="${game}" var="gameVO">
-										<li><a href="#">${gameVO.title}<span class="newreplycnt">[${gameVO.replycnt}]</span><span class="newdate">
+										<li><a href="gboard/list">${gameVO.title}<span class="newreplycnt">[${gameVO.replycnt}]</span><span class="newdate">
 												<fmt:formatDate pattern="yyyy-MM-dd" value="${gameVO.regdate}"/></span></a> <span class="label label-danger bg-red-gradient">n</span></li>
 						</c:forEach>
 					</div>

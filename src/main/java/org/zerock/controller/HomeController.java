@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.zerock.service.BookService;
+import org.zerock.service.GBoardService;
 import org.zerock.service.QnaService;
 
 /**
@@ -23,6 +24,8 @@ public class HomeController {
 
   private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
   
+  @Inject
+  private GBoardService gservice;
   @Inject
   private BookService service;
   @Inject
@@ -44,6 +47,7 @@ public class HomeController {
     
     model.addAttribute("book",service.newList());
     model.addAttribute("qna",serviceqna.listNew());
+    model.addAttribute("game",gservice.listNew());
     
     return "home";
   }

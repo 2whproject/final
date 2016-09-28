@@ -59,6 +59,9 @@
  	    <mapping path="/qboard/register"/>
  	    <mapping path="/qboard/modify"/>
  	    <mapping path="/qboard/modifyPage"/>
+ 	    <mapping path="/gboard/register" />
+		<mapping path="/gboard/modifyPage" />
+		<mapping path="/gboard/removePage" />
 	    <beans:ref bean="authInterceptor"/>
 	  </interceptor>	
 	  		
