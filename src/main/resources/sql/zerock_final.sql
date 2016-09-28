@@ -29,8 +29,10 @@ DROP table tbl_board_ani;
 DROP table tbl_reply_ani;
 
 --윤정
-DROP TABLE tbl_board_movie;
-DROP TABLE tbl_reply_movie;
+DROP table tbl_board_movie;
+DROP table tbl_movie_reply;
+
+
 
 
 --
@@ -188,3 +190,37 @@ ALTER TABLE tbl_qreply
 --소정
 
 --윤정
+
+--
+-- tbl_board_movie
+--
+CREATE TABLE tbl_board_movie
+(
+   bno        int NOT NULL AUTO_INCREMENT,
+   title      varchar(200) NOT NULL,
+   content    text NULL,
+   writer     varchar(50) NULL,
+   regdate    timestamp NOT NULL DEFAULT now(),
+   viewcnt    int DEFAULT 0,
+   replycnt   int DEFAULT 0,
+   title_link varchar(500) NOT NULL,
+   
+   PRIMARY KEY(bno)
+);
+
+--
+-- tbl_movie_reply
+--
+CREATE TABLE tbl_movie_reply
+(
+   rno          int NOT NULL AUTO_INCREMENT,
+   replytext    varchar(1000) NOT NULL,
+   replyer      varchar(50) NOT NULL,
+   regdate      timestamp NOT NULL DEFAULT now(),
+   updatedate   timestamp NOT NULL DEFAULT now(),
+   title_link   varchar(500) NULL,
+   movieId      varchar(500) NULL,
+   PRIMARY KEY(rno)
+);
+ALTER TABLE tbl_movie_reply
+  ADD CONSTRAINT fk_board_reply FOREIGN KEY(movieId) REFERENCES tbl_board_movie(movieId);

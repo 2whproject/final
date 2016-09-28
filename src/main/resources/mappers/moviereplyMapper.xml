@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.MoviereplyMapper">
+
+	<insert id="create">
+		insert into tbl_movie_reply (replytext, replyer, movieId)
+		values (#{replytext},#{replyer}, #{movieId})
+	</insert>
+	
+	<select id="list" resultType="MovieReplyVO">
+		select
+		*
+		from
+		tbl_movie_reply
+		where movieId= #{movieId}
+		order by rno desc
+	</select>
+	
+	<select id="listPage" resultType="MovieReplyVO">
+		select
+		*
+		from
+		tbl_movie_reply
+		where 
+		movieId= #{movieId}
+		order by rno desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+
+
+	<update id="update">
+		update tbl_movie_reply set replytext = #{replytext},
+		updatedate = now()
+		where rno = #{rno}
+	</update>
+
+	<delete id="delete">
+		delete from tbl_movie_reply where rno =#{rno}
+	</delete>
+
+
+	
+
+	<select id="count" resultType="int">
+		select count(title_link) from tbl_movie_reply
+		where movieId= #{movieId}
+	</select>
+
+
+	<select id="getBno" resultType="int">
+		select titel_link from tbl_movie_reply where rno = #{rno}
+	</select>
+
+</mapper>
+
