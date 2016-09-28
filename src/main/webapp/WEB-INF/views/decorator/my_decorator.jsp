@@ -79,18 +79,12 @@ footer {
 			<div class="col-sm-2 sidenav">
 				<ul id="sidenav" class="nav nav-stacked text-left">
 					<li><a href="/"><i class="fa fa-home"></i>HOME</a></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"><i class="fa fa-file"></i>
-						파일공유<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">공지게시판</a></li>
-							<li><a href="#">영화게시판</a></li>
-						</ul>
-					</li>
+				
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"><i class="fa fa-film"></i>
 						영화<span class="caret"></span></a>
 						<ul class="dropdown-menu">
+							<li><a href="http://localhost:8080/tboard/list?board_id=1">영화공유</a></li>
 							<li><a href="#">영화검색</a></li>
 							<li><a href="#">영화리뷰</a></li>
 						</ul>

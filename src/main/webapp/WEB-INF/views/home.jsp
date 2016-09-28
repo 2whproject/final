@@ -120,7 +120,7 @@ body {
 					<div class="col-lg-6 list">
 						<div class="panel-body">영화</div>
 						<c:forEach items="${torrent}" var="torrentVO">
-										<li><a href="#">${torrentVO.title}<span class="newreplycnt">[${torrentVO.replycnt}]</span><span class="newdate">
+										<li><a href='/tboard/readPage?board_id=${cri.board_id}&${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${torrentVO.bno}'>${torrentVO.title}<span class="newreplycnt">[${torrentVO.replycnt}]</span><span class="newdate">
 												<fmt:formatDate pattern="yyyy-MM-dd" value="${torrentVO.regdate}"/></span></a>  <span class="label label-danger bg-red-gradient">n</span></li>
 						</c:forEach>
 					</div>

@@ -187,18 +187,6 @@ CREATE TABLE tbl_qreply
 ALTER TABLE tbl_qreply
   ADD CONSTRAINT fk_board_reply FOREIGN KEY(bno) REFERENCES tbl_qnaboard(bno);
 --교선
-CREATE TABLE tbl_user
-(
-   uid            VARCHAR(50) NOT NULL,
-   upw            VARCHAR(50) NOT NULL,
-   uname          VARCHAR(100) NOT NULL,
-   upoint         int NOT NULL DEFAULT 0,
-   email		  varchar(50),
-   regdate        TIMESTAMP DEFAULT now(),
-   sessionkey     varchar(50) NOT NULL DEFAULT 'none',
-   sessionlimit   timestamp NOT NULL DEFAULT now(),
-   PRIMARY KEY(uid)
-);
 
 CREATE TABLE tbl_board_game (
    bno        int NOT NULL AUTO_INCREMENT,
