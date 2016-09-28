@@ -98,11 +98,10 @@ footer {
 						</div>
 						<ul id="topnavbar" class="nav navbar-nav">
 							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><i class="fa fa-file"></i>
+								data-toggle="dropdown" href="#"><i class="fa fa-film"></i>
 									영화<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">공지 게시판</a></li>
-									<li><a href="#">자료 게시판</a></li>
+									<li><a href="tboard/list?board_id=1">영화공유</a></li>
 									<li><a href="#">영화검색</a></li>
 									<li><a href="#">영화리뷰</a></li>
 								</ul></li>

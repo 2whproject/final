@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <mapper namespace="org.zerock.mapper.BoardMapper"> 원본-->
+<mapper namespace="org.zerock.mapper.BoardMapper_BSR">
+
+   <insert id="create">
+      insert into tbl_board_torrent (title, content, writer, board_id)
+      values(#{title},#{content}, #{writer}, #{board_id})
+   </insert>
+
+   <select id="read" resultType="org.zerock.domain.BoardVO_BSR">
+       select
+      bno, title, content, writer, regdate, viewcnt , replycnt
+      from
+      tbl_board_torrent
+      where bno = #{bno}
+   </select>
+
+   <select id="listAll" resultType="org.zerock.domain.BoardVO_BSR">
+ <![CDATA[
+ select 
+   bno, title, content, writer, regdate, viewcnt 
+ from 
+   tbl_board_torrent
+ where bno > 0 
+ order by bno desc, regdate desc
+ ]]>
+   </select>
+   
+   <select id="listNew" resultType="org.zerock.domain.BoardVO_BSR">
+ <![CDATA[
+ select 
+   bno, title, content, writer, regdate, viewcnt 
+ from 
+   tbl_board_torrent
+ where bno > 0 
+ order by bno desc, regdate desc limit 6
+ ]]>
+   </select>   
+ 
+
+   <select id="listPage" resultType="BoardVO_BSR">
+ <![CDATA[
+ select 
+  board_id, bno, title, content, writer, regdate, viewcnt , replycnt
+ from 
+   tbl_board_torrent 
+ where bno > 0
+ order by bno desc, regdate desc
+ limit #{page}, 10
+ ]]>
+   </select>
+
+   <select id="listCriteria" resultType="BoardVO_BSR">
+ <![CDATA[
+select A.* from(
+ select @rownum:=@rownum +1 as rnum, tbl_board_torrent.* from 
+ (select * from tbl_board_torrent where board_id = #{board_id} order by bno asc) tbl_board_torrent, (select @rownum:=0) 
+R ) A 
+order by A.rnum desc
+limit #{pageStart}, #{perPageNum}
+ ]]>
+<!--  <![CDATA[ -->
+<!--  select  -->
+<!--   board_id, bno, title, content, writer, regdate, viewcnt , replycnt -->
+<!--  from  -->
+<!--    tbl_board_torrent  -->
+<!--  where bno > 0  -->
+<!--  order by bno desc, regdate desc -->
+<!--  limit #{pageStart}, #{perPageNum} -->
+<!--  ]]> -->
+   </select>
+
+
+   <update id="update">
+      update tbl_board_torrent set title =#{title}, content =#{content}
+      where board_id = #{board_id} and bno = #{bno} 
+   </update>
+
+   <delete id="delete">
+      delete from tbl_board_torrent where bno = #{bno}
+   </delete>
+
+
+
+   <select id="countPaging" resultType="int">
+ <![CDATA[
+ select 
+   count(bno) 
+ from 
+   tbl_board_torrent 
+ where 1=1 and board_id = #{board_id}
+ ]]>
+   </select>
+
+
+
+   <sql id="search">
+      <if test="searchType != null">
+         <if test="searchType == 't'.toString()">
+            and title like CONCAT('%', #{keyword}, '%')
+         </if>
+         <if test="searchType == 'c'.toString()">
+            and content like CONCAT('%', #{keyword}, '%')
+         </if>
+         <if test="searchType == 'w'.toString()">
+            and writer like CONCAT('%', #{keyword}, '%')
+         </if>
+         <if test="searchType == 'na'.toString()">
+            and ( content like CONCAT('%', #{keyword}, '%') OR writer like
+            CONCAT('%', #{keyword}, '%'))
+         </if>
+         <if test="searchType == 'p'.toString()">
+            and ( content like CONCAT('%', #{keyword}, '%') OR writer like
+            CONCAT('%', #{keyword}, '%'))
+         </if>
+         <if test="searchType == 'tc'.toString()">
+            and ( title like CONCAT('%', #{keyword}, '%') OR content like
+            CONCAT('%', #{keyword}, '%'))
+         </if>
+         <if test="searchType == 'cw'.toString()">
+            and ( content like CONCAT('%', #{keyword}, '%') OR writer like
+            CONCAT('%', #{keyword}, '%'))
+         </if>
+         <if test="searchType == 'tcw'.toString()">
+            and ( title like CONCAT('%', #{keyword}, '%')
+            OR
+            content like CONCAT('%', #{keyword}, '%')
+            OR
+            writer like CONCAT('%', #{keyword}, '%'))
+         </if>
+      </if>
+   </sql>
+
+   <select id="listSearch" resultType="BoardVO_BSR">
+<![CDATA[  
+  select *  
+ from tbl_board_torrent
+where bno > 0 
+ ]]>  
+
+      <include refid="search"></include>
+  
+<![CDATA[    
+  order by bno desc
+ limit #{pageStart}, #{perPageNum} 
+]]> 
+   </select>
+
+   <select id="listSearchCount" resultType="int">
+<![CDATA[  
+  select count(bno) 
+  from tbl_board_torrent
+  where bno > 0 
+  and board_id = #{board_id}
+]]>
+       <if test="searchType != null">
+         <if test="searchType == 't'.toString()">
+            and title like CONCAT('%', #{keyword}, '%')
+         </if>
+         <if test="searchType == 'c'.toString()">
+            and content like CONCAT('%', #{keyword}, '%')
+         </if>
+         <if test="searchType == 'w'.toString()">
+            and writer like CONCAT('%', #{keyword}, '%')
+         </if>
+         <if test="searchType == 'tc'.toString()">
+            and ( title like CONCAT('%', #{keyword}, '%') OR content like
+            CONCAT('%', #{keyword}, '%'))
+         </if>
+         <if test="searchType == 'cw'.toString()">
+            and ( content like CONCAT('%', #{keyword}, '%') OR writer like
+            CONCAT('%', #{keyword}, '%'))
+         </if>
+         <if test="searchType == 'tcw'.toString()">
+            and ( title like CONCAT('%', #{keyword}, '%')
+            OR
+            content like CONCAT('%', #{keyword}, '%')
+            OR
+            writer like CONCAT('%', #{keyword}, '%'))
+         </if>
+      </if>
+
+   </select>
+
+
+ 
+<update id="updateReplyCnt">
+  update tbl_board_torrent set replycnt = replycnt + #{amount} where bno = #{bno}
+</update>
+
+
+<update id="updateViewCnt">
+  update tbl_board_torrent set viewcnt = viewcnt +1 where bno = #{bno}
+</update>
+
+
+ 
+<insert id="addAttach">
+insert into tbl_attach(fullname, bno) values (#{fullName}, LAST_INSERT_ID())
+</insert> 
+
+
+<select id="getAttach" resultType="string">
+select fullname from tbl_attach where bno = #{bno} order by regdate
+</select> 
+
+ 
+<delete id="deleteAttach">
+delete from tbl_attach where bno = #{bno}
+</delete>
+
+<insert id="replaceAttach">
+insert into tbl_attach(fullname, bno) values (#{fullName}, #{bno})
+</insert>
+  
+ 
+</mapper>

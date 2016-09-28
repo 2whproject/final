@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.zerock.service.BoardService_BSR;
 import org.zerock.service.BookService;
 import org.zerock.service.GBoardService;
 import org.zerock.service.QnaService;
@@ -31,6 +32,9 @@ public class HomeController {
   @Inject
   private QnaService serviceqna;
   
+  @Inject
+  private BoardService_BSR tservice;
+  
   /**
    * Simply selects the home view to render by returning its name.
    */
@@ -48,6 +52,7 @@ public class HomeController {
     model.addAttribute("book",service.newList());
     model.addAttribute("qna",serviceqna.listNew());
     model.addAttribute("game",gservice.listNew());
+    model.addAttribute("torrent",tservice.listNew());
     
     return "home";
   }
