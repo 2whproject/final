@@ -122,7 +122,7 @@ footer {
 	<!-- 		footer start -->
 	<footer class="text-center">
 		<a href="#top" id="btntop" title="To Top"><i class="fa fa-angle-up fa-2x"></i></a>
-		<p>made by sang woo Lee in 2016
+		<p>made by Team 2 in 2016
 	</footer>
 	<!-- 		footer end -->
 	</div>

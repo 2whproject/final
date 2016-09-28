@@ -225,6 +225,7 @@ ADD CONSTRAINT fk_borad_attach_game FOREIGN KEY(bno) REFERENCES tbl_board_game(b
 
 --소정
 
+
 --윤정
 
 --
