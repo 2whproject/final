@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       bno, title, content, writer, regdate, viewcnt , replycnt
       from
       tbl_board_torrent
-      where bno = #{bno}
+      where board_id = #{board_id}
    </select>
 
    <select id="listAll" resultType="org.zerock.domain.BoardVO_BSR">
@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="listNew" resultType="org.zerock.domain.BoardVO_BSR">
  <![CDATA[
  select 
-   bno, title, content, writer, regdate, viewcnt 
+   bno, title, content, writer, regdate, viewcnt
  from 
    tbl_board_torrent
  where bno > 0 

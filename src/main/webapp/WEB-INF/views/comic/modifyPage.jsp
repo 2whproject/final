@@ -21,7 +21,6 @@
 				<!-- /.box-header -->
 
 <form role="form" action="modifyPage" method="post">
-
 	<input type='hidden' name='page' value="${cri.page}"> 
 	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 	<input type='hidden' name='searchType' value="${cri.searchType}">
@@ -30,14 +29,14 @@
 					<div class="box-body">
 
 						<div class="form-group">
-							<input id="bno"  name='bno' 
+							<input id="bno"
 							       type="text" name='bno' class="form-control" value="${aniVO.bno}"
 								   readonly="readonly">
 						</div>
 
 						<div class="form-group">
 							<label for="title">글제목</label> 
-							<input id="title" type="text" name='title' class="form-control" value="${aniVO.title2}">
+							<input type="text" name='title2' class="form-control" value="${aniVO.title2}">
 						</div>
 						<div class="form-group">
 							<label for="content">리뷰내용</label>

@@ -121,10 +121,11 @@ public class AniController {
   }
 
   @RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
-  public String modifyPagingPOST(AniVO ani, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
+  public String modifyPagingPOST(AniVO vo, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
 
     logger.info(cri.toString());
-    service.modify(ani);
+    service.modify(vo);
+    logger.info(vo.getBno().toString());
 
     rttr.addAttribute("page", cri.getPage());
     rttr.addAttribute("perPageNum", cri.getPerPageNum());
@@ -135,7 +136,7 @@ public class AniController {
 
     logger.info(rttr.toString());
 
-    return "redirect:/comic/reviewPage";
+    return "redirect:/comic/list";
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.GET)
