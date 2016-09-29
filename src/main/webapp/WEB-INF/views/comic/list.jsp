@@ -18,6 +18,7 @@
 
 	ul {
 	  list-style: none;
+	  padding: 0;
 	}
 
 	li {
@@ -25,6 +26,7 @@
    	  list-style: none;
    	  font-size: 11px;
       line-height: 150%;
+      margin: 0;
 	}
 	
 	

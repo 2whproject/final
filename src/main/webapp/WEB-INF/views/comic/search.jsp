@@ -57,7 +57,7 @@
 	.comic-img {
 		
 		width: 110px; 
-		height: 180px;
+		height: 170px;
 	
 	}
 
