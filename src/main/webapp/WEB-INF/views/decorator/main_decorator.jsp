@@ -102,16 +102,17 @@ footer {
 									영화<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="tboard/list?board_id=1">영화공유</a></li>
-									<li><a href="#">영화검색</a></li>
-									<li><a href="#">영화리뷰</a></li>
-								</ul></li>
-							<li class="dropdown"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#"><i class="fa fa-smile-o"></i>
-									만화<span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">만화검색</a></li>
-									<li><a href="#">만화리뷰</a></li>
-								</ul></li>
+									<li><a href="movie/list">영화리뷰</a></li>
+<!-- 									<li><a href="movie/readPage">영화리뷰</a></li> -->
+								</ul>
+							</li>
+<!-- 							<li class="dropdown"><a class="dropdown-toggle" -->
+<!-- 								data-toggle="dropdown" href="#"><i class="fa fa-smile-o"></i> -->
+<!-- 									만화<span class="caret"></span></a> -->
+<!-- 								<ul class="dropdown-menu"> -->
+<!-- 									<li><a href="#">만화검색</a></li> -->
+									<li><a href="comic/list">만화리뷰</a></li>
+<!-- 								</ul></li> -->
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"><i class="fa fa-book"></i>
 									도서<span class="caret"></span></a>
@@ -122,6 +123,7 @@ footer {
 								</ul>
 							</li>
 							<li><a href="gboard/list">게임리뷰</a></li>
+							<li><a href="qboard/list">Q&A</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 						<c:if test="${login == null}">
@@ -139,7 +141,7 @@ footer {
 					</div>
 				</nav>
 				<!-- Navbar End -->
-	 			 <h1 class="margin200">2조 프로젝트</h1>
+	 			 <h1 class="margin200"></h1>
 				</div>
 				<!-- header end -->
 				<!-- Body start -->
