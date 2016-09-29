@@ -111,8 +111,22 @@ footer {
 						data-toggle="dropdown" href="#"><i class="fa fa-film"></i>
 						영화<span class="caret"></span></a>
 						<ul class="dropdown-menu">
+<<<<<<< HEAD
+							<li><a href="http://localhost:8080/tboard/list?board_id=1">영화공유</a></li>
+							<li><a href="#">영화검색</a></li>
+							<li><a href="#">영화리뷰</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#"><i class="fa fa-smile-o"></i>
+						만화<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/comic/search">만화검색</a></li>
+							<li><a href="/comic/list">만화리뷰</a></li>
+=======
 							<li><a href="/tboard/list?board_id=1">영화공유</a></li>
 							<li><a href="/movie/list">영화리뷰</a></li>
+>>>>>>> d51c8e987847fafd973d47fa0cba43a82b48fc2e
 						</ul>
 					</li>
 					<li><a href="comic/list">만화리뷰</a></li>

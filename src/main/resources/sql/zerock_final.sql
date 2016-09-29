@@ -2,38 +2,39 @@
 -- DROP table
 --
 --공통
-DROP TABLE tbl_user;
+--DROP TABLE tbl_user;
 
 --성룡
-DROP TABLE tbl_attach;
-DROP TABLE tbl_board_torrent;
-DROP TABLE tbl_reply_torrent;
+--DROP TABLE tbl_attach;
+--DROP TABLE tbl_board_torrent;
+--DROP TABLE tbl_reply_torrent;
 
 --상우
-DROP TABLE tbl_board_book;
-DROP TABLE tbl_reply_book;
+--DROP TABLE tbl_board_book;
+--DROP TABLE tbl_reply_book;
 
 --세빈
-DROP TABLE tbl_qnaboard;
-DROP TABLE tbl_qreply;
-drop table tbl_log;
-drop table tbl_leave;
-drop table tbl_note;
+--DROP TABLE tbl_qnaboard;
+--DROP TABLE tbl_qreply;
+--drop table tbl_log;
+--drop table tbl_leave;
+--drop table tbl_note;
 
 --교선
-DROP TABLE tbl_board_game;
-DROP TABLE tbl_reply_game;
-DROP TABLE tbl_gattach;
-DROP TABLE tbl_gboard;
-DROP TABLE tbl_gmessage;
-DROP TABLE tbl_greply;
+--DROP TABLE tbl_board_game;
+--DROP TABLE tbl_reply_game;
+--DROP TABLE tbl_gattach;
+--DROP TABLE tbl_gboard;
+--DROP TABLE tbl_gmessage;
+--DROP TABLE tbl_greply;
+
 --소정
-DROP table tbl_board_ani;
-DROP table tbl_reply_ani;
+--DROP table tbl_board_ani;
+--DROP table tbl_reply_ani;
 
 --윤정
-DROP table tbl_board_movie;
-DROP table tbl_movie_reply;
+--DROP table tbl_board_movie;
+--DROP table tbl_movie_reply;
 
 
 
@@ -112,6 +113,7 @@ CREATE TABLE tbl_board_book
    REGDATE    	timestamp NOT NULL DEFAULT now(),
    VIEWCNT    	int DEFAULT 0,
    REPLYCNT   	int DEFAULT 0,
+   STAR			int DEFAULT 0,
    PRIMARY KEY(bno)
 );
 
