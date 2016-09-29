@@ -105,11 +105,11 @@
 
                <ul class="mailbox-attachments clearfix uploadedList">
                </ul>
-<%--                <c:if test="${login.uid == aniVO.writer}"> --%>
+               <c:if test="${login.uid == aniVO.writer}">
                   <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
                   <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
-<%--                </c:if> --%>
-<!--                <button type="submit" class="btn btn-primary" id="goListBtn">리스트</button> -->
+               </c:if>
+               <button type="submit" class="btn btn-primary" id="goListBtn">리스트</button>
             </div>
 
          </div>
@@ -129,8 +129,8 @@
 				</div>
 
 
-				<!-- 로그인 상태 -->
-<%-- 				<c:if test="${not empty login}"> --%>
+				로그인 상태
+				<c:if test="${not empty login}">
 					<div class="box-body">
 						<input class="form-control" type="text" placeholder="USER ID"
 							id="newReplyWriter" value="${login.uid}" readonly="readonly">
@@ -142,16 +142,16 @@
 						<button type="submit" class="btn btn-primary" id="replyAddBtn">
 							ADD REPLY</button>
 					</div>
-<%-- 				</c:if> --%>
+				</c:if>
 
-<!-- 				로그아웃 상태 -->
-<%-- 				<c:if test="${empty login}"> --%>
-<!-- 					<div class="box-body"> -->
-<!-- 						<div> -->
-<!-- 							<a href="javascript:goLogin();">Login Please</a> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<%-- 				</c:if> --%>
+				로그아웃 상태
+				<c:if test="${empty login}">
+					<div class="box-body">
+						<div>
+							<a href="javascript:goLogin();">Login Please</a>
+						</div>
+					</div>
+				</c:if>
 			</div>
 
 

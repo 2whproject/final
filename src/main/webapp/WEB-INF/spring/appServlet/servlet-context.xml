@@ -65,6 +65,7 @@
 		<mapping path="/tboard/register"/>
 	    <mapping path="/tboard/modifyPage"/>
 	    <mapping path="/tboard/removePage"/>
+	    <mapping path="/comic/register"/>
 	    <beans:ref bean="authInterceptor"/>
 	  </interceptor>	
 	  		
