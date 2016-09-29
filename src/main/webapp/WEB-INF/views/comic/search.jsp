@@ -29,14 +29,6 @@
       margin: 0;
 	}
 	
-	table {
-   		border-collapse: collapse;
-	}
-
-	table, th, td {
-   		border: 1px solid black;
-	}
-	
 	#title {
    	   text-decoration: none;
    	   text-align: left;
@@ -60,6 +52,13 @@
    		overflow: hidden;
    		text-overflow: ellipsis;
    		margin-left: 0.5cm;
+	}
+	
+	.comic-img {
+		
+		width: 110px; 
+		height: 180px;
+	
 	}
 
 </style>
@@ -89,11 +88,15 @@
                                      var list_price = data.channel.item[i].list_price;
                                      var description = data.channel.item[i].description;
                                    
+                                     if (cover_l_url=="") {
+                         				cover_l_url="/resources/no_image.gif"
+                         			}
+                                     
                                      result += "<div id='comic-info2'>"
                                      result += "<ul><li style='float:left;'>" +
                                                "<a href="+'"http://localhost:8080/comic/readPage'+'?cover_l_url='+cover_l_url+'&title='+title+
                                          	   '&author_t='+author_t+'&pub_nm='+pub_nm+'&description='+description+'&list_price='+list_price+'&link='+link+'&isbn='+isbn+'">' +
-                                               "<img id='comic-img' src=" + "'" + cover_l_url + "'>" + "</a></li><br>";
+                                               "<img class='comic-img' src=" + "'" + cover_l_url + "'>" + "</a></li><br>";
                                                                          
                                      result += "<li id='title' style='font-size:1.3em;'>" + 
                                                "<a href="+'"http://localhost:8080/comic/readPage'+'?cover_l_url='+cover_l_url+'&title='+title+
@@ -148,10 +151,14 @@
                   var list_price = data.channel.item[i].list_price;
                   var isbn = data.channel.item[i].isbn;
                 
+                  if (cover_l_url=="") {
+      				cover_l_url="/resources/no_image.gif"
+      			}
+                  
                   result += "<div id='comic-info2'>";
                   
                   result += "<li style='float:left;'>" +
-                  			"<img id='comic-img' src=" + "'" + cover_l_url + "'>" + "</li><br>";
+                  			"<img class='comic-img' src=" + "'" + cover_l_url + "'>" + "</li><br>";
 			
                   var str = title;
                   var a = str.indexOf("[만화]");

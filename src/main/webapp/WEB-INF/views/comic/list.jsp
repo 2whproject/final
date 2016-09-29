@@ -27,13 +27,6 @@
       line-height: 150%;
 	}
 	
-	table {
-   		border-collapse: collapse;
-	}
-
-	table, th, td {
-   		border: 1px solid black;
-	}
 	
 	hr {
 		width: 100%; 
@@ -77,7 +70,13 @@
    		text-overflow: ellipsis;
    		margin-left: 0.5cm;
 	}
-
+	
+	.comic-img {
+		
+		width: 110px; 
+		height: 190px;
+	
+	}
 
 </style>
 
@@ -108,12 +107,16 @@
                                      var list_price = data.channel.item[i].list_price;
                                      var description = data.channel.item[i].description;
                                    
+                                     if (cover_l_url=="") {
+                         				 cover_l_url="/resources/no_image.gif"
+                         			}
+                                     
                                      result += "<div id='comic-info'>"
                                      result += "<hr>"
                                      result += "<ul><li style='float:left;'>" +
                                                "<a href="+'"http://localhost:8080/comic/readPage'+'?cover_l_url='+cover_l_url+'&title='+title+
                                          	   '&author_t='+author_t+'&pub_nm='+pub_nm+'&description='+description+'&list_price='+list_price+'&link='+link+'&isbn='+isbn+'">' +
-                                               "<img id='comic-img' src=" + "'" + cover_l_url + "'>" + "</a></li><br>";
+                                               "<img class='comic-img' src=" + "'" + cover_l_url + "'>" + "</a></li><br>";
                                                                          
                                      result += "<li id='title' style='font-size:1.3em;'>" + 
                                                "<a href="+'"http://localhost:8080/comic/readPage'+'?cover_l_url='+cover_l_url+'&title='+title+
@@ -143,10 +146,13 @@
       var query = $("#query").val();
       var pageno = $("#pagno").val();
       var searchType = "all";
-  	  var sort = "popular";
       var perPageNum = "15";
 	  var page ="1";
       var url = "https://apis.daum.net/search/book";
+     
+      if (cover_l_url=="") {
+			cover_l_url="/resources/no_image.gif"
+      }
       
       url += "?output=json";
       url += "&apikey=8213678ddbaeec2bb228fce3d6eb67b6"
@@ -224,11 +230,11 @@
 
       <div class="box">
          <div class="box-header with-boarder">
-            <h3 class="box-title">Comic Search</h3>
+            <h3 class="box-title">Comic List</h3>
          </div>
       
-      <form class='box-body' id="search_form"
-         action="javascript:search_query();" method="POST">
+<!--       <form class='box-body' id="search_form" -->
+<!--          action="javascript:search_query();" method="POST"> -->
 <!--          <select name="searchType"> -->
 <!--             <option value="n" -->
 <%--                <c:out value="${cri.searchType == null?'selected':''}"/>> --%>
@@ -252,10 +258,10 @@
 <%--                <c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>> --%>
 <!--                Title OR Content OR Writer</option> -->
 <!--          </select>  -->
-         <input type="text" size="20" id="query" name="query">
-            <button id='searchBtn'>Search</button>
+<!--          <input type="text" size="20" id="query" name="query"> -->
+<!--             <button id='searchBtn'>Search</button> -->
 <!--             <button id='newBtn'>New Board</button> -->
-         </form>
+<!--          </form> -->
       </div>
    </div>
 
@@ -272,14 +278,14 @@
 <!--    <br>  -->
 
   <div>
-   <h3 class="box-title">Comic List</h3>
+<!--    <h3 class="box-title">Comic List</h3> -->
    <span id="results">
    </span>
   </div> 
   
 <!--    </form> -->
          </div>
-      <c:forEach items='${list}' var='boardVO'>
+      <c:forEach items='${list}' var='aniVO'>
       <div class="box-body">
          <ul id="results" >
          </ul>

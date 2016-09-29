@@ -109,8 +109,8 @@ footer {
 								data-toggle="dropdown" href="#"><i class="fa fa-smile-o"></i>
 									만화<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">만화검색</a></li>
-									<li><a href="#">만화리뷰</a></li>
+									<li><a href="/comic/search">만화검색</a></li>
+									<li><a href="/comic/list">만화리뷰</a></li>
 								</ul></li>
 							<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"><i class="fa fa-book"></i>
