@@ -6,6 +6,7 @@ public class AniVO {
 	
 	private Integer bno;
 	private String author; 
+	private String author_t; 
 	private String isbn;
 	private String cover_l_url;
 	private String title;
@@ -15,9 +16,35 @@ public class AniVO {
 	private Date regdate;
 	private int viewcnt;
 	private int replycnt;
-
+	private String pub_nm;
+	private String list_price;
+	private String link;
 	
 	
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
+	public String getList_price() {
+		return list_price;
+	}
+	public void setList_price(String list_price) {
+		this.list_price = list_price;
+	}
+	public String getPub_nm() {
+		return pub_nm;
+	}
+	public void setPub_nm(String pub_nm) {
+		this.pub_nm = pub_nm;
+	}
+	public String getAuthor_t() {
+		return author_t;
+	}
+	public void setAuthor_t(String author_t) {
+		this.author_t = author_t;
+	}
 	public String getCover_l_url() {
 		return cover_l_url;
 	}

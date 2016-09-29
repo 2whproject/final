@@ -137,7 +137,7 @@ body {
 					<div class="col-lg-6">
 						<div class="panel-body">영화리뷰</div>
 						<c:forEach items="${movie}" var="movieVO">
-										<li><a href="/movie/list">${movieVO.title}<span class="newreplycnt">[${movieVO.replycnt}]</span><span class="newdate">
+										<li><a href="/movie/reviewPage?bno=${movieVO.bno}">${movieVO.title}<span class="newreplycnt">[${movieVO.replycnt}]</span><span class="newdate">
 												<fmt:formatDate pattern="yyyy-MM-dd" value="${movieVO.regdate}"/></span></a>  <span class="label label-danger bg-red-gradient">n</span></li>
 						</c:forEach>
 					</div>
@@ -147,7 +147,7 @@ body {
 					<div class="col-lg-6">
 						<div class="panel-body">만화</div>
 						<c:forEach items="${ani}" var="aniVO">
-										<li><a href="/comic/list">${aniVO.title}<span class="newreplycnt">[${aniVO.replycnt}]</span><span class="newdate">
+										<li><a href="/comic/reviewPage?bno=${aniVO.bno}&cover_l_url=${aniVO.cover_l_url}&title=${aniVO.title}&author_t=${aniVO.author_t}&pub_nm=${aniVO.pub_nm}&list_price=${aniVO.list_price}&link=${aniVO.link}&isbn=${aniVO.isbn}">${aniVO.title}<span class="newreplycnt">[${aniVO.replycnt}]</span><span class="newdate">
 												<fmt:formatDate pattern="yyyy-MM-dd" value="${aniVO.regdate}"/></span></a>  <span class="label label-danger bg-red-gradient">n</span></li>
 						</c:forEach>
 					</div>

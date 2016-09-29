@@ -229,8 +229,9 @@ th {
 							<c:forEach items="${list}" var="movieVO">
 								<tr>
 									<td id="bno">${movieVO.bno}</td>
-									<td><a href="/movie/reviewPage?bno=${movieVO.bno}">
-											${movieVO.title} </a></td>
+									<td><a href="/movie/reviewPage?bno=${movieVO.bno}&movie_title=${movie_title}&eng_title=${eng_title}&genre_1=${genre_1}&nation=${nation}&open_info_time=${open_info_time}
+                        &open_info_data=${open_info_data}&director=${director}&actor1=${actor1}&open_info_age=${open_info_age}&photo1=${photo1}&year=${year}&title_link=${title_link}">
+                                 ${movieVO.title} </a></td>
 									<td style="cursor: pointer;" onclick="ang()">${movieVO.writer}</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 											value="${movieVO.regdate}" /></td>
