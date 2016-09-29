@@ -137,7 +137,7 @@ body {
 					<div class="col-lg-6">
 						<div class="panel-body">영화리뷰</div>
 						<c:forEach items="${movie}" var="movieVO">
-										<li><a href="#">${movieVO.title}<span class="newreplycnt">[${movieVO.replycnt}]</span><span class="newdate">
+										<li><a href="/movie/list">${movieVO.title}<span class="newreplycnt">[${movieVO.replycnt}]</span><span class="newdate">
 												<fmt:formatDate pattern="yyyy-MM-dd" value="${movieVO.regdate}"/></span></a>  <span class="label label-danger bg-red-gradient">n</span></li>
 						</c:forEach>
 					</div>
@@ -147,7 +147,7 @@ body {
 					<div class="col-lg-6">
 						<div class="panel-body">만화</div>
 						<c:forEach items="${ani}" var="aniVO">
-										<li><a href="#">${aniVO.title}<span class="newreplycnt">[${aniVO.replycnt}]</span><span class="newdate">
+										<li><a href="/comic/list">${aniVO.title}<span class="newreplycnt">[${aniVO.replycnt}]</span><span class="newdate">
 												<fmt:formatDate pattern="yyyy-MM-dd" value="${aniVO.regdate}"/></span></a>  <span class="label label-danger bg-red-gradient">n</span></li>
 						</c:forEach>
 					</div>
@@ -159,7 +159,7 @@ body {
 					<div class="col-lg-6">
 						<div class="panel-body">게임</div>
 						<c:forEach items="${game}" var="gameVO">
-										<li><a href="gboard/list">${gameVO.title}<span class="newreplycnt">[${gameVO.replycnt}]</span><span class="newdate">
+										<li><a href="/gboard/list">${gameVO.title}<span class="newreplycnt">[${gameVO.replycnt}]</span><span class="newdate">
 												<fmt:formatDate pattern="yyyy-MM-dd" value="${gameVO.regdate}"/></span></a> <span class="label label-danger bg-red-gradient">n</span></li>
 						</c:forEach>
 					</div>
@@ -169,7 +169,7 @@ body {
 					<div class="col-lg-6 newback">
 						<div class="panel-body">도서</div>
 						<c:forEach items="${book}" var="bookVO">
-										<li><a href="book/readPage?bno=${bookVO.bno}">${bookVO.title}<span class="newreplycnt">[${bookVO.replycnt}]</span><span class="newdate">
+										<li><a href="/book/readPage?bno=${bookVO.bno}">${bookVO.title}<span class="newreplycnt">[${bookVO.replycnt}]</span><span class="newdate">
 												<fmt:formatDate pattern="yyyy-MM-dd" value="${bookVO.regdate}"/></span></a> 
 										<span class="label label-danger bg-red-gradient">n</span></li>
 						</c:forEach>
@@ -180,7 +180,7 @@ body {
 					<div class="col-lg-6">
 						<div class="panel-body">문의게시판</div>
 						<c:forEach items="${qna}" var="qnaVO">
-										<li><a href="qboard/readPage?bno=${qnaVO.bno}">${qnaVO.title}<span class="newreplycnt">[${qnaVO.replycnt}]</span><span class="newdate">
+										<li><a href="/qboard/readPage?bno=${qnaVO.bno}">${qnaVO.title}<span class="newreplycnt">[${qnaVO.replycnt}]</span><span class="newdate">
 												<fmt:formatDate pattern="yyyy-MM-dd" value="${qnaVO.regdate}"/></span></a>  <span class="label label-danger bg-red-gradient">n</span></li>
 						</c:forEach>
 					</div>
