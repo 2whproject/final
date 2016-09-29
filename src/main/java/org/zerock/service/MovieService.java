@@ -30,6 +30,10 @@ public interface MovieService {
   
   public List<String> getAttach(Integer bno)throws Exception;
 
+  public List<String> newList() throws Exception;
+
+
+
 
 
 }

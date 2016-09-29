@@ -136,4 +136,9 @@ public class AniDAOImpl implements AniDAO {
 
 	}
 
+	@Override
+	public List<String> listNew() throws Exception {
+		return session.selectList(namespace + ".newList");
+	}
+
 }

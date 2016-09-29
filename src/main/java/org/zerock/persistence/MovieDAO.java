@@ -43,5 +43,7 @@ public interface MovieDAO {
   public void deleteAttach(Integer bno)throws Exception;
   
   public void replaceAttach(String fullName, Integer bno)throws Exception;
+
+  public List<String> newList()throws Exception;
   
 }

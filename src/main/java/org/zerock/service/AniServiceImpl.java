@@ -111,6 +111,11 @@ public class AniServiceImpl implements AniService {
   public List<String> getAttach(Integer bno) throws Exception {
     
     return dao.getAttach(bno);
-  }   
+  }
+
+@Override
+public List<String> newList() throws Exception {
+	  return dao.listNew();
+}   
 
 }

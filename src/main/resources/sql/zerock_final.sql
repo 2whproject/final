@@ -252,7 +252,7 @@ CREATE TABLE tbl_reply_ani
 );
 
 ALTER TABLE tbl_reply_ani
-  ADD CONSTRAINT fk_board_reply FOREIGN KEY(movieId) REFERENCES tbl_reply_ani(bno);
+  ADD CONSTRAINT fk_board_reply FOREIGN KEY(bno) REFERENCES tbl_reply_ani(bno);
 
 --윤정
 

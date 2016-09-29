@@ -12,10 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.zerock.service.AniService;
 import org.zerock.service.BoardService_BSR;
 import org.zerock.service.BookService;
 import org.zerock.service.GBoardService;
+import org.zerock.service.MovieService;
 import org.zerock.service.QnaService;
+
+import javafx.animation.Animation;
 
 /**
  * Handles requests for the application home page.
@@ -27,13 +31,21 @@ public class HomeController {
   
   @Inject
   private GBoardService gservice;
+  
   @Inject
   private BookService service;
+
   @Inject
   private QnaService serviceqna;
   
   @Inject
   private BoardService_BSR tservice;
+  
+  @Inject
+  private AniService  aniservice;
+  
+  @Inject
+  private MovieService movieservice;
   
   /**
    * Simply selects the home view to render by returning its name.
@@ -53,6 +65,8 @@ public class HomeController {
     model.addAttribute("qna",serviceqna.listNew());
     model.addAttribute("game",gservice.listNew());
     model.addAttribute("torrent",tservice.listNew());
+    model.addAttribute("movie",movieservice.newList());
+    model.addAttribute("ani",aniservice.newList());
     
     return "home";
   }

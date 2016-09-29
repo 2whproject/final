@@ -28,6 +28,8 @@ public interface AniService {
   public int listSearchCount(SearchCriteria cri) throws Exception;
   
   public List<String> getAttach(Integer bno)throws Exception;
+
+  public List<String> newList()throws Exception;
   
 
 }

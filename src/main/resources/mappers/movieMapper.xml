@@ -26,9 +26,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  where title_link= #{title_link}
  order by bno desc, regdate desc
  ]]>
+ </select>
+	<select id="newList" resultType="org.zerock.domain.MovieVO">
+ <![CDATA[
+ select 
+   bno, title, content, writer, regdate, viewcnt , title_link
+ from 
+   tbl_board_movie 
+ where bno > 0
+ order by bno desc, regdate desc limit 6
+ ]]>
 	</select>
 
-	<select id="listPage" resultType="MovieVO">
+	<select id="listPage" resultType="org.zerock.domain.MovieVO">
  <![CDATA[
  select 
    bno, title, content, writer, regdate, viewcnt , replycnt, title_link
@@ -41,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  ]]>
 	</select>
 
-	<select id="listCriteria" resultType="MovieVO">
+	<select id="listCriteria" resultType="org.zerock.domain.MovieVO">
  <![CDATA[
  select 
    bno, title, content, writer, regdate, viewcnt , replycnt, title_link

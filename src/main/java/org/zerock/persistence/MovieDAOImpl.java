@@ -125,6 +125,11 @@ public MovieVO read(int bno) throws Exception {
 	 return session.selectOne(namespace + ".read", bno);
 }
 
+@Override
+public List<String> newList() throws Exception {
+	return session.selectList(namespace + ".newList");
+}
+
 
 
 }
