@@ -8,9 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <script type="text/javascript">
-    self.location = "/qboard/list";
-  </script>
 </body>
 </html>
 
