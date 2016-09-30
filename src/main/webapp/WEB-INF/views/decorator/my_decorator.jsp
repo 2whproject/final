@@ -68,38 +68,11 @@ footer {
 }
 </style>
 <sitemesh:write property="head" />
-<style type="text/css">
-.navbar {
-	border-bottom: 1px solid lightgray;		
-}
-</style>
 </head>
 
 <body>
 	<!-- .wrapper -->
 	<div class="wrapper">
-	<!-- Navbar -->
-				<nav class="navbar">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<a id="home" class="nav navbar-brand" href="/">Home</a>
-						</div>
-						<ul class="nav navbar-nav navbar-right">
-						<c:if test="${login == null}">
-							<li><a href="/member/register"><span
-									class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-							<li id="login"><a  href="/user/login"><span
-									class="glyphicon glyphicon-log-in"></span> Login</a></li>
-						</c:if>
-						<c:if test="${login != null}">
-							<li><a href="/user/logininfo">${login.uname}</a></li>
-							<li id="login"><a  href="/user/logoff"><span
-									class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-						</c:if>
-						</ul>
-					</div>
-				</nav>
-				<!-- Navbar End -->
 	<!-- 		Body start -->
 	<div id="#top" class="container-fluid text-center">
 		<div id="bodyrow" class="row">
@@ -111,35 +84,23 @@ footer {
 						data-toggle="dropdown" href="#"><i class="fa fa-film"></i>
 						영화<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-<<<<<<< HEAD
-							<li><a href="http://localhost:8080/tboard/list?board_id=1">영화공유</a></li>
-							<li><a href="#">영화검색</a></li>
-							<li><a href="#">영화리뷰</a></li>
-						</ul>
-					</li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"><i class="fa fa-smile-o"></i>
-						만화<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="/comic/search">만화검색</a></li>
-							<li><a href="/comic/list">만화리뷰</a></li>
-=======
 							<li><a href="/tboard/list?board_id=1">영화공유</a></li>
-							<li><a href="/movie/list">영화리뷰</a></li>
->>>>>>> d51c8e987847fafd973d47fa0cba43a82b48fc2e
+							<li><a href="/movie/list">영화정보</a></li>
+							<li><a href="/gboard/list">자유게시판</a></li>
 						</ul>
 					</li>
-					<li><a href="comic/list">만화리뷰</a></li>
+					
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"><i class="fa fa-book"></i>
 						도서<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/book/search?cate_id=33">도서검색</a></li>
 							<li><a href="/book/list">나의 독서노트 리스트</a></li>
+							<li><a href="/comic/search">만화검색</a></li>
+							<li><a href="/comic/list">만화리뷰</a></li>
 						</ul>
 					</li>
-					<li><a href="/gboard/list"><i class="fa fa-gamepad"></i>게임리뷰</a></li>
-					<li><a href="/qboard/list"><i class="fa fa-question"></i>Q&A</a></li>
+					<li><a href="#"><i class="fa fa-question"></i>문의게시판</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-8 text-left">
@@ -155,7 +116,7 @@ footer {
 	<!-- 		footer start -->
 	<footer class="text-center">
 		<a href="#top" id="btntop" title="To Top"><i class="fa fa-angle-up fa-2x"></i></a>
-		<p>made by Team 2 in 2016
+		<p>made by project 2 in 2016
 	</footer>
 	<!-- 		footer end -->
 	</div>

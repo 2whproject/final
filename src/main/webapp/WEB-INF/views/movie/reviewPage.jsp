@@ -7,7 +7,16 @@
 <head>
 <title>${movieVO.title}</title>
 <style type="text/css">
-
+li{
+   text-decoration: none;
+   list-style: none;
+   font-size:12px;
+   text-align: left;
+   
+}
+label{
+   float:left;
+}
 
 </style>
    <script type="text/javascript" src="/resources/js/upload.js"></script>
@@ -22,12 +31,38 @@
       <!-- left column -->
       <div class="col-md-12">
          <!-- general form elements -->
+         <div class='box'>
+            <div class="box-header with-border">
+               <h3 class="box-title" style="float: left;">MOVIE REVIEW >></h3>
+            </div>
+            <div class="row" style="clear: both;">
+               <div class="box-body">
+                  <div class="col-md-1">
+                     <img src='${photo1}' style="width: 100px;" />
+                  </div>
+                  <div class="col-md-11">
+                     <ul>
+                        <li><h3>${movie_title}</h3>${eng_title},${year}</li>
+                        <li style="float: left;"><b>개요 </b> ${genre_1} | ${nation}
+                           | ${open_info_time} | ${open_info_data} 개봉</li>
+                        <li><b>&nbsp;등급 </b>${open_info_age}</li>
+                        <li style="float: left;"><b>감독 </b> ${director}</li>
+                        <li><b>&nbsp;출연 </b>${actor1}</li>
+
+                     </ul>
+                  </div>
+
+
+               </div>
+            </div>
+
+
+         </div>
+         <!-- /.box-header -->
          <div class="box box-primary">
             <div class="box-header with-border">
-					<h3 class="box-title" style="float:left;">${movieVO.title} >></h3>
-				</div>
-            <!-- /.box-header -->
-
+               <h3 class="box-title" style="float: left;">${movieVO.title}</h3>
+            </div>
             <form role="form" action="modifyPage" method="post">
 
                <input type='hidden' name='bno' value="${movieVO.bno}"> <input
@@ -40,8 +75,15 @@
 
             <div class="box-body">
                <div class="form-group">
-                  <label for="exampleInputEmail1">Title</label> <input type="text"
-                     name='title' class="form-control" value="${movieVO.title}"
+                  <label for="exampleInputEmail1" style="float: left;">Title</label>
+               </div>
+               <div class="form-group">
+                  <input type="text" name='title' class="form-control"
+                     value="${movieVO.title}" readonly="readonly">
+               </div>
+               <div class="form-group">
+                  <label for="exampleInputEmail1">Writer</label> <input type="text"
+                     name="writer" class="form-control" value="${movieVO.writer}"
                      readonly="readonly">
                </div>
                <div class="form-group">
@@ -49,22 +91,18 @@
                   <textarea class="form-control" name="content" rows="4"
                      readonly="readonly">${movieVO.content}</textarea>
                </div>
-               <div class="form-group">
-                  <label for="exampleInputEmail1">Writer</label> <input type="text"
-                     name="writer" class="form-control" value="${movieVO.writer}"
-                     readonly="readonly">
+               <div class="box-footer">
+                  <a href="/movie/list" class="btn btn-primary" role="button"
+                     style="margin: 0 auto; display: block; width: 100px;"> GO
+                     LIST</a>
                </div>
+               <!-- /.box-body -->
+
             </div>
-            <!-- /.box-body -->
-
+            <!-- /.box -->
          </div>
-         <!-- /.box -->
+         <!--/.col (left) -->
       </div>
-      <!--/.col (left) -->
-   </div>
-   <!-- /.row -->
-
-   
-
+      <!-- /.row -->
 </body>
 </html>

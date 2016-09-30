@@ -87,8 +87,7 @@ public class AniController {
 	  model.addAttribute("list_price", list_price);
 	  model.addAttribute("link", link);
 	  model.addAttribute("isbn", isbn);
-	  
-	  
+	  	
 	    model.addAttribute("aniVO", service.listSearchCriteria(cri));
 
 	    PageMaker pageMaker = new PageMaker();
@@ -206,7 +205,6 @@ public class AniController {
 //	     logger.info(bno + "");
 //	     logger.info("##############");
 	     
-	     model.addAttribute("AniVO", service.read(bno));
 	     model.addAttribute("bno", bno);
 	  	 model.addAttribute(service.read(bno));
 	  	 model.addAttribute("cover_l_url", cover_l_url);

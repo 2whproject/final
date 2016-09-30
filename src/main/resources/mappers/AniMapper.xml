@@ -17,6 +17,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		tbl_board_ani
 		where bno = #{bno}
 	</select>
+	
+<select id="readall" resultType="org.zerock.domain.AniVO">
+		select
+		bno, title, author, isbn, title2, content, writer, regdate, viewcnt , replycnt
+		from
+		tbl_board_ani
+		where title = #{title}
+</select>
 
 	<select id="listAll" resultType="org.zerock.domain.AniVO">
  <![CDATA[
@@ -57,7 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    bno, title, author, isbn, title2, content, writer, regdate, viewcnt , replycnt
  from 
    tbl_board_ani
- where bno > 0 
+ where bno > 0
  order by bno desc, regdate desc
  limit #{pageStart}, #{perPageNum}
  ]]>

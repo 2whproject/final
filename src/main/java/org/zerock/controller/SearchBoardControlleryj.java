@@ -182,10 +182,35 @@ public class SearchBoardControlleryj {
   
   @RequestMapping(value = "/reviewPage", method = RequestMethod.GET)
   public void read(@RequestParam("bno") int bno, 
+		  @RequestParam(value="movie_title") String movie_title,
+		   @RequestParam(value="eng_title") String eng_title,
+		   @RequestParam(value="photo1") String photo1,
+		   @RequestParam(value="open_info_data") String open_info_data,
+		   @RequestParam(value="open_info_age") String open_info_age,
+	   	   @RequestParam(value="open_info_time") String open_info_time,
+		   @RequestParam(value="genre_1") String genre_1,
+		   @RequestParam(value="nation") String nation,
+		   @RequestParam(value="director") String director,  
+		   @RequestParam(value="actor1") String actor1,
+		   @RequestParam(value="year") String year,
+		   @RequestParam(value="title_link") String title_link,
 		  SearchCriteria cri, Model model)
       throws Exception {
 	  logger.info("/readPage...");
 
+	  model.addAttribute("movie_title", movie_title);
+	  model.addAttribute("eng_title", eng_title);
+	  model.addAttribute("photo1", photo1);
+	  model.addAttribute("open_info_data", open_info_data);
+	  model.addAttribute("open_info_time", open_info_time);
+	  model.addAttribute("open_info_age", open_info_age);
+	  model.addAttribute("genre_1", genre_1);
+	  model.addAttribute("nation", nation);
+	  model.addAttribute("director", director);
+	  model.addAttribute("actor1", actor1);
+	  model.addAttribute("year", year);
+	  model.addAttribute("title_link", title_link);
+	  
 	  MovieVO v = service.read(bno);
 	  
 	  if (v != null)

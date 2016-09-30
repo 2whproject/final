@@ -141,4 +141,9 @@ public class AniDAOImpl implements AniDAO {
 		return session.selectList(namespace + ".newList");
 	}
 
+	@Override
+	public List<AniVO> read(String title) {
+		return session.selectList(namespace + ".readall", title);
+	}
+
 }

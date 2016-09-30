@@ -92,7 +92,7 @@ label{
 							<div class="form-group">
 								<label for="exampleInputEmail1" >작성자</label> <input
 									type="text" name="writer" id="movie_review"  class="form-control"
-									value='${login.uname}' readonly>
+									value='${login.uid}' readonly>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputP`assword1">내용</label>

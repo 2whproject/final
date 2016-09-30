@@ -312,7 +312,6 @@
 
    
    $("#repliesDiv").on("click", function() {
-      alert("repliesDiv clicked........");
       
       if ($(".timeline li").size() > 1) {
          return;
