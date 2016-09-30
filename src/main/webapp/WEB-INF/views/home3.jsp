@@ -59,6 +59,7 @@ footer {
 	opacity: 0;
 	text-decoration: none;
 	color:white;	
+	
 }
 
 
@@ -71,6 +72,7 @@ footer {
 	overflow: hidden;
 	white-space: nowrap;
 	text-indent: 100%;
+	text-decoration: none;
 	
 }
 
@@ -146,14 +148,6 @@ p.prd_over {
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-.over a {
-	text-decoration: none;
-}
-
-* {
-	border: 1px solid red;
 }
 
 </style>
@@ -276,12 +270,11 @@ They quickly absorb me and banish the clouds from my mind.;</p>
 		
 		<div class="row">
     <div class="col-sm-6 prd_box">
-	    <div class="over">
-	    	<a class="prd_over" href="book/search?cate_id=33" ><i class="fa fa-book fa-4x"></i></a>
+	    <div >
+	    	<a href="book/search?cate_id=33" class="prd_over"><i class="fa fa-book fa-4x"></i></a>
 	    	<p class="prd_over">BOOK</p>
 	    </div>
-      <img src="/resources/img/5.jpg" class="img-responsive" style="width:100%" alt="Image"
-      id="project1">
+      <img src="/resources/img/5.jpg" class="img-responsive" style="width:100%" alt="Image" id="project1">
      
     </div>
     
@@ -291,8 +284,7 @@ They quickly absorb me and banish the clouds from my mind.;</p>
 	    	<a href="movie/list" class="prd_over"><i class="fa fa-film fa-4x" aria-hidden="true"></i></a>
 	    	<p class="prd_over">MOVIE</p>
 	    </div>
-       <img src="/resources/img/7.jpg" class="img-responsive" style="width:100%" alt="Image"
-      id="project1">
+       <img src="/resources/img/7.jpg" class="img-responsive" style="width:100%" alt="Image" id="project1">
       
     </div>
     
@@ -301,14 +293,11 @@ They quickly absorb me and banish the clouds from my mind.;</p>
 
 				<script>
 					$(document).ready(function() {
-						/* IE때문에 opacity 값을 다시 초기화 시킴 */
 						$(".prd_over").css('opacity', '0');
-						/*  상품목록 이미지 롤오버가 각각 개별적으로 작동하기 위해 .each()메소드 사용*/
+						
 						$(".prd_box").each(function() {
-							/* .롤오버 작동을 위해 hover 메소드 사용.*/
 							$(this).hover(function() {
-								/*  .prd_box 위에 마우스가 올라가면 .find()메소드로 .prd_over 클래스가 정의된 엘리먼트를 찾아 .stop()메소드로 초기화 시킨다음 .animate()메소드로 opacity 속성을 애니메이션 시킴*/
-								$(this).find(".prd_over").stop().animate({
+								$(".prd_over").animate({
 									"opacity" : "1",
 									"z-index" : "10000000",
 									"transition" : "0.5"

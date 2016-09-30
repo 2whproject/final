@@ -58,9 +58,8 @@ select, input {
 	clear: both;
 	visibility: hidden;
 }
-#results {
-	padding-left: 70px;
-	padding-right: 50px;
+#results{
+
 }
 #bottomspace {
 	visibility: hidden;
@@ -75,6 +74,12 @@ select, input {
 /* 	border: 1px solid red; */
 }
 
+@media screen and (max-width: 368px) {
+	#results{
+		padding left: 0px;
+		margin-bottom: 0px;
+	}
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Daum 도서 검색</title>
@@ -121,7 +126,7 @@ $(document).ready(function search_query() {
 				cover_l_url="/resources/no_image.gif"
 			}
 			
-			result += "<div id='li' class="+'"col-lg-2"'+">";
+			result += "<div id='li' class="+'"col-lg-2 col-xs-6"'+">";
 			result += '<a target=' + '"_blank"' + "href=" + '"' + link + '"' + ">" +"<img src=" + cover_l_url + '/>' + "</a>"
 						+ "<br>" + "<br>";
 			result += title+"<br>";
