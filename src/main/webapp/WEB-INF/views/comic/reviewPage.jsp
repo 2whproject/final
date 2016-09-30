@@ -106,7 +106,7 @@
 
 					<ul class="mailbox-attachments clearfix uploadedList">
 					</ul>
-					<c:if test="${login.uid == aniVO.writer}">
+               <c:if test="${login.uname == aniVO.writer||login.uname == 'ADMINISTRATOR'}">
 						<button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
 						<button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
 					</c:if>

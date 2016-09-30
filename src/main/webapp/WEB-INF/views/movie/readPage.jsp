@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="false"%>
 <html>
 <!-- 헤드안에들어가면 sitemesh 영향이 생기므로 헤드 밖에다 위치시켜야함 -->
 <head>
@@ -282,7 +281,7 @@ th {
 										placeholder="최대 140자까지 가능하며, 스포일러는 삭제될 수 있습니다."/>
 										<button id="addReply" class="btn btn-info">등록</button>
 										<input class="form-control" id="replyer" class="form-control"
-											type="HIDDEN" value="${login.uid}" />
+											type="HIDDEN" value="${login.uname}" />
 									</div>
 									<div>
 										<input type="hidden" id="title_link" class="form-control"

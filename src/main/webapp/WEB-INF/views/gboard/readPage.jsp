@@ -108,7 +108,7 @@
 
 					<ul class="mailbox-attachments clearfix uploadedList">
 					</ul>
-					<c:if test="${login.uid == gboardVO.writer}">
+					<c:if test="${login.uname == gboardVO.writer}">
 						<button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
 						<button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
 					</c:if>
@@ -142,7 +142,7 @@
 						
 						<input
 							class="form-control" type="text"
-							id="newReplyWriter" value="${login.uid }" readonly="readonly">
+							id="newReplyWriter" value="${login.uname}" readonly="readonly">
 							
 						<label for="exampleInputEmail1">댓글내용</label>
 						
@@ -250,7 +250,7 @@
 // 	댓글은 자바 스크립트로 진행  ↓
 	Handlebars.registerHelper("eqReplyer", function(replyer, block) {
 		var accum = '';
-		if (replyer == '${login.uid}') {
+		if (replyer == '${login.uname}') {
 			accum += block.fn();
 		}
 		return accum;
@@ -324,7 +324,6 @@
 
 	$(".pagination").on("click", "li a", function(event) {
 		
-		alert("pagination clicked...." + replyPage);
 
 		event.preventDefault();
 
@@ -336,7 +335,6 @@
 
 	$("#replyAddBtn").on("click", function() {
 		
-		alert("replyAddBtn clicked....");
 		
 		var replyerObj = $("#newReplyWriter");
 		var replytextObj = $("#newReplyText");
@@ -362,7 +360,6 @@
 					alert("등록 되었습니다.");
 					replyPage = 1;
 					getPage("/greplies/" + bno + "/" + replyPage);
-					replyerObj.val("");
 					replytextObj.val("");
 				}
 			}
@@ -380,7 +377,6 @@
 
 	$("#replyModBtn").on("click", function() {
 
-		alert("replyModeBtn clicked.....");
 		
 		var rno = $(".modal-title").html();
 		var replytext = $("#replytext").val();

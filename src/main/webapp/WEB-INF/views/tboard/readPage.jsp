@@ -103,7 +103,7 @@
                </ul>
                
 
-               <c:if test="${login.uid == boardVO_BSR.writer}">
+               <c:if test="${login.uname == boardVO_BSR.writer||login.uname == 'ADMINISTRATOR'}">
                   <button type="submit" class="btn btn-warning" id="modifyBtn">Modify</button>
                   <button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
                </c:if>
@@ -139,7 +139,7 @@
                <div class="box-body">
                   <label for="exampleInputEmail1">Writer</label> 
                   <input class="form-control" type="text" placeholder="USER ID"
-                         id="newReplyWriter" value="${login.uid }" readonly="readonly">
+                         id="newReplyWriter" value="${login.uname}" readonly="readonly">
                   <label for="exampleInputEmail1">Reply Text</label> 
                   <input class="form-control" type="text" placeholder="REPLY TEXT" id="newReplyText">
                </div>
@@ -248,7 +248,7 @@
    
    Handlebars.registerHelper("eqReplyer", function(replyer, block) {
       var accum = '';
-      if (replyer == '${login.uid}') {
+      if (replyer == '${login.uname}') {
          accum += block.fn();
       }
       return accum;
@@ -310,16 +310,18 @@
       target.html(str);
    }; // 서버상에서 만들어지는것이 아니라 javaScript 로 만드는것
 
-   
+   var clicked = true;
    $("#repliesDiv").on("click", function() {
-      
-      if ($(".timeline li").size() > 1) {
-         return;
-      }
-      getPage("/replies_BSR/" + bno + "/1");
-
-   });
-
+		if (clicked==true) {
+			getPage("/replies_BSR/" + bno + "/1");
+			clicked = false;
+			return;
+		}if(clicked==false){
+			$(".replyLi").remove();
+			clicked = true;
+			return;
+		}
+	});
    $(".pagination").on("click", "li a", function(event) {
       alert("pagination clicked........" + replyPage);
       
@@ -357,8 +359,7 @@
             if (result == 'SUCCESS') {
                alert("등록 되었습니다.");
                replyPage = 1;
-               getPage("/replies/" + bno + "/" + replyPage);
-               replyerObj.val("");
+               getPage("/replies_BSR/" + bno + "/" + replyPage);
                replytextObj.val("");
             }
          }
@@ -449,7 +450,7 @@ $(document).ready(function(){
    
    $("#removeBtn").on("click", function(){
       
-      var replyCnt =  $("#replycntSmall").html();
+      var replyCnt =  ${boardVO_BSR.replycnt};
       
       if(replyCnt > 0 ){
          alert("댓글이 달린 게시물을 삭제할 수 없습니다.");
