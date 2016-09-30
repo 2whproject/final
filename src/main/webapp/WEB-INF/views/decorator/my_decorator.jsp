@@ -84,27 +84,22 @@ footer {
 						data-toggle="dropdown" href="#"><i class="fa fa-film"></i>
 						영화<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="http://localhost:8080/tboard/list?board_id=1">영화공유</a></li>
-							<li><a href="http://localhost:8080/movie/list">영화정보</a></li>
+							<li><a href="/tboard/list?board_id=1">영화공유</a></li>
+							<li><a href="/movie/list">영화정보</a></li>
+							<li><a href="/gboard/list">자유게시판</a></li>
 						</ul>
 					</li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"><i class="fa fa-smile-o"></i>
-						만화<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">만화검색</a></li>
-							<li><a href="#">만화리뷰</a></li>
-						</ul>
-					</li>
+					
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"><i class="fa fa-book"></i>
 						도서<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="http://localhost:8080/book/search?cate_id=33">도서검색</a></li>
-							<li><a href="http://localhost:8080/book/list">나의 독서노트 리스트</a></li>
+							<li><a href="/book/search?cate_id=33">도서검색</a></li>
+							<li><a href="/book/list">나의 독서노트 리스트</a></li>
+							<li><a href="/comic/search">만화검색</a></li>
+							<li><a href="/comic/list">만화리뷰</a></li>
 						</ul>
 					</li>
-					<li><a href="#"><i class="fa fa-gamepad"></i>게임리뷰</a></li>
 					<li><a href="#"><i class="fa fa-question"></i>문의게시판</a></li>
 				</ul>
 			</div>

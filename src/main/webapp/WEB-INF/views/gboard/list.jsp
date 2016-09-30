@@ -16,7 +16,7 @@
 			<!-- general form elements -->
 			<div class='box'>
 				<div class="box-header with-border">
-					<h3 class="box-title"><strong>게임 리뷰 게시판</strong></h3>
+					<h3 class="box-title"><strong>자유 게시판</strong></h3>
 				</div>
 			</div>
 

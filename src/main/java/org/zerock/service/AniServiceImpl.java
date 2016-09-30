@@ -116,6 +116,11 @@ public class AniServiceImpl implements AniService {
 @Override
 public List<String> newList() throws Exception {
 	  return dao.listNew();
-}   
+}
+
+//@Override
+//public List<AniVO> read(String title) {
+//	return dao.read(title);
+//}   
 
 }

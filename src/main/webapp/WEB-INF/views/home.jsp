@@ -185,7 +185,7 @@ p.prd_over {
 						<ul class="dropdown-content" style="z-index: 10000000;">
 							<li><a href="movie/list">INFORMATION </a></li>
 							<li><a href="tboard/list">FILE SHARE</a></li>
-							<li><a href="game/list">BOARD</a></li>
+							<li><a href="gboard/list">BOARD</a></li>
 						</ul>
 					</li>
 					<li><a href="qboard/list">NOTICE</a></li>
@@ -333,7 +333,7 @@ They quickly absorb me and banish the clouds from my mind.;</p>
 			<div class="col-sm-4">
 				<div class="well">
 				<h4>BOOK</h4>
-					<c:forEach items="${book}" var="qnaVO">
+					<c:forEach items="${book}" var="bookVO">
 						<li><a href="book/readPage?bno=${bookVO.bno}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
 						${bookVO.title}<span
 								class="newreplycnt">[${bookVO.replycnt}]</span>
@@ -345,10 +345,10 @@ They quickly absorb me and banish the clouds from my mind.;</p>
 			<div class="col-sm-4">
 				<div class="well">
 				<h4>MOVIE</h4>
-					<c:forEach items="${torrent}" var="qnaVO">
-						<li><a href="qboard/tboard?bno=${gameVO.bno}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
-						${gameVO.title}<span
-								class="newreplycnt">[${gameVO.replycnt}]</span>
+					<c:forEach items="${torrent}" var="movieVO">
+						<li><a href="/tboard?bno=${movieVO.bno}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
+						${movieVO.title}<span
+								class="newreplycnt">[${movieVO.replycnt}]</span>
 								</a> <span class="label label-danger bg-red-gradient">n</span></li>
 					</c:forEach>
 				</div>

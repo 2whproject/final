@@ -43,5 +43,7 @@ public interface AniDAO {
   public void replaceAttach(String fullName, Integer bno)throws Exception;
 
   public List<String> listNew()throws Exception;
+
+public List<AniVO> read(String title);
   
 }

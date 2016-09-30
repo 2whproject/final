@@ -27,7 +27,7 @@
     <c:if test="${login.uname == null}">
 		<div class="login-box">
 			<div class="login-logo">
-				<a href="/resources/index2.html"><b>Zerock</b>Project</a>
+				<a href="/resources/index2.html"><b>2nd</b>Project</a>
 			</div>
 			<!-- /.login-logo -->
 			<div class="login-box-body">
