@@ -55,6 +55,7 @@
  	    <mapping path="/member/delete"/>
  	    <mapping path="/semp/list"/>
  	    <mapping path="/notice/*"/>
+ 	    <mapping path="/user/logininfo"/>
  	    <mapping path="/qboard/readPage"/>
  	    <mapping path="/qboard/register"/>
  	    <mapping path="/qboard/modify"/>

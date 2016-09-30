@@ -69,7 +69,6 @@
 		<div class="box-body">
 			<table class="table table-bordered">
 				<tr>
-					<th style="width: 10px">BNO</th>
 					<th>TITLE</th>
 					<th>WRITER</th>
 					<th>REGDATE</th>
@@ -77,9 +76,8 @@
 				</tr>
 
 				<c:forEach items="${aniVO}" var="aniVO">
-
+					<c:if test="${aniVO.title == title}">
 					<tr>
-						<td>${aniVO.bno}</td>
 						<td><a href='/comic/reviewPage?bno=${aniVO.bno}&cover_l_url=${cover_l_url}&title=${title}&author_t=${author_t}&pub_nm=${pub_nm}&list_price=${list_price}&link=${link}&isbn=${isbn}'>
 								${aniVO.title2} <strong>[${aniVO.replycnt}]</strong>
 						</a></td>
@@ -88,7 +86,7 @@
 								value="${aniVO.regdate}" /></td>
 						<td><span class="badge bg-red">${aniVO.viewcnt}</span></td>
 					</tr>
-
+					</c:if>
 				</c:forEach>
 
 			</table>

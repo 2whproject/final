@@ -48,7 +48,14 @@ select, input, button {
           		</form>
 				<c:forEach items="${list}" var="qnaVO">
 					<tr>
+						<c:choose>
+						<c:when test="${qnaVO.notice == false}">
+						<td></td>
+						</c:when>
+						<c:otherwise>
 						<td>${qnaVO.bno}</td>
+						</c:otherwise>
+						</c:choose>
 						<c:if test="${not empty qnaVO.pass}">
 						<td>
 						<a href='/qboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${qnaVO.bno}'>

@@ -16,6 +16,11 @@
   
 }
 </style>
+<script type="text/javascript">
+	function back() {
+		history.back();
+	}
+</script>
 </head>
 <body>
 
@@ -73,7 +78,7 @@
 		
 		<div class="form-group">
 			<label for="exampleInputEmail1">Writer</label> 
-			<input type="text" name="writer" class="form-control" value='${login.uid}' readonly>
+			<input type="text" name="writer" class="form-control" value='${login.uname}' readonly>
 		</div>
 </div>
 	<!-- /.box-body -->
@@ -87,7 +92,7 @@
 		</ul>
 
 		<button type="submit" class="btn btn-primary">Submit</button>
-		<button type="submit" class="btn btn-danger">Cancel</button>
+		<button onclick="back()" class="btn btn-danger">Cancel</button>
 	</div>
 </form>
 
@@ -103,33 +108,6 @@
 
 <script type="text/javascript" src="/resources/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-
-<script>
-
-
-$("#registerForm").submit(function(event){
-	event.preventDefault();
-	
-// 	alert("aa");
-	
-	var that = $(this);
-	
-	var str ="";
-	$(".uploadedList .delbtn").each(function(index){
-		 str += "<input type='hidden' name='files["+index+"]' value='"+$(this).attr("href") +"'> ";
-	});
-	
-	that.append(str);
-	
-	$('#registerForm [name="title"]').each(function name(idx, data) {
-		console.log(idx + "=" + $(data).val());
-	});
-
-	that.get(0).submit();
-});
-
-
-</script>
 </body>
 </html>
  

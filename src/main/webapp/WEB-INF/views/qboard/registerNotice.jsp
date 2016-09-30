@@ -5,11 +5,12 @@
 <head>
 <title>register.jsp</title>
 <script type="text/javascript">
+	if ("${login.uname}" != 'ADMINISTRATOR') {
+		alert("잘못된 접근입니다");
+		history.back();
+	}
 	function back() {
 		self.location="list";
-	}
-	function normal() {
-		self.location="register";
 	}
 </script>
 </head>

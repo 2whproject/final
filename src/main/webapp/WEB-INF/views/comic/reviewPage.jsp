@@ -10,7 +10,6 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <!-- Main content -->
 <style type="text/css">
-
 .popup {
 	position: absolute;
 }
@@ -44,80 +43,82 @@
 	<div id="popup_front" class='popup front' style="display: none;">
 		<img id="popup_img">
 	</div>
-
 	<div class="row">
-      <!-- left column -->
-      <div class="col-md-12">
-         <!-- general form elements -->
-         <div class="box box-primary">
-            <div class="box-header">
-               <h3 class="box-title">Read Review</h3>
-            </div>
-    <div id="comic-information">
-      <ul style="list-style:none;">
-         <li style='float:left;'><img src = "${cover_l_url}"/></li>
-         <li id='title' style='font-size:1.3em; margin-left: 3.5cm;'>${title}</li><br>
-         <li style='font-size:12px; margin-left: 3.5cm;'>${author_t}</li>
-         <li style='font-size:12px; margin-left: 3.5cm;'>${pub_nm}</li>
-         <li style='font-size:12px; margin-left: 3.5cm;'>${list_price} 원</li><br>
-         <li style='font-size:14px; margin-left: 3.5cm;'><a href= '${link}' >책정보</a></li>
-      </ul>
-   </div>
-            <!-- /.box-header -->
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header">
+					<h3 class="box-title">Read Review</h3>
+				</div>
+				<div id="comic-information">
+					<ul style="list-style: none;">
+						<li style='float: left;'><img src="${cover_l_url}" /></li>
+						<li id='title' style='font-size: 1.3em; margin-left: 3.5cm;'>${title}</li>
+						<br>
+						<li style='font-size: 12px; margin-left: 3.5cm;'>${author_t}</li>
+						<li style='font-size: 12px; margin-left: 3.5cm;'>${pub_nm}</li>
+						<li style='font-size: 12px; margin-left: 3.5cm;'>${list_price}
+							원</li>
+						<br>
+						<li style='font-size: 14px; margin-left: 3.5cm;'><a
+							href='${link}'>책정보</a></li>
+					</ul>
+				</div>
+				<!-- /.box-header -->
 
-            <form role="form" action="modifyPage" method="post">
+				<form role="form" action="modifyPage" method="post">
 
-               <input type='hidden' name='bno' value="${aniVO.bno}"> 
-               <input type='hidden' name='page' value="${cri.page}"> 
-               <input type='hidden' name='perPageNum' value="${cri.perPageNum}">
-               <input type='hidden' name='searchType' value="${cri.searchType}">
-               <input type='hidden' name='keyword' value="${cri.keyword}">
+					<input type='hidden' name='bno' value="${aniVO.bno}"> <input
+						type='hidden' name='page' value="${cri.page}"> <input
+						type='hidden' name='perPageNum' value="${cri.perPageNum}">
+					<input type='hidden' name='searchType' value="${cri.searchType}">
+					<input type='hidden' name='keyword' value="${cri.keyword}">
 
-            </form>
-            
+				</form>
 
-            <div class="box-body">
-            <br>
-            <br>
-               <div class="form-group">
-                  <label for="exampleInputEmail1">Title</label> <input type="text"
-                     name='title' class="form-control" value="${aniVO.title2}"
-                     readonly="readonly">
-               </div>
-               <div class="form-group">
-                  <label for="exampleInputPassword1">Content</label>
-                  <textarea class="form-control" name="content" rows="5"
-                     readonly="readonly">${aniVO.content}</textarea>
-               </div>
-               <div class="form-group">
-                  <label for="exampleInputEmail1">Writer</label> <input type="text"
-                     name="writer" class="form-control" value="${aniVO.writer}"
-                     readonly="readonly">
-               </div>
-            </div>
-            <!-- /.box-body -->
 
-            <div class="box-footer">
+				<div class="box-body">
+					<br> <br>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Title</label> <input type="text"
+							name='title' class="form-control" value="${aniVO.title2}"
+							readonly="readonly">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Content</label>
+						<textarea class="form-control" name="content" rows="5"
+							readonly="readonly">${aniVO.content}</textarea>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Writer</label> <input type="text"
+							name="writer" class="form-control" value="${aniVO.writer}"
+							readonly="readonly">
+					</div>
+				</div>
+				<!-- /.box-body -->
 
-               <div>
-                  <hr>
-               </div>
+				<div class="box-footer">
 
-               <ul class="mailbox-attachments clearfix uploadedList">
-               </ul>
-               <c:if test="${login.uid == aniVO.writer}">
-                  <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
-                  <button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
-               </c:if>
-               <button type="submit" class="btn btn-primary" id="goListBtn">리스트</button>
-            </div>
+					<div>
+						<hr>
+					</div>
 
-         </div>
-         <!-- /.box -->
-      </div>
-      <!--/.col (left) -->
-   </div>
-   <!-- /.row -->
+					<ul class="mailbox-attachments clearfix uploadedList">
+					</ul>
+					<c:if test="${login.uid == aniVO.writer}">
+						<button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
+						<button type="submit" class="btn btn-danger" id="removeBtn">삭제</button>
+					</c:if>
+					<button type="submit" class="btn btn-primary" id="goListBtn">리스트</button>
+				</div>
+
+			</div>
+			<!-- /.box -->
+		</div>
+		<!--/.col (left) -->
+	</div>
+	<!-- /.row -->
 
 
 	<div class="row">
@@ -133,7 +134,7 @@
 				<c:if test="${not empty login}">
 					<div class="box-body">
 						<input class="form-control" type="text" placeholder="USER ID"
-							id="newReplyWriter" value="${login.uid}" readonly="readonly">
+							id="newReplyWriter" value="${login.uname}" readonly="readonly">
 						<input class="form-control" type="text" placeholder="REPLY TEXT"
 							id="newReplyText">
 					</div>
@@ -159,9 +160,9 @@
 			<!-- The time line -->
 			<ul class="timeline">
 				<!-- timeline time label -->
-				<li class="time-label" id="repliesDiv"><span class="bg-green" style="margin-left: 10px;">
-						댓글 목록 
-					<small id='replycntSmall'> [${AniVO.replycnt}] </small>
+				<li class="time-label" id="repliesDiv"><span class="bg-green"
+					style="margin-left: 10px;"> 댓글 목록 <small id='replycntSmall'>
+							[${aniVO.replycnt}] </small>
 				</span></li>
 			</ul>
 			<div class='text-center'>
@@ -175,27 +176,26 @@
 
 
 	<!-- Modal -->
-<!-- 	<div id="modifyModal" class="modal modal-primary fade" role="dialog"> -->
-<!-- 		<div class="modal-dialog"> -->
-<!-- 			<!-- Modal content-->
-<!-- 			<div class="modal-content"> -->
-<!-- 				<div class="modal-header"> -->
-<!-- 					<button type="button" class="close" data-dismiss="modal">&times;</button> -->
-<!-- 					<h4 class="modal-title">댓글 수정 & 삭제</h4> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-body" data-rno> -->
-<!-- 					<p> -->
-<!-- 						<input type="text" id="replytext" class="form-control"> -->
-<!-- 					</p> -->
-<!-- 				</div> -->
-<!-- 				<div class="modal-footer"> -->
-<!-- 					<button type="button" class="btn btn-info" id="replyModBtn">Modify</button> -->
-<!-- 					<button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button> -->
-<!-- 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+	<div id="modifyModal" class="modal modal-primary fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">댓글 수정 & 삭제</h4>
+				</div>
+				<div class="modal-body" data-rno>
+					<p>
+						<input type="text" id="replytext" class="form-control">
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
+					<button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 
@@ -215,28 +215,32 @@
 
 
 	<script id="template" type="text/x-handlebars-template">
-            {{#each .}}
-               <li class="replyLi">
-                   <i class="fa fa-diamond bg-blue"></i>
-                       <div class="timeline-item" >
-                          <span class="time">
-                                <i class="fa fa-clock-o"></i>{{prettifyDate regdate}}
-                          </span>
-                            <h3 class="timeline-header"><strong></strong>{{replyer}}</h3>
-                            <div class="timeline-body">{{replytext}} </div>
-                      <div class="timeline-footer">
+		{{#each .}}
+	         <li class="replyLi" data-rno={{rno}}>
+           	 	<i class="fa fa-comment bg-blue"></i>
+             	<div class="timeline-item">
+                	<span class="time">
+                  		<i class="fa fa-clock-o"></i>{{prettifyDate regdate}}
+                	</span>
+                <h3 class="timeline-header"><strong>{{rno}}</strong> -{{replyer}}</h3>
+                <div class="timeline-body">{{replytext}} </div>
+				<div class="timeline-footer">
                         {{#eqReplyer replyer }}
+                                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
+                        {{/eqReplyer}} 
+                        {{#eqReplyer "ADMINISTRATOR" }}
+                                 <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
                         {{/eqReplyer}}
-                      </div>
-                   </div>         
-               </li>
-           {{/each}}
+				</div>
+	            </div>			
+           </li>
+        {{/each}}
    </script>
 
 	<script>
 		Handlebars.registerHelper("eqReplyer", function(replyer, block) {
 			var accum = '';
-			if (replyer == '${login.uid}') {
+			if (replyer == '${login.uname}') {
 				accum += block.fn();
 			}
 			return accum;
@@ -260,8 +264,8 @@
 
 		}
 
-		var bno = '${AniVO.bno}'; //Board Number
-// 		alert("bno=" + bno);
+		var bno = '${aniVO.bno}'; //Board Number
+		// 		alert("bno=" + bno);
 		var replyPage = 1;
 
 		function getPage(pageInfo) {
@@ -298,15 +302,18 @@
 
 			target.html(str);
 		}; // 서버상에서 만들어지는것이 아니라 javaScript 로 만드는것
-			var clicked = true;
-			$("#repliesDiv").on("click", function() {
-				
-				if ($(".timeline li").size() > 1) {
-					return;
-				}
-					getPage("/Anireply/" + bno + "/1");
-	
-			});
+		var clicked = true;
+		$("#repliesDiv").on("click", function() {
+			if (clicked==true) {
+				getPage("/Anireply/" + bno + "/1");
+				clicked = false;
+				return;
+			}if(clicked==false){
+				$(".replyLi").remove();
+				clicked = true;
+				return;
+			}
+		});
 
 		$(".pagination").on("click", "li a", function(event) {
 
@@ -319,8 +326,6 @@
 		});
 
 		$("#replyAddBtn").on("click", function() {
-			alert("replyAddBtn clicked........");
-
 			var replyerObj = $("#newReplyWriter");
 			var replytextObj = $("#newReplyText");
 			var replyer = replyerObj.val();
@@ -342,10 +347,9 @@
 				success : function(result) {
 					console.log("result: " + result);
 					if (result == 'SUCCESS') {
-// 						alert("등록 되었습니다.");
+						// 						alert("등록 되었습니다.");
 						replyPage = 1;
 						getPage("/Anireply/" + bno + "/" + replyPage);
-						replyerObj.val("");
 						replytextObj.val("");
 					}
 				}
@@ -361,102 +365,94 @@
 
 		});
 
-// 		// 댓글 수정 클릭시 뜨는 메세지창
-// 		$("#replyModBtn").on("click", function() {
+		// 댓글 수정 클릭시 뜨는 메세지창
+		$("#replyModBtn").on("click", function() {
 
-// 			//       alert("replyModBtn clicked...")
+			//       alert("replyModBtn clicked...")
 
-// 			var rno = $(".modal-title").html();
-// 			var replytext = $("#replytext").val();
+			var rno = $(".modal-title").html();
+			var replytext = $("#replytext").val();
 
-// 			$.ajax({
-// 				type : 'put',
-// 				url : '/Anireply/' + rno,
-// 				headers : {
-// 					"Content-Type" : "application/json",
-// 					"X-HTTP-Method-Override" : "PUT"
-// 				},
-// 				data : JSON.stringify({
-// 					replytext : replytext
-// 				}),
-// 				dataType : 'text',
-// 				success : function(result) {
-// 					console.log("result: " + result);
-// 					if (result == 'SUCCESS') {
-// // 						alert("수정 되었습니다.");
-// 						getPage("/Anireply/" + bno + "/" + replyPage);
-// 					}
-// 				}
-// 			});
-// 		});
+			$.ajax({
+				type : 'put',
+				url : '/Anireply/' + rno,
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "PUT"
+				},
+				data : JSON.stringify({
+					replytext : replytext
+				}),
+				dataType : 'text',
+				success : function(result) {
+					console.log("result: " + result);
+					if (result == 'SUCCESS') {
+						// 						alert("수정 되었습니다.");
+						getPage("/Anireply/" + bno + "/" + replyPage);
+					}
+				}
+			});
+		});
 
-// 		$("#replyDelBtn").on("click", function() {
+		$("#replyDelBtn").on("click", function() {
 
-// 			var rno = $(".modal-title").html();
-// 			var replytext = $("#replytext").val();
+			var rno = $(".modal-title").html();
+			var replytext = $("#replytext").val();
 
-// 			$.ajax({
-// 				type : 'delete',
-// 				url : '/Anireply/' + rno,
-// 				headers : {
-// 					"Content-Type" : "application/json",
-// 					"X-HTTP-Method-Override" : "DELETE"
-// 				},
-// 				dataType : 'text',
-// 				success : function(result) {
-// 					console.log("result: " + result);
-// 					if (result == 'SUCCESS') {
-// // 						alert("삭제 되었습니다.");
-// 						getPage("/Anireply/" + bno + "/" + replyPage);
-// 					}
-// 				}
-// 			});
-// 		});
+			$.ajax({
+				type : 'delete',
+				url : '/Anireply/' + rno,
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "DELETE"
+				},
+				dataType : 'text',
+				success : function(result) {
+					console.log("result: " + result);
+					if (result == 'SUCCESS') {
+						// 						alert("삭제 되었습니다.");
+						getPage("/Anireply/" + bno + "/" + replyPage);
+					}
+				}
+			});
+		});
 	</script>
 
 
 	<script>
-		$(document).ready(
-				function() {
+		$(document).ready(function() {
 
-					var formObj = $("form[role='form']");
+			var formObj = $("form[role='form']");
 
-					console.log(formObj);
+			console.log(formObj);
 
-					$("#modifyBtn").on("click", function() {
-						formObj.attr("action", "/comic/modifyPage");
-						formObj.attr("method", "get");
-						formObj.submit();
-					});
+			$("#modifyBtn").on("click", function() {
+				formObj.attr("action", "/comic/modifyPage");
+				formObj.attr("method", "get");
+				formObj.submit();
+			});
+			$("#removeBtn").on("click", function() {
 
- 					    $("#removeBtn").on("click", function(){
+				var replyCnt = $("#replycntSmall").html();
 
-					$("#removeBtn").on("click", function() {
+				if (replyCnt > 0) {
+					alert("댓글이 달린 게시물을 삭제할 수 없습니다.");
+					return;
+				}
 
-						var replyCnt = $("#replycntSmall").html();
+				formObj.attr("action", "/comic/removePage");
+				formObj.submit();
+			});
 
-						if (replyCnt > 0) {
-							alert("댓글이 달린 게시물을 삭제할 수 없습니다.");
-							return;
-						}
+			$("#goListBtn").on("click", function() {
+				formObj.attr("action", "/comic/list");
+				formObj.attr("method", "get");
+				formObj.submit();
+			});
 
- 					 	formObj.attr("action", "/comic/removePage");
- 					 	formObj.submit();
- 					 });
-					
-// 					$("#goListBtn").on("click", function() {
-// 						formObj.attr("action", "/comic/list");
-// 						formObj.attr("method", "get");
-// 						formObj.submit();
-// 					});
-
-					var bno = '${AniVO.bno}';
-					var template = Handlebars.compile($("#templateAttach")
-							.html());
-
-					});
-				});
+			var bno = '${aniVO.bno}';
+			var template = Handlebars.compile($("#templateAttach").html());
+		});
 	</script>
-
 </body>
 </html>

@@ -189,6 +189,7 @@ p.prd_over {
 						</ul>
 					</li>
 					<li><a href="qboard/list">NOTICE</a></li>
+					<li><a href="notice/list">MESSAGE</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 									<c:if test="${login == null}">

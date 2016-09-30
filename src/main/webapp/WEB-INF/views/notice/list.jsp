@@ -15,7 +15,7 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">받은 쪽지</h3>
-					<button style="margin-left: 10px;" id="newNotice">쪽지 보내기</button>
+					<button style="margin-left: 10px;" id="newNotice">쪽지 쓰기</button>
 				</div>
 				<div class="box-body">
 					<table class="table table-bordered">
