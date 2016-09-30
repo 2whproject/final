@@ -94,12 +94,12 @@
                                      
                                      result += "<div id='comic-info2'>"
                                      result += "<ul><li style='float:left;'>" +
-                                               "<a href="+'"http://localhost:8080/comic/readPage'+'?cover_l_url='+cover_l_url+'&title='+title+
+                                               "<a href="+'"/comic/readPage'+'?cover_l_url='+cover_l_url+'&title='+title+
                                          	   '&author_t='+author_t+'&pub_nm='+pub_nm+'&description='+description+'&list_price='+list_price+'&link='+link+'&isbn='+isbn+'">' +
                                                "<img class='comic-img' src=" + "'" + cover_l_url + "'>" + "</a></li><br>";
                                                                          
                                      result += "<li id='title' style='font-size:1.3em;'>" + 
-                                               "<a href="+'"http://localhost:8080/comic/readPage'+'?cover_l_url='+cover_l_url+'&title='+title+
+                                               "<a href="+'"/comic/readPage'+'?cover_l_url='+cover_l_url+'&title='+title+
                                                '&author_t='+author_t+'&pub_nm='+pub_nm+'&description='+description+'&list_price='+list_price+'&link='+link+'&isbn='+isbn+'">' 
                                                + title + "</a></li><br><br>";
                                      
@@ -171,7 +171,7 @@
 				} else {
                   			
                   	  result += "<li id='title' style='font-size:1.3em;'>" + 
-                                "<a href="+'"http://localhost:8080/comic/readPage'+'?cover_l_url='+cover_l_url+'&title='+title+
+                                "<a href="+'"/comic/readPage'+'?cover_l_url='+cover_l_url+'&title='+title+
                                 '&author_t='+author_t+'&pub_nm='+pub_nm+'&description='+description+'&list_price='+list_price+'&link='+link+'&isbn='+isbn+'">' 
                                 + title + "</a></li><br><br>";			
 					}

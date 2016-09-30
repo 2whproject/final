@@ -101,6 +101,9 @@ footer {
 						</ul>
 					</li>
 					<li><a href="#"><i class="fa fa-question"></i>문의게시판</a></li>
+					<c:if test="${login != null}">
+					<li><a href="/notice/list"><i class="fa fa-envelope"></i>쪽지함</a></li>
+					</c:if>
 				</ul>
 			</div>
 			<div class="col-sm-8 text-left">

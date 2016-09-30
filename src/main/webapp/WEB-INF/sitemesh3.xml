@@ -14,6 +14,7 @@
 	<mapping path="/gboard/*" decorator="/WEB-INF/views/decorator/my_decorator.jsp" />
 	<mapping path="/tboard/*" decorator="/WEB-INF/views/decorator/my_decorator.jsp" />
 	<mapping path="/comic/*" decorator="/WEB-INF/views/decorator/my_decorator.jsp" />
+	<mapping path="/notice/*" decorator="/WEB-INF/views/decorator/my_decorator.jsp" />
 
 	<!-- <mapping path="/*.special.jsp" decorator="/special-decorator.html"/> -->
 

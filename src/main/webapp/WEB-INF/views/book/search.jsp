@@ -132,7 +132,7 @@ $(document).ready(function search_query() {
 			result += title+"<br>";
 			result += "("+author+")"+"<br>";
 			result += "&#8361; "+price+"원"+"<br>";
-			result += "<a href="+'"http://localhost:8080/book/register'+'?title='+title+'&author='+author+'&publisher='
+			result += "<a href="+'"/book/register'+'?title='+title+'&author='+author+'&publisher='
 					+publisher+'&price='+price+'&overview='+overview+'&link='+link+'">'+"독서노트 남기기</a>";
 			result += "</div>";
 
@@ -199,7 +199,7 @@ function search_query() {
 			result += title+"<br>";
 			result += "("+author+")"+"<br>";
 			result += "&#8361; "+price+"원"+"<br>";
-			result += "<a href="+'"http://localhost:8080/book/register'+'?title='+title+'&author='+author+'&publisher='
+			result += "<a href="+'"/book/register'+'?title='+title+'&author='+author+'&publisher='
 						+publisher+'&price='+price+'&overview='+overview+'&link='+link+'">'+"독서노트 남기기</a>";
 			result += "</div>";
 		}
@@ -222,18 +222,18 @@ function search_query() {
 <body>
 <div class="container-fluid">
 	<div id="bookcategory" class="row">
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=1">소설</a></div>
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=5">인문</a></div>
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=8">요리</a></div>
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=13">경제/경영</a></div>
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=15">자기계발</a></div>
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=17">정치/사회</a></div>
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=19">역사/문화</a></div>
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=29">과학</a></div>
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=33">컴퓨터/IT</a></div>
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=23">예술/대중문화</a></div>
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=32">여행/기행</a></div>
-			<div class="col-lg-2 col-xs-12"><a href="http://localhost:8080/book/search?cate_id=35">잡지</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=1">소설</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=5">인문</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=8">요리</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=13">경제/경영</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=15">자기계발</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=17">정치/사회</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=19">역사/문화</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=29">과학</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=33">컴퓨터/IT</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=23">예술/대중문화</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=32">여행/기행</a></div>
+			<div class="col-lg-2 col-xs-12"><a href="/book/search?cate_id=35">잡지</a></div>
 			<div id="clear"></div>
 	</div>
 </div>

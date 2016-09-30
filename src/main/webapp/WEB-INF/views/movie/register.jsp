@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="false"%>
 <html>
 <head>
 <title>register.jsp</title>
@@ -92,7 +91,7 @@ label{
 							<div class="form-group">
 								<label for="exampleInputEmail1" >작성자</label> <input
 									type="text" name="writer" id="movie_review"  class="form-control"
-									value='${login.uid}' readonly>
+									value='${login.uname}' readonly>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputP`assword1">내용</label>

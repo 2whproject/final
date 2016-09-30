@@ -128,7 +128,7 @@ CREATE TABLE tbl_reply_book
    PRIMARY KEY(rno)
 );
 ALTER TABLE tbl_reply_book
-  ADD CONSTRAINT fk_board_reply FOREIGN KEY(bno) REFERENCES tbl_board_book(bno);
+  ADD CONSTRAINT fk_board_book_reply FOREIGN KEY(bno) REFERENCES tbl_board_book(bno);
   
 --세빈
 create table tbl_note (
@@ -189,7 +189,7 @@ CREATE TABLE tbl_qreply
    PRIMARY KEY(rno)
 );
 ALTER TABLE tbl_qreply
-  ADD CONSTRAINT fk_board_reply FOREIGN KEY(bno) REFERENCES tbl_qnaboard(bno);
+  ADD CONSTRAINT fk_board_qna_reply FOREIGN KEY(bno) REFERENCES tbl_qnaboard(bno);
 
 --교선
 CREATE TABLE tbl_board_game (
@@ -254,7 +254,7 @@ CREATE TABLE tbl_reply_ani
 );
 
 ALTER TABLE tbl_reply_ani
-  ADD CONSTRAINT fk_board_reply FOREIGN KEY(bno) REFERENCES tbl_reply_ani(bno);
+  ADD CONSTRAINT fk_board_ani_reply FOREIGN KEY(bno) REFERENCES tbl_board_ani(bno);
 
 --윤정
 
