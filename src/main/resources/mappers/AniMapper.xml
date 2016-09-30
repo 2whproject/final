@@ -117,7 +117,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</sql>
 
-	<select id="listSearch" resultType="AniVO">
+	<select id="listSearch" resultType="org.zerock.domain.AniVO">
 <![CDATA[  
   select * 
   from tbl_board_ani 
