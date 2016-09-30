@@ -208,7 +208,7 @@
 $(document).ready(function () {    
 	var login = ${login.uid};
 	if (login==null) {
-		self.location= "http://localhost:8080/user/login";
+		self.location= "/user/login";
 	}
 	
 });	

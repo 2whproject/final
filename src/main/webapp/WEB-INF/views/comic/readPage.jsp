@@ -61,7 +61,7 @@
 			<br>
 			<!-- 						<input type=button class="btn btn-primary" onClick="location.href='/comic/register'" value='New Board'> -->
 			<div style="background:#4374D9; width: 83px; height: 23px;">
-			<a style="color: #FFFFFF" href="http://localhost:8080/comic/register?&cover_l_url=${cover_l_url}&title=${title}&author_t=${author_t}&pub_nm=${pub_nm}&list_price=${list_price}&link=${link}&isbn=${isbn}">Review
+			<a style="color: #FFFFFF" href="/comic/register?&cover_l_url=${cover_l_url}&title=${title}&author_t=${author_t}&pub_nm=${pub_nm}&list_price=${list_price}&link=${link}&isbn=${isbn}">Review
 				작성</a>
 			</div>
 		</div>

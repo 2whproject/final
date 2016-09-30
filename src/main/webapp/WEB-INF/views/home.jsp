@@ -346,7 +346,7 @@ They quickly absorb me and banish the clouds from my mind.;</p>
 				<div class="well">
 				<h4>MOVIE</h4>
 					<c:forEach items="${torrent}" var="movieVO">
-						<li><a href="/tboard?bno=${movieVO.bno}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
+						<li><a href="/tboard/readPage?board_id=1&?page=1&perPageNum=10&searchType&keyworkd&bno=${movieVO.bno}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>
 						${movieVO.title}<span
 								class="newreplycnt">[${movieVO.replycnt}]</span>
 								</a> <span class="label label-danger bg-red-gradient">n</span></li>

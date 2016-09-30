@@ -299,7 +299,7 @@
 				<c:if test="${empty login}">
 					<div class="box-body">
 						<div>
-							<a href="http://localhost:8080/user/login">댓글은 로그인후에 등록할 수 있습니다.</a>
+							<a href="/user/login">댓글은 로그인후에 등록할 수 있습니다.</a>
 						</div>
 					</div>
 				</c:if>

@@ -95,7 +95,7 @@ li{
 												result += "<li style=' float:left;'>";
 												
 // 												url
-												result += "<a href="+'"http://localhost:8080/movie/readPage'+'?movie_title='+movie_title+'&story='+story+'&eng_title='+eng_title+'&open_info_data='+open_info_data;
+												result += "<a href="+'"/movie/readPage'+'?movie_title='+movie_title+'&story='+story+'&eng_title='+eng_title+'&open_info_data='+open_info_data;
 											    result += '&open_info_time='+open_info_time+'&genre_1='+genre_1+'&nation='+nation+'&director='+director;
 											    result += '&title_link='+title_link+'&photo1='+photo1+'&actor1='+actor1+'&year='+year+'&open_info_age='+open_info_age+'&photo2='+photo2+'&photo3='+photo3;
 												result += '">';
@@ -108,7 +108,7 @@ li{
 												result += "<li id='title' style='font-size:1.5em;'>"
 												
 // 												url
-												result += "<a href="+'"http://localhost:8080/movie/readPage'+'?movie_title='+movie_title+'&story='+story+'&eng_title='+eng_title+'&open_info_data='+open_info_data;
+												result += "<a href="+'"/movie/readPage'+'?movie_title='+movie_title+'&story='+story+'&eng_title='+eng_title+'&open_info_data='+open_info_data;
 											    result += '&open_info_time='+open_info_time+'&genre_1='+genre_1+'&nation='+nation+'&director='+director;
 											    result += '&title_link='+title_link+'&photo1='+photo1+'&actor1='+actor1+'&year='+year+'&open_info_age='+open_info_age+'&photo2='+photo2+'&photo3='+photo3;
 												
@@ -198,7 +198,7 @@ li{
 				result += "<li style=' float:left;'>";
 				
 //					url
-				result += "<a href="+'"http://localhost:8080/movie/readPage'+'?movie_title='+movie_title+'&story='+story+'&eng_title='+eng_title+'&open_info_data='+open_info_data;
+				result += "<a href="+'"/movie/readPage'+'?movie_title='+movie_title+'&story='+story+'&eng_title='+eng_title+'&open_info_data='+open_info_data;
 			    result += '&open_info_time='+open_info_time+'&genre_1='+genre_1+'&nation='+nation+'&director='+director;
 			    result += '&title_link='+title_link+'&photo1='+photo1+'&actor1='+actor1+'&year='+year+'&open_info_age='+open_info_age+'&photo2='+photo2+'&photo3='+photo3;
 				result += '">';
@@ -211,7 +211,7 @@ li{
 				result += "<li id='title' style='font-size:1.5em;'>"
 				
 //					url
-				result += "<a href="+'"http://localhost:8080/movie/readPage'+'?movie_title='+movie_title+'&story='+story+'&eng_title='+eng_title+'&open_info_data='+open_info_data;
+				result += "<a href="+'"/movie/readPage'+'?movie_title='+movie_title+'&story='+story+'&eng_title='+eng_title+'&open_info_data='+open_info_data;
 			    result += '&open_info_time='+open_info_time+'&genre_1='+genre_1+'&nation='+nation+'&director='+director;
 			    result += '&title_link='+title_link+'&photo1='+photo1+'&actor1='+actor1+'&year='+year+'&open_info_age='+open_info_age+'&photo2='+photo2+'&photo3='+photo3;
 				
