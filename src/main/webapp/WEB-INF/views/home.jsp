@@ -153,7 +153,7 @@ p.prd_over {
 }
 
 * {
-	border: 1px solid red;
+/* 	border: 1px solid red; */
 }
 
 </style>
